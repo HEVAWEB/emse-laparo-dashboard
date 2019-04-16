@@ -206,6 +206,18 @@ How to deploy a dashboard
 3. Push your changes to GitLab
 4. In **CI/CD** > **Pipelines**, wait for the job(s) to finish and then use the **Manual job** button on the right to deploy your dashboard.
 
+How to update a fork with the latest developments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We may need to update the template with bug fixes, design improvements or just dependencies upgrades.
+In order to benefit on your fork from these developments, you need to do the following procedure:
+
+1. Add upstream remote to your git repository ``git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template``. You can check that the upstream was properly added with ``git remote -v``
+2. Fetch upstream latest developments ``git fetch upstream``
+3. Merge upstream master on top of your current branch ``git merge upstream/master``
+
+You should do step **3.** on an isolated branch to deal with potentials conflicts.
+
 What if my question is not listed here?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -22,5 +22,3 @@ deploy:
   environment:
     name: ${CI_PROJECT_NAME}
     url: http://${CI_PROJECT_NAME}.hevaweb.com
-  only:
-    - master

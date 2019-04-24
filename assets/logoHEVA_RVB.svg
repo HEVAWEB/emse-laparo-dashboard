@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="119px" viewBox="0 0 120 119" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>logoHEVA_RVB</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Artboard" transform="translate(-78.000000, -23.000000)" stroke="#EB5C31" stroke-width="3">
+            <g id="logoHEVA_RVB" transform="translate(80.000000, 24.500000)">
+                <g id="logo">
+                    <polygon id="Stroke-1" points="0 116 116 116 116 0 0 0"></polygon>
+                    <polyline id="Stroke-2" points="31 65 44.0095652 94 57 65.0420887"></polyline>
+                    <polyline id="Stroke-3" points="85 94 72.0002245 65 59 94"></polyline>
+                    <path d="M81,84 L64,84" id="Stroke-4"></path>
+                    <path d="M84,39 L66,39" id="Stroke-5"></path>
+                    <polyline id="Stroke-6" points="84.7397862 24 66 24 66 54 85 54"></polyline>
+                    <path d="M31,24 L31,54" id="Stroke-7"></path>
+                    <path d="M53,24 L53,54" id="Stroke-8"></path>
+                    <path d="M32,38 L53,38" id="Stroke-9"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

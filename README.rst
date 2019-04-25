@@ -201,10 +201,12 @@ Since all apps can access the ``app.py`` module namespace, if you need an asset 
 How to deploy a dashboard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Ask the dev to create the `.hevaweb.com` subdomain
+1. Ask the devs to create the `.hevaweb.com` subdomain (same as the project name on GitLab)
 2. Change the default authentication credentials in `identifiants.csv`
 3. Push your changes to GitLab
 4. In **CI/CD** > **Pipelines**, wait for the job(s) to finish and then use the **Manual job** button on the right to deploy your dashboard.
+
+Please note that you also follow the procedure described `here <https://gitlab.hevaweb.com/heva/docker-images>`_. Feel free to reach a dev for help.
 
 How to update a fork with the latest developments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

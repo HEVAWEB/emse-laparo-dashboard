@@ -8,32 +8,47 @@ Dashboard Template
 Getting Started
 ---------------
 
-Requires **Python 3.6+**
+Requires **Python 3.7**
 
-1. **Optional**: create & activate a virtual environment
+1. Create & activate a virtual environment
 
-.. code-block:: bash
+   1) Windows
 
-    python -m venv venv
-    venv/Scripts/activate
+    .. code-block:: bash
+    
+        python -m venv venv
+        venv/Scripts/activate
+
+   2) OSX
+
+    .. code-block:: bash
+    
+        python3 -m venv venv
+        source venv/bin/activate
 
 2. Install dependencies
 
-.. code-block:: bash
-
-    pip install -r requirements.txt
-
+    .. code-block:: bash
+    
+        pip install -r requirements.txt
+    
 3. Run development server (Windows & Unix)
 
-.. code-block:: bash
+    .. code-block:: bash
+    
+        python index.py
 
-    python index.py
+4. **Optional** On Unix platforms, run production server with
 
-4. On Unix platforms, run production server with
+    .. code-block:: bash
+    
+        gunicorn index:app.server
 
-.. code-block:: bash
+5. Exit virtual environment
 
-    gunicorn index:app.server
+    .. code-block:: bash
+
+        deactivate
 
 References
 ----------
@@ -75,7 +90,7 @@ See also `<https://dash.plot.ly/dash-core-components/markdown>`_.
 How to create interactives graphs?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is a two-step answer: use Plotly graphing libraries and add some Dash callbacks.
+This is a two-steps answer: use Plotly graphing library and add some Dash callbacks.
 
 1. Plotly Graphing Libraries
 ............................
@@ -217,8 +232,9 @@ In order to benefit on your fork from these developments, you need to do the fol
 1. Add upstream remote to your git repository ``git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template``. You can check that the upstream was properly added with ``git remote -v``
 2. Fetch upstream latest developments ``git fetch upstream``
 3. Merge upstream master on top of your current branch ``git merge upstream/master``
+4. Resolve potential git conflict
 
-You should do step **3.** on an isolated branch to deal with potentials conflicts.
+You could do step **3.** on an isolated branch in order to deal with potentials conflicts without stress.
 
 What if my question is not listed here?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

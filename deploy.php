@@ -51,6 +51,7 @@ task('supervisor', function() use ($supervisor, $project_name) {
         run("supervisorctl reload");
         run("supervisorctl update");
     }
+    run("supervisorctl restart $project_name");
 });
 
 task('protect_access', function() {

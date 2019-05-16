@@ -15,33 +15,33 @@ Requires **Python 3.7**
    1) Windows
 
     .. code-block:: bash
-    
+
         python -m venv venv
         venv/Scripts/activate
 
    2) OSX
 
     .. code-block:: bash
-    
+
         python3 -m venv venv
         source venv/bin/activate
 
 2. Install dependencies
 
     .. code-block:: bash
-    
+
         pip install -r requirements.txt
-    
+
 3. Run development server (Windows & Unix)
 
     .. code-block:: bash
-    
+
         python index.py
 
 4. **Optional** On Unix platforms, run production server with
 
     .. code-block:: bash
-    
+
         gunicorn index:app.server
 
 5. Exit virtual environment
@@ -241,5 +241,3 @@ What if my question is not listed here?
 
 - Feel free to come to us! :)
 - Take a look at the references above
-
-

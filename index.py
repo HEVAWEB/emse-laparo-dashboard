@@ -1,31 +1,38 @@
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Output, Input
+from dash.dependencies import Input, Output
 
 from app import app
-from apps import context, outcome, vars, results, method
+from apps import context, method, results, vars
 
+# Import your pages above
 
+# You may change the global title here -> Client - Study
+title = [html.H2("Client"), html.H1("Study")]
+
+# Remember to edit the side bar menu links in the layout below
 app.layout = html.Div(
     [
+        html.Link(href="/assets/font/font.css", rel="stylesheet"),
         html.Link(href="/assets/style.css", rel="stylesheet"),
         dcc.Location(id="url", refresh=False),
         html.Div(
             [
                 html.Div(
                     children=[
-                        html.Img(
-                            src="assets/logoHEVA_RVB.svg", className="img-responsive"
+                        html.Div(
+                            [
+                                html.Img(
+                                    src="assets/logoHEVA_RVB.svg",
+                                    className="img-responsive logo_heva",
+                                )
+                            ],
+                            className="logo-HEVA-container",
                         ),
-                        html.H1("Dashboard"),
                         html.Ul(
                             children=[
                                 html.Li(
                                     dcc.Link("Context", href="/context"),
-                                    className="nav-item",
-                                ),
-                                html.Li(
-                                    dcc.Link("Outcome", href="/outcome"),
                                     className="nav-item",
                                 ),
                                 html.Li(
@@ -43,12 +50,17 @@ app.layout = html.Div(
                             ],
                             className="nav",
                         ),
+                        # Change logo client here
+                        html.Img(
+                            src="assets/logoHEVA_RVB.svg",
+                            className="img-responsive logo-client",
+                        ),
                     ],
-                    className="column col-2",
+                    className="column col-3 sidebar",
                 ),
-                html.Div(id="page-content", className="column col-10"),
+                html.Div(id="page-content", className="column col-9 col-ml-auto"),
             ],
-            className="columns",
+            className="columns col-gapless",
         ),
     ]
 )
@@ -56,18 +68,24 @@ app.layout = html.Div(
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
+    """
+    Side bar menu callback.
+
+    Update the page's content.
+    You may add/remove entries here.
+    """
     if pathname == "/context" or pathname == "/":
-        return context.layout
-    elif pathname == "/outcome":
-        return outcome.layout
+        new_layout = context.layout
     elif pathname == "/methods":
-        return method.layout
+        new_layout = method.layout
     elif pathname == "/vars":
-        return vars.layout
+        new_layout = vars.layout
     elif pathname == "/results":
-        return results.layout
+        new_layout = results.layout
     else:
-        return "404 Not Found"
+        new_layout = html.H1(["Page not found"])
+
+    return title + [new_layout]
 
 
 if __name__ == "__main__":

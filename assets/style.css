@@ -1,30 +1,346 @@
 
+html {
+    font-size: 62.5%;
+}
+
 body {
     background-color: #2B1D46;
-    font-family: "Lato", "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: rgb(43, 29, 70);
+    font-family: "SF", "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.6em; /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 4rem;
 }
 
 #page-content {
     background-color: #FFF;
+    padding: 4rem 4rem 0 4rem;
 }
 
+#tabs {
+    box-shadow: inset 0px -8px 8px rgba(0, 0, 0, 0.05);
+    background-color: #F4F2F7;
+    border-bottom: solid 1px #fff;
+    padding: 0 4rem;
+    margin: 0 -4rem;
+}
+
+.text {
+    padding: 0 0 4rem 0;
+}
+
+.graph {
+    background-color: #F4F2F7;
+    padding: 0 4rem;
+    margin: 0 -4rem;
+}
+
+.tools {
+    background-color: #F4F2F7;
+    box-shadow: inset 0px -8px 8px rgba(0, 0, 0, 0.05);
+    padding: 2rem 4rem;
+    margin: 0 -4rem;
+    border-bottom: solid 1px #fff;
+}
+
+.modebar-group {
+    background: transparent !important;
+}
+
+.modebar-btn svg path {
+    fill: #2B1D46 !important;
+}
+
+/* Couleurs
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+$orangefort: #FC5B26;
+$orange: #FF7240;
+$orangefaible: #FFC7B3;
+
+$noir: #2B1D46;
+$noir2: #5E5A85;
+$noir3: #9491AD;
+$noir4: #C9C8D6;
+$noir5: #F4F2F7;
+
+$vert: #ACCB44;
+$vertfonce: #4CA094;
+$turquoise: #188C9C;
+$bleucyan: #2BBDC8;
+$bleu: #326AB1;
+$violet: #4A2572;
+$mauve: #A11F7B;
+$rose: #DD255F;
+$rouge: #FF3C48;
+$orange: #FF7240;
+$jauneorange: #FABB00;
+$jaune: #FFEF00;
+*/
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: 0;
     font-weight: 700;
+    line-height: 1.3;
     font-family: "Montserrat", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: rgb(252, 91, 38);
+    color: #2B1D46;
 }
 
-h1, h4, h5, h6 {
-    color: rgb(43, 29, 70);
+h4, h5, h6 {
+    color: #5E5A85;
+}
+
+h1 {
+    font-size: 3.2rem;
+    color: #FC5B26;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    width: 66%;
+    font-size: 2.8rem;
+    margin-top: 6rem;
+
+}
+
+h4 {
+    font-size: 2.0rem;
+    margin-bottom: 1.2rem;
+    margin-top: 4rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    margin-top: 6rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    margin-top: 6rem;
+    color: #FC5B26;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-top: 1.6rem;
+    margin-bottom: 0;
+    color: #2B1D46;
+    text-align: justify;
+}
+
+em {
+    font-weight: 700;
+    font-style: inherit;
+}
+
+strong {
+    font-weight: 700;
+    color: #FC5B26;
+    font-style: inherit;
+}
+
+.intro {
+    width: 66%;
+    font-style: italic;
+    font-size: 2.0rem;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+    color: #9491AD;
+    text-align: justify;
+}
+
+.conclusion {
+    width: 66%;
+    text-align: justify;
+}
+
+.conclusion p {
+    color: #5E5A85;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+a {
+    color: #5F5A85;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a:focus {
+    box-shadow: none;
+}
+
+a:visited {
+    color: #5F5A85;
+}
+
+a:hover {
+    color: #FC5B26;
+}
+
+/* Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+ol, ul, li {
+    padding-left: 0;
+    margin-top: -0rem;
+    margin-bottom: 0rem;
+    list-style: inside;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    color: #2B1D46;
+}
+
+li {
+    list-style: none;
+}
+
+ul li::before {
+    content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #FC5B26; /* Change the color */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    margin: 0 0 1.5rem 3rem;
+    font-size: 80%;
+}
+
+blockquote {
+    background-color: #F4F2F7;
+    padding: 1.5rem 2rem;
+    border-left: 4px solid #C9C8D6;
+}
+
+blockquote p {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #9491AD;
+    margin-top: 0;
+}
+
+/* Navigation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 4rem;
+    bottom: 0;
+    margin-left: -5rem;
+}
+
+.sidebar ul li::before {
+    color: transparent; /* Change the color */
+    margin-left: 0; /* Also needed for space (tweak if needed) */
 }
 
 .nav {
+    font-family: "Montserrat", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
     text-align: right;
+    font-size: 1.4rem;
+    line-height: 1.3rem;
+    margin-top: 6rem;
+
 }
 
+.logo_heva {
+    float: right;
+    max-width: 120px;
+    width: 100%;
+}
+
+.logo-client {
+    margin-top: auto;
+    margin-bottom: 4rem;
+    max-width: 200px;
+    align-self: flex-end;
+    width: 100%;
+}
+
+.nav-item {
+    list-style-type: none;
+    margin-bottom: 2rem;
+}
+
+.nav .nav-item a {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.nav .nav-item a:hover {
+    color: #fff;
+}
+
+.nav .nav-item a:visited {
+    color: #fff;
+}
+
+._dash-undo-redo {
+    display: none;
+}
+
+.bg-paper {
+    background: #f4f2f7 !important;
+}
+
+.tab {
+    margin: 0;
+}
+
+#page-content .custom-tab {
+    display: flex;
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    font-family: "Montserrat", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    color: #5E5A85;
+    padding: 1.6rem;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 4px transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+}
+
+#page-content .custom-tab:focus,
+#page-content .custom-tab:hover {
+    color: #2B1D46;
+}
+
+#page-content .custom-tab--selected {
+    border-color: #fc5b26;
+    color: #fc5b26;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-client {
+    margin-top: auto;
+}
+
+table {
+    margin: auto;
+}

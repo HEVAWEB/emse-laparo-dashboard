@@ -1,8 +1,7 @@
-import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 
-from app import config
+import utils
 
 with open("assets/demo.md", "r", encoding="utf-8") as f:
     content = f.read()
@@ -13,7 +12,7 @@ fig = go.Figure(
 
 layout = html.Div(
     [
-        dcc.Markdown([content]),
-        html.Div([dcc.Graph(figure=fig, config=config)], className="graph"),
+        utils.markdown_content(content),
+        utils.graph(fig)
     ]
 )

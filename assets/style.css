@@ -10,6 +10,17 @@ body {
     line-height: 1.6;
     font-weight: 400;
     margin: 4rem;
+
+}
+
+body ::-moz-selection {
+    color: white;
+    background: #9491AD;
+}
+
+body ::selection {
+    color: white;
+    background: #9491AD;
 }
 
 #page-content {
@@ -26,17 +37,26 @@ body {
 }
 
 .text {
-    padding: 0 0 4rem 0;
+    padding: 0 0 2rem 0;
 }
 
 .graph {
-    background-color: #F4F2F7;
+    background-color: rgba(244, 244, 247, 0.5);
     padding: 0 4rem;
     margin: 0 -4rem;
 }
 
+.graph h4 {
+    margin-top:0;
+    padding-top: 4rem;
+    padding-left: 2rem;
+    font-family: Montserrat, sans-serif;
+    color: #5E5A85;
+    font-size: 2rem;
+}
+
 .tools {
-    background-color: #F4F2F7;
+    background-color: rgba(244, 244, 247, 0.5);
     box-shadow: inset 0px -8px 8px rgba(0, 0, 0, 0.05);
     padding: 2rem 4rem;
     margin: 0 -4rem;
@@ -47,9 +67,22 @@ body {
     background: transparent !important;
 }
 
+.modebar-btn.active svg path {
+    fill: #FC5B26 !important;
+}
+
+.modebar-btn.active:hover svg path {
+    fill: #FF7240 !important;
+}
+
 .modebar-btn svg path {
     fill: #2B1D46 !important;
 }
+
+.modebar-btn:hover svg path {
+    fill: #5E5A85 !important;
+}
+
 
 /* Couleurs
 ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -86,10 +119,6 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.3;
     font-family: "Montserrat", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #2B1D46;
-}
-
-h4, h5, h6 {
-    color: #5E5A85;
 }
 
 h1 {
@@ -152,20 +181,25 @@ strong {
     font-style: italic;
     font-size: 2.0rem;
     line-height: 1.4;
-    margin-bottom: 3rem;
-    color: #9491AD;
+    margin: 3rem 0;
+    color: #5E5A85;
     text-align: justify;
+    border-left: 4px solid #C9C8D6;
+    padding-left: 16px;
 }
 
 .conclusion {
     width: 66%;
     text-align: justify;
+    border-left: 4px solid #FC5B26;
+    padding-left: 16px;
+    margin-bottom: 2rem;
 }
 
 .conclusion p {
-    color: #5E5A85;
+    font-size: 1.8rem;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.6;
 }
 
 a {
@@ -221,13 +255,13 @@ ol ul {
 }
 
 blockquote {
-    background-color: #F4F2F7;
-    padding: 1.5rem 2rem;
+    background-color: rgba(244, 244, 247, 0.5);
+    padding: 1.6rem 2rem;
     border-left: 4px solid #C9C8D6;
 }
 
 blockquote p {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-style: italic;
     color: #9491AD;
     margin-top: 0;
@@ -260,27 +294,31 @@ blockquote p {
 
 }
 
+.logo-HEVA-container {
+    padding-left: 4rem;
+}
+
 .logo_heva {
     float: right;
     max-width: 120px;
     width: 100%;
 }
 
-.logo-client {
+.logo-client-container {
     margin-top: auto;
     margin-bottom: 4rem;
     max-width: 200px;
     align-self: flex-end;
+    padding-left: 4rem;
+}
+
+.logo-client {
     width: 100%;
 }
 
 .nav-item {
     list-style-type: none;
     margin-bottom: 2rem;
-}
-
-.nav .nav-item a {
-    color: rgba(0, 0, 0, 0.5);
 }
 
 .nav .nav-item a:hover {
@@ -343,4 +381,11 @@ blockquote p {
 
 table {
     margin: auto;
+}
+
+.embed-img {
+    border: solid #B7A8C7 1px;
+    max-width: 500px;
+    margin: auto;
+    width: 100%;
 }

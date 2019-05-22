@@ -51,9 +51,14 @@ app.layout = html.Div(
                             className="nav",
                         ),
                         # Change logo client here
-                        html.Img(
-                            src="assets/logoHEVA_RVB.svg",
-                            className="img-responsive logo-client",
+                        html.Div(
+                            [
+                                html.Img(
+                                    src="assets/logoHEVA_RVB.svg",
+                                    className="img-responsive logo-client",
+                                )
+                            ],
+                            className="logo-client-container",
                         ),
                     ],
                     className="column col-3 sidebar",

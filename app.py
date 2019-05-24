@@ -45,25 +45,21 @@ _base_template = pio.to_templated(
                     font=dict(family="SF, sans-serif", color="#2B1D46", size=14)
                 ),
             ),
-            hoverlabel=dict(
-                bgcolor="#2B1D46", font=dict(family="SF, sans-serif", size=12)
-            ),
+            hoverlabel=dict(font=dict(family="SF, sans-serif", size=12)),
             bargap=0.2,
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             colorway=[
                 "#4A2572",
+                "#DD255F",
+                "#FF3C48",
                 "#FF7240",
-                "#B7A8C7",
-                "#2BBDC8",
+                "#FABB00",
+                "#FFEF00",
+                "#ACCB44",
                 "#4CA094",
                 "#188C9C",
                 "#326AB1",
-                "#ACCB44",
-                "#FABB00",
-                "#FFEF00",
-                "#DD255F",
-                "#FF3C48",
             ],
             images=[dict(name="base_template")],
         )

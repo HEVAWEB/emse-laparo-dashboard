@@ -10,7 +10,7 @@ Getting Started
 
 Requires **Python 3.7**
 
-1. Create & activate a virtual environment
+1. Optional: Create & activate a virtual environment
 
    1) Windows
 
@@ -62,26 +62,42 @@ References
 Instructions
 ------------
 
-How to use this project
-~~~~~~~~~~~~~~~~~~~~~~~
+How to create a dashboard ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First of all, you need to fork this repository to your own organisation.
-To do so, just click on the *Fork* button at the top of this projet homepage.
-You should then rename your fork to a friendler name.
-How about `client-study` ?
+First of all, you need to create a copy of this repository in your own organisation (unfortunately forking is not an option because of GitLab's limitations).
+To do so:
 
-    Please note that your projet name should be url friendly: avoid using special characters.
+1. Create a new **empty** GitLab repository in the correct group/subgroup.
+You should choose a friendly name. How about **client-study-dashboard**?
 
-To rename a GitLab project, go to **Settings** > **General** > **Advanced** > **Rename Repository**.
-This will rename **both** the project name displayed and its URL.
+2. Create a local copy of the template repository with
+    1. ``git clone -o upstream https://gitlab.hevaweb.com/web/dashboard-template <your friendly name>`` with ``<your friendly name>`` being **client-study-dashboard** for example.
 
-You may now clone the project and add files & code to create your specific dashboard.
+    2. ``cd <your friendly name>``
+
+    3. ``git remote add origin <your new gitlab repo url>`` with the URL we got from step **1.**
+
+    4. ``git push -u origin master``
+
+🎉 Tada! You are good to go.
+We needed those tedious steps to be able to update your dashboard and the template from one to another.
+
+**Please note that the steps above are for creating a dashboard.**
+
+If you want to clone an existing dashboard (already on GitLab), you should do these steps instead:
+
+1. ``git clone <your url>``
+
+2. ``cd <your dashboard>``
+
+3. ``git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template``
 
 How to include text documents
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You could write all the text you need in Python using Dash's HTML components for structure, but an easier way is to include a **Markdown** file stored in ``assets/``.
-An example is given in ``apps/context.py`` using ``assets/demo.md``.
+You could write all the text you need in Python using Dash's HTML components for structure, but an easier way is to include a **Markdown** file stored in ``assets/`` (or ``assets/contents/``.
+An example is given in ``apps/context.py`` using ``assets/contents/demo.md``.
 
 
 See also `<https://dash.plot.ly/dash-core-components/markdown>`_.
@@ -166,6 +182,40 @@ Using the very same principles, this is how we can allow our user to interact wi
 
 See also `<https://dash.plot.ly/getting-started-part-2>`_.
 
+3. Export graphs
+................
+
+The prefered export format for graph is **json**, although Python users may use pickled graphs if they want.
+
+1. Python export
+
+At some point, you shoud have a Plotly figure with something like this:
+
+.. code-block:: python
+
+    fig = go.Figure(data, layout)
+
+You may export this figure to a **json** file using the following snippet:
+
+.. code-block:: python
+
+    import json
+    from homemade.utils import NumpyEncoder
+
+    with open("<output-path>", "w", encoding="utf-8") as f:
+        json.dump(fig.to_dict(), f, cls=NumpyEncoder)
+
+2. R export
+
+Coming soon.
+
+3. Graph layout
+
+**Please note that your Plotly graphs should have the bare minimum layout!**
+
+The dashboard has a built-in HEVA theme to apply to every graph.
+Try to specify only titles and readability elements, not colors & fonts for example.
+
 What file(s) do I need to modify to...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -193,7 +243,7 @@ Assets are (but not limited to):
 
 All assets except for graphs should be stored in the ``assets/`` folder.
 You may access an asset in an app with the ``assets/<filename>`` path.
-Please note that ``.css`` & ``.js`` files are automatically served by the Dash server.
+Please note that ``.css``, ``.ico`` & ``.js`` files are automatically served by the Dash server.
 
 Include graphs?
 ...............
@@ -201,6 +251,32 @@ Include graphs?
 Graphs should be stored in the ``builds/`` folder.
 We separate them from standard assets because they can be quite heavy and we are still thinking how we should specifically handle them.
 You may access a graph in an app with the ``builds/<filename>`` path.
+
+Graphs are typically stored using **json** or **pickle** formats.
+
+1. Json
+
+.. code-block:: python
+
+    import json
+    import plotly.graph_objs as go
+
+    with open("<path to your file>", "r", encoding="utf-8") as f:
+        graph = go.Figure(json.load(f))
+
+2. Pickle
+
+.. code-block:: python
+
+    import pickle
+    import plotly.graph_objs as go
+
+    with open("<path to your file>", "rb") as f:
+        graph = go.Figure(pickle.load(f))
+
+A few words on the codes above, we build a new Plotly figure with ``go.Figure()`` on the loaded figure for a good reason: it allows us to override the layout with the HEVA theme.
+This is why graphs in the dashboard look different from the ones you exported earlier.
+
 
 Define a callback in an app?
 ............................
@@ -221,20 +297,48 @@ How to deploy a dashboard
 3. Push your changes to GitLab
 4. In **CI/CD** > **Pipelines**, wait for the job(s) to finish and then use the **Manual job** button on the right to deploy your dashboard.
 
-Please note that you also follow the procedure described `here <https://gitlab.hevaweb.com/heva/docker-images>`_. Feel free to reach a dev for help.
+Please note that you also follow the procedure described `here <https://gitlab.hevaweb.com/heva/docker-images>`_.
+Feel free to reach a dev for help.
 
-How to update a fork with the latest developments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to update your dashboard with the template's latest developments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We may need to update the template with bug fixes, design improvements or just dependencies upgrades.
-In order to benefit on your fork from these developments, you need to do the following procedure:
+In order to benefit on your dashboard from these developments, you need to do the following procedure:
 
-1. Add upstream remote to your git repository ``git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template``. You can check that the upstream was properly added with ``git remote -v``
+1. If not done already, add upstream remote to your git repository ``git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template``.
+You can check that the upstream was properly added with ``git remote -v``
+
 2. Fetch upstream latest developments ``git fetch upstream``
+
 3. Merge upstream master on top of your current branch ``git merge upstream/master``
-4. Resolve potential git conflict
+
+4. Resolve potential git conflicts
 
 You could do step **3.** on an isolated branch in order to deal with potentials conflicts without stress.
+
+How to update the template with something from your dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When working on your own dashboard, you could code something the template may benefit from (such as a bug fix, an ui improvement, etc.).
+
+You can create a Merge Request on GitLab from your dashboard to the template with the following steps:
+
+1. If not done already, add upstream remote to your git repository ``git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template``.
+You can check that the upstream was properly added with ``git remote -v``
+
+2. Fetch upstream latest developments ``git fetch upstream``
+
+3. Create a new local branch from upstream with ``git checkout -b <new-branch-name> upstream/master``
+
+4. Squash your modifications on top of your current new branch ``git merge --squash <branch_with_modifications>``
+
+5. Resolve potential git conflicts & **remove all code/graphs/whatever related to your study**. You do not want to merge your graphs into the template!
+
+6. ``git push --set-upstream origin <new-branch-name>``
+
+7. Go to https://gitlab.hevaweb.com/web/dashboard-template and open a Merge Request. Thank you kindly for your contribution!
+
 
 What if my question is not listed here?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

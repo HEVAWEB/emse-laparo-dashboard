@@ -1,5 +1,7 @@
-Dashboard Template
-==================
+Artemis
+=======
+
+✨🏹✨
 
 .. contents:: Contents
     :depth: 3

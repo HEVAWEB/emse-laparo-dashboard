@@ -47,7 +47,7 @@ body ::selection {
 }
 
 .graph h4 {
-    margin-top:0;
+    margin-top: 0;
     padding-top: 4rem;
     padding-left: 2rem;
     font-family: Montserrat, sans-serif;
@@ -388,4 +388,22 @@ table {
     max-width: 500px;
     margin: auto;
     width: 100%;
+}
+
+.plotly-notifier {
+    background-color: #2B1D46;
+}
+
+.notifier-note {
+    background-color: #2B1D46 !important;
+    border: solid #fc5b26 3px !important;
+}
+
+.notifier-note p {
+    color: white;
+    font-family: "SF", "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.notifier-note .notifier-close {
+    color: #FC5B26;
 }

@@ -31,3 +31,13 @@ def markdown_content(content: str, class_name: str = "text") -> dcc.Markdown:
     :return: Markdown rendered element
     """
     return dcc.Markdown([content], dangerously_allow_html=True, className=class_name)
+
+
+def takeaways(content: str) -> html.Div:
+    """
+    Utility function for small emphasized conclusions
+
+    :param content: Textual markdown content
+    :return: html placeholder for takeaways
+    """
+    return html.Div([html.H4(["Takeaways"]), markdown_content(content, "conclusion")])

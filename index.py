@@ -4,6 +4,7 @@ from dash.dependencies import Input, Output
 
 from app import app
 from apps import context, method, results, vars
+from utils import __version__
 
 # Import your pages above
 
@@ -67,6 +68,7 @@ app.layout = html.Div(
             ],
             className="columns col-gapless",
         ),
+        html.Footer([f"{__version__}"]),
     ]
 )
 

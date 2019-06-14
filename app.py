@@ -1,6 +1,7 @@
 import dash
 import plotly.graph_objs as go
 import plotly.io as pio
+from flask import Flask
 
 __all__ = ("app", "config")
 
@@ -9,7 +10,9 @@ external_stylesheets = [
     "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
     "https://fonts.googleapis.com/css?family=Montserrat:700",
 ]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+server = Flask(__name__)
+app = dash.Dash(server=server, name=__name__, external_stylesheets=external_stylesheets)
 
 # Change the webpage title here if needed
 app.title = "HEVA Study"

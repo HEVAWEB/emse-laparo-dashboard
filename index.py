@@ -8,14 +8,40 @@ from utils import __version__
 
 # Import your pages above
 
-# You may change the global title here -> Client - Study
+# Change the webpage tab title here if needed
+app.title = "HEVA Study"
+
+# Global title: Client - Study
 title = [html.H2("Client"), html.H1("Study")]
 
-# Remember to edit the side bar menu links in the layout below
+# Change client logo
+LOGO_HEVA = "assets/logoHEVA_RVB.svg"
+LOGO_CLIENT = "assets/logoHEVA_RVB.svg"
+
+# Sidebar links: add/remove entries if needed
+menu = html.Ul(
+    children=[
+        dcc.Link("Context", href="/context", className="nav-item"),
+        dcc.Link("Variables", href="/vars", className="nav-item"),
+        dcc.Link("Results", href="/results", className="nav-item"),
+        dcc.Link("Methodology", href="/methods", className="nav-item"),
+    ],
+    className="nav",
+)
+pages = {
+    # Default page
+    "/": context.layout,
+    "/context": context.layout,
+    "/methods": method.layout,
+    "/vars": vars.layout,
+    "/results": results.layout,
+}
+
+
+# You should not feel the need to modify the code bellow
+
 app.layout = html.Div(
     [
-        html.Link(href="/assets/font/font.css", rel="stylesheet"),
-        html.Link(href="/assets/style.css", rel="stylesheet"),
         dcc.Location(id="url", refresh=False),
         html.Div(
             [
@@ -24,38 +50,16 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.Img(
-                                    src="assets/logoHEVA_RVB.svg",
-                                    className="img-responsive logo_heva",
+                                    src=LOGO_HEVA, className="img-responsive logo_heva"
                                 )
                             ],
                             className="logo-HEVA-container",
                         ),
-                        html.Ul(
-                            children=[
-                                html.Li(
-                                    dcc.Link("Context", href="/context"),
-                                    className="nav-item",
-                                ),
-                                html.Li(
-                                    dcc.Link("Variables", href="/vars"),
-                                    className="nav-item",
-                                ),
-                                html.Li(
-                                    dcc.Link("Results", href="/results"),
-                                    className="nav-item",
-                                ),
-                                html.Li(
-                                    dcc.Link("Methodology", href="/methods"),
-                                    className="nav-item",
-                                ),
-                            ],
-                            className="nav",
-                        ),
-                        # Change logo client here
+                        menu,
                         html.Div(
                             [
                                 html.Img(
-                                    src="assets/logoHEVA_RVB.svg",
+                                    src=LOGO_CLIENT,
                                     className="img-responsive logo-client",
                                 )
                             ],
@@ -75,25 +79,9 @@ app.layout = html.Div(
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    """
-    Side bar menu callback.
-
-    Update the page's content.
-    You may add/remove entries here.
-    """
-    if pathname == "/context" or pathname == "/":
-        new_layout = context.layout
-    elif pathname == "/methods":
-        new_layout = method.layout
-    elif pathname == "/vars":
-        new_layout = vars.layout
-    elif pathname == "/results":
-        new_layout = results.layout
-    else:
-        new_layout = html.H1(["Page not found"])
-
-    return title + [new_layout]
+    """ Update page content with sidebar links"""
+    return title + [pages.get(pathname, html.H1(["Page not found"]))]
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8051)
+    app.run_server(debug=True)

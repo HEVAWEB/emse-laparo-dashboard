@@ -6,29 +6,29 @@ body {
     background-color: #2B1D46;
     font-family: "SF", "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.6em;
-    /* currently ems cause chrome bug misinterpreting rems on body element */
     line-height: 1.6;
     font-weight: 400;
     margin: 4rem;
 }
 
 body ::-moz-selection {
-    color: white;
+    color: #fff;
     background: #9491AD;
 }
 
 body ::selection {
-    color: white;
+    color: #fff;
     background: #9491AD;
 }
 
 #page-content {
-    background-color: #FFF;
+    background-color: #fff;
     padding: 4rem 4rem 0 4rem;
 }
 
 footer {
     text-align: center;
+    color: #aeaeae;
 }
 
 #tabs {
@@ -85,34 +85,6 @@ footer {
 .modebar-btn:hover svg path {
     fill: #5E5A85 !important;
 }
-
-
-/* Couleurs
-––––––––––––––––––––––––––––––––––––––––––––––––––
-
-$orangefort: #FC5B26;
-$orange: #FF7240;
-$orangefaible: #FFC7B3;
-
-$noir: #2B1D46;
-$noir2: #5E5A85;
-$noir3: #9491AD;
-$noir4: #C9C8D6;
-$noir5: #F4F2F7;
-
-$vert: #ACCB44;
-$vertfonce: #4CA094;
-$turquoise: #188C9C;
-$bleucyan: #2BBDC8;
-$bleu: #326AB1;
-$violet: #4A2572;
-$mauve: #A11F7B;
-$rose: #DD255F;
-$rouge: #FF3C48;
-$orange: #FF7240;
-$jauneorange: #FABB00;
-$jaune: #FFEF00;
-*/
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -249,15 +221,10 @@ li {
 
 ul li::before {
     content: "\2022";
-    /* Add content: \2022 is the CSS Code/unicode for a bullet */
     color: #FC5B26;
-    /* Change the color */
     display: inline-block;
-    /* Needed to add space between the bullet and the text */
     width: 1em;
-    /* Also needed for space (tweak if needed) */
     margin-left: -1em;
-    /* Also needed for space (tweak if needed) */
 }
 
 ul ul,
@@ -295,9 +262,7 @@ blockquote p {
 
 .sidebar ul li::before {
     color: transparent;
-    /* Change the color */
     margin-left: 0;
-    /* Also needed for space (tweak if needed) */
 }
 
 .nav {
@@ -335,14 +300,14 @@ blockquote p {
 .nav-item {
     list-style-type: none;
     margin-bottom: 2rem;
+    text-decoration: none;
+    font-size: 1.6rem;
 }
 
-.nav .nav-item a:hover {
+.nav .nav-item:hover, .nav .nav-item:focus {
+    text-decoration: none;
     color: #fff;
-}
-
-.nav .nav-item a:visited {
-    color: #fff;
+    transition: ease .2s;
 }
 
 ._dash-undo-redo {
@@ -416,7 +381,7 @@ table {
 }
 
 .notifier-note p {
-    color: white;
+    color: #fff;
     font-family: "SF", "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 

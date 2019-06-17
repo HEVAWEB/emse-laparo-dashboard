@@ -43,7 +43,7 @@ task('python_env', function() {
     within('{{release_path}}', function () {
         run('python3 -m venv ./venv');
         run('source ./venv/bin/activate && pip install gunicorn && deactivate');
-        run("./venv/bin/python -m pip install --no-cache-dir -r requirements.txt --ignore-installed");
+        run("./venv/bin/python -m pip install --no-cache-dir -r requirements.txt");
     });
 });
 

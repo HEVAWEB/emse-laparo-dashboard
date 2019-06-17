@@ -8,6 +8,8 @@ from utils import __version__
 
 # Import your pages above
 
+# Change the webpage tab title here if needed
+app.title = "HEVA Study"
 # Global title: Client - Study
 title = [html.H2("Client"), html.H1("Study")]
 

@@ -14,9 +14,6 @@ external_stylesheets = [
 server = Flask(__name__)
 app = dash.Dash(server=server, name=__name__, external_stylesheets=external_stylesheets)
 
-# Change the webpage title here if needed
-app.title = "HEVA Study"
-
 # Set the two following parameters to True if you encounter
 # issues with CDNs
 app.css.config.serve_locally = False

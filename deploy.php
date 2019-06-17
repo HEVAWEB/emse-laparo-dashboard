@@ -9,7 +9,7 @@ $project_path = "/var/www/$project_name";
 
 $supervisor = <<<EOL
 "[program:$project_name]
-command                 = /home/hevadev/.local/bin/gunicorn --chdir $project_path/current -b unix://$project_path/gunicorn.sock index:app.server
+command                 = $project_path/shared/venv/bin/gunicorn --chdir $project_path/current -b unix://$project_path/gunicorn.sock index:app.server
 numprocs                = 1
 autostart               = true
 autorestart             = true
@@ -27,8 +27,8 @@ set('application', $project_name);
 set('repository', "git@gitlab.hevaweb.com:$project_namespace/$project_name.git");
 
 // Shared files/dirs between deploys
-set('shared_files', []);
-set('shared_dirs', ['logs']);
+set('shared_files', ['']);
+set('shared_dirs', ['logs', 'venv']);
 set('writable_dirs', ['logs']);
 set('allow_anonymous_stats', false);
 
@@ -39,9 +39,12 @@ host('production')
     ->set('deploy_path', $project_path)
     ->set('branch', 'master');
 
-// Tasks
-task('pip', function() {
-    run("cd {{release_path}} && pip3 install -r requirements.txt");
+task('python_env', function() {
+    within('{{release_path}}', function () {
+        run('python3 -m venv ./venv');
+        run('source ./venv/bin/activate && pip install gunicorn && deactivate');
+        run("./venv/bin/python -m pip install --no-cache-dir -r requirements.txt --ignore-installed");
+    });
 });
 
 task('supervisor', function() use ($supervisor, $project_name) {
@@ -50,8 +53,9 @@ task('supervisor', function() use ($supervisor, $project_name) {
         run("echo $supervisor > $supervisor_conf_path");
         run("supervisorctl reload");
         run("supervisorctl update");
+    } else {
+        run("supervisorctl restart $project_name");
     }
-    run("supervisorctl restart $project_name");
 });
 
 task('protect_access', function() {
@@ -88,7 +92,7 @@ task('deploy', [
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
-    'pip',
+    'python_env',
     'deploy:shared',
     'deploy:writable',
     'deploy:clear_paths',

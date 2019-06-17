@@ -337,11 +337,7 @@ blockquote p {
     margin-bottom: 2rem;
 }
 
-.nav .nav-item a:hover {
-    color: #fff;
-}
-
-.nav .nav-item a:visited {
+.nav .nav-item a:hover, .nav .nav-item a:focus {
     color: #fff;
 }
 

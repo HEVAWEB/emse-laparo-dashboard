@@ -16,10 +16,10 @@ title = [html.H2("Client"), html.H1("Study")]
 # Sidebar links: add/remove entries if needed
 menu = html.Ul(
     children=[
-        html.Li(dcc.Link("Context", href="/context"), className="nav-item"),
-        html.Li(dcc.Link("Variables", href="/vars"), className="nav-item"),
-        html.Li(dcc.Link("Results", href="/results"), className="nav-item"),
-        html.Li(dcc.Link("Methodology", href="/methods"), className="nav-item"),
+        dcc.Link("Context", href="/context", className="nav-item"),
+        dcc.Link("Variables", href="/vars", className="nav-item"),
+        dcc.Link("Results", href="/results", className="nav-item"),
+        dcc.Link("Methodology", href="/methods", className="nav-item"),
     ],
     className="nav",
 )
@@ -28,8 +28,6 @@ menu = html.Ul(
 # Main layout: add client/study logo
 app.layout = html.Div(
     [
-        html.Link(href="/assets/font/font.css", rel="stylesheet"),
-        html.Link(href="/assets/style.css", rel="stylesheet"),
         dcc.Location(id="url", refresh=False),
         html.Div(
             [

@@ -335,10 +335,14 @@ blockquote p {
 .nav-item {
     list-style-type: none;
     margin-bottom: 2rem;
+    text-decoration: none;
+    font-size: 1.6rem;
 }
 
-.nav .nav-item a:hover, .nav .nav-item a:focus {
+.nav .nav-item:hover, .nav .nav-item:focus {
+    text-decoration: none;
     color: #fff;
+    transition: ease .2s;
 }
 
 ._dash-undo-redo {

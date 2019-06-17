@@ -166,25 +166,17 @@ app.layout = html.Div(
     [
         dcc.Location(id="url", refresh=False),
         html.Div(
-            children=[
-                html.H1("Dashboard"),
-                html.Ul(
-                    children=[
-                        html.Li(dcc.Link("Context", href="/context")),
-                        html.Li(dcc.Link("Outcome", href="/outcome")),
-                        ...
-                    ]
-                ),
+            [
+               # Content
             ],
-            className="two columns",
+            className="columns col-gapless",
         ),
-        html.Div(id="page-content", className="ten columns"),
+        html.Footer([f"{__version__}"]),
     ]
 )
 ```
 
-Do you see how the layout is composed of a very basic HTML structure
-with "div" blocks, title and links?
+Do you see how the layout is composed of a very basic HTML structure?
 An important element to notice is the `dcc.Location`, a particular Dash component which keeps
 track of the webpage URL with an unique id.
 

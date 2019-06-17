@@ -6,8 +6,8 @@ import dash_html_components as html
 
 from app import config
 
-__all__ = ("graph", "markdown_content")
 __version__ = "1.0.0-alpha"
+__all__ = ("graph", "markdown_content", "__version__")
 
 
 def graph(fig: Any, **kwargs: Any) -> html.Div:

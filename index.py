@@ -8,10 +8,22 @@ from utils import __version__
 
 # Import your pages above
 
-# You may change the global title here -> Client - Study
+# Global title: Client - Study
 title = [html.H2("Client"), html.H1("Study")]
 
-# Remember to edit the side bar menu links in the layout below
+# Sidebar links: add/remove entries if needed
+menu = html.Ul(
+    children=[
+        html.Li(dcc.Link("Context", href="/context"), className="nav-item"),
+        html.Li(dcc.Link("Variables", href="/vars"), className="nav-item"),
+        html.Li(dcc.Link("Results", href="/results"), className="nav-item"),
+        html.Li(dcc.Link("Methodology", href="/methods"), className="nav-item"),
+    ],
+    className="nav",
+)
+
+
+# Main layout: add client/study logo
 app.layout = html.Div(
     [
         html.Link(href="/assets/font/font.css", rel="stylesheet"),
@@ -30,28 +42,8 @@ app.layout = html.Div(
                             ],
                             className="logo-HEVA-container",
                         ),
-                        html.Ul(
-                            children=[
-                                html.Li(
-                                    dcc.Link("Context", href="/context"),
-                                    className="nav-item",
-                                ),
-                                html.Li(
-                                    dcc.Link("Variables", href="/vars"),
-                                    className="nav-item",
-                                ),
-                                html.Li(
-                                    dcc.Link("Results", href="/results"),
-                                    className="nav-item",
-                                ),
-                                html.Li(
-                                    dcc.Link("Methodology", href="/methods"),
-                                    className="nav-item",
-                                ),
-                            ],
-                            className="nav",
-                        ),
-                        # Change logo client here
+                        menu,
+                        # Change logo client here if needed
                         html.Div(
                             [
                                 html.Img(

@@ -23,7 +23,14 @@ menu = html.Ul(
     ],
     className="nav",
 )
-
+pages = {
+    # Default page
+    "/": context.layout,
+    "/context": context.layout,
+    "/methods": method.layout,
+    "/vars": vars.layout,
+    "/results": results.layout,
+}
 
 # Main layout: add client/study logo
 app.layout = html.Div(
@@ -67,24 +74,8 @@ app.layout = html.Div(
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    """
-    Side bar menu callback.
-
-    Update the page's content.
-    You may add/remove entries here.
-    """
-    if pathname == "/context" or pathname == "/":
-        new_layout = context.layout
-    elif pathname == "/methods":
-        new_layout = method.layout
-    elif pathname == "/vars":
-        new_layout = vars.layout
-    elif pathname == "/results":
-        new_layout = results.layout
-    else:
-        new_layout = html.H1(["Page not found"])
-
-    return title + [new_layout]
+    """ Update page content with sidebar links"""
+    return title + [pages.get(pathname, html.H1(["Page not found"]))]
 
 
 if __name__ == "__main__":

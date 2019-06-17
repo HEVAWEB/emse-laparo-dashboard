@@ -6,7 +6,7 @@ import dash_html_components as html
 
 from app import config
 
-__version__ = "1.0.0-alpha"
+__version__ = "1.0.0"
 __all__ = ("graph", "markdown_content", "__version__")
 
 

@@ -10,8 +10,13 @@ from utils import __version__
 
 # Change the webpage tab title here if needed
 app.title = "HEVA Study"
+
 # Global title: Client - Study
 title = [html.H2("Client"), html.H1("Study")]
+
+# Change client logo
+LOGO_HEVA = "assets/logoHEVA_RVB.svg"
+LOGO_CLIENT = "assets/logoHEVA_RVB.svg"
 
 # Sidebar links: add/remove entries if needed
 menu = html.Ul(
@@ -32,7 +37,9 @@ pages = {
     "/results": results.layout,
 }
 
-# Main layout: add client/study logo
+
+# You should not feel the need to modify the code bellow
+
 app.layout = html.Div(
     [
         dcc.Location(id="url", refresh=False),
@@ -43,18 +50,16 @@ app.layout = html.Div(
                         html.Div(
                             [
                                 html.Img(
-                                    src="assets/logoHEVA_RVB.svg",
-                                    className="img-responsive logo_heva",
+                                    src=LOGO_HEVA, className="img-responsive logo_heva"
                                 )
                             ],
                             className="logo-HEVA-container",
                         ),
                         menu,
-                        # Change logo client here if needed
                         html.Div(
                             [
                                 html.Img(
-                                    src="assets/logoHEVA_RVB.svg",
+                                    src=LOGO_CLIENT,
                                     className="img-responsive logo-client",
                                 )
                             ],

@@ -12,6 +12,7 @@ Markdown is quite handy when it comes to:
 ##### Title h5
 ###### Title h6 - Do you really need this?
 
+---
 
 This is *small emphasis* `*small emphasis*` and **strong emphasis** `**strong emphasis**`.
 
@@ -27,4 +28,6 @@ You can even add emphasis in tables!
 
 You may find a Markdown reference [here](https://commonmark.org/help/).
 
-And here is a Plotly graph:
+---
+
+Here is a Plotly graph:

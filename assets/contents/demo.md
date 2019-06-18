@@ -27,4 +27,4 @@ You can even add emphasis in tables!
 
 You may find a Markdown reference [here](https://commonmark.org/help/).
 
-And here is a graph:
+And here is a Plotly graph:

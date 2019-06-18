@@ -6,7 +6,7 @@ import dash_html_components as html
 
 from app import config
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __all__ = ("graph", "markdown_content", "__version__")
 
 
@@ -42,3 +42,13 @@ def takeaways(content: str) -> html.Div:
     :return: html placeholder for takeaways
     """
     return html.Div([html.H4(["Takeaways"]), markdown_content(content, "conclusion")])
+
+
+def simple_table(content: str) -> html.Div:
+    """
+    Utility function for simple results table
+
+    :param content: Textual markdown content
+    :return: html placeholder for table
+    """
+    return dcc.Markdown([content], dangerously_allow_html=True, className="table graph")

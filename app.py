@@ -13,12 +13,12 @@ external_stylesheets = [
 ]
 
 server = Flask(__name__)
-app = dash.Dash(server=server, name=__name__, external_stylesheets=external_stylesheets)
-
-# Set the two following parameters to True if you encounter
-# issues with CDNs
-app.css.config.serve_locally = False
-app.scripts.config.serve_locally = False
+app = dash.Dash(
+    server=server,
+    name=__name__,
+    external_stylesheets=external_stylesheets,
+    serve_locally=False,
+)
 
 app.config.suppress_callback_exceptions = True
 

@@ -37,7 +37,12 @@ layout = html.Div(
             value="MTL",
         ),
         html.H4(["Slider"]),
-        dcc.Slider(min=-5, max=10, step=0.5, value=-3),
+        dcc.Slider(
+            min=0,
+            max=9,
+            marks={i: 'Label {}'.format(i) for i in range(10)},
+            value=5,
+        ),
         html.H4(["Range Slider"]),
         dcc.RangeSlider(count=1, min=-5, max=10, step=0.5, value=[-3, 7]),
         html.H4(["Simple Input"]),
@@ -55,7 +60,7 @@ layout = html.Div(
                 {"label": "Montréal", "value": "MTL"},
                 {"label": "San Francisco", "value": "SF"},
             ],
-            values=["MTL", "SF"],
+            value=["MTL", "SF"],
         ),
         html.H4(["Radio items"]),
         dcc.RadioItems(

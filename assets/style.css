@@ -316,10 +316,6 @@ blockquote p {
     transition: ease .2s;
 }
 
-._dash-undo-redo {
-    display: none;
-}
-
 .bg-paper {
     background: #f4f2f7 !important;
 }

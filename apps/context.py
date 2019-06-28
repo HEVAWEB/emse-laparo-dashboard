@@ -52,6 +52,7 @@ layout = html.Div(
         utils.graph(fig_vol),
         utils.graph(fig_gap),
         utils.graph(fig_vol2),
+        utils.two_graphs(utils.graph(fig_vol), utils.graph(fig_vol2)),
         utils.takeaways(
             "This is a conclusion section written again with **Markdown**. It has its own utils component."
         ),

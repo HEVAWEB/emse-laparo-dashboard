@@ -28,7 +28,7 @@ set('repository', "git@gitlab.hevaweb.com:$project_namespace/$project_name.git")
 
 // Shared files/dirs between deploys
 set('shared_files', ['']);
-set('shared_dirs', ['logs', 'venv']);
+set('shared_dirs', ['logs']);
 set('writable_dirs', ['logs']);
 set('allow_anonymous_stats', false);
 

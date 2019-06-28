@@ -6,7 +6,7 @@ import dash_html_components as html
 
 from app import config
 
-__version__ = "1.2.0"
+__version__ = "1.3.0a"
 __all__ = ("graph", "markdown_content", "__version__")
 
 
@@ -18,7 +18,38 @@ def graph(fig: Any, **kwargs: Any) -> html.Div:
     :param kwargs: Keyword arguments passed to dcc.Graph constructor
     :return: Html placeholder for graph
     """
-    return html.Div([dcc.Graph(figure=fig, config=config, **kwargs)], className="graph")
+    return html.Div(
+        [
+            dcc.Loading(
+                [dcc.Graph(figure=fig, config=config, **kwargs)],
+                color="#fc5b26",
+                type="dot",
+            )
+        ],
+        className="graph",
+    )
+
+
+def two_graphs(graph1: html.Div, graph2: html.Div) -> html.Div:
+    """
+    Utility function for laying side by side two graphs
+    :param graph1: result of utils.graph
+    :param graph2: result of utils.graph
+    :return:
+    """
+    return html.Div(
+        [
+            html.Div(
+                [dcc.Loading([graph1], color="#fc5b26", type="dot")],
+                className="column col-6 col-xl-12",
+            ),
+            html.Div(
+                [dcc.Loading([graph2], color="#fc5b26", type="dot")],
+                className="column col-6 col-xl-12",
+            ),
+        ],
+        className="columns col-gapless",
+    )
 
 
 def markdown_content(content: str, class_name: str = "text") -> dcc.Markdown:

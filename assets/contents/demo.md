@@ -30,4 +30,4 @@ You may find a Markdown reference [here](https://commonmark.org/help/).
 
 ---
 
-Here is a Plotly graph:
+Here are some Plotly graphs:

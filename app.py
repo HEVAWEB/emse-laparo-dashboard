@@ -23,6 +23,40 @@ app = dash.Dash(
 app.config.suppress_callback_exceptions = True
 
 # Common plot theming should go there
+_sequence_colors = [
+    "#0d0887",
+    "#46039f",
+    "#7201a8",
+    "#9c179e",
+    "#bd3786",
+    "#d8576b",
+    "#ed7953",
+    "#fb9f3a",
+    "#fdca26",
+    "#f0f921",
+]
+
+_divergent_colors = [
+    "#67001f",
+    "#d6604d",
+    "#f4a582",
+    "#fddbc7",
+    "#f7f7f7",
+    "#d1e5f0",
+    "#92c5de",
+    "#4393c3",
+    "#2166ac",
+    "#053061",
+]
+
+sequence_colorscale = [
+    (i / (len(_sequence_colors) - 1), c) for i, c in enumerate(_sequence_colors)
+]
+
+divergent_colorscale = [
+    (i / (len(_divergent_colors) - 1), c) for i, c in enumerate(_divergent_colors)
+]
+
 _base_template = pio.to_templated(
     go.Figure(
         layout=go.Layout(
@@ -63,7 +97,11 @@ _base_template = pio.to_templated(
                 "#188C9C",
                 "#326AB1",
             ],
+            colorscale=dict(
+                sequential=sequence_colorscale, diverging=divergent_colorscale
+            ),
             images=[dict(name="base_template")],
+            template=dict(data=dict(heatmap=[dict(autocolorscale=True)])),
         )
     )
 )

@@ -108,5 +108,8 @@ layout = html.Div(
         ),
         html.H4(["Button"]),
         html.Button("Submit", id="button"),
+        utils.markdown_content(
+            "We would like all components except those with a grey background to have a margin with end of page."
+        ),
     ]
 )

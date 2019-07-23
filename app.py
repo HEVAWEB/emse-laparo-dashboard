@@ -23,31 +23,60 @@ app = dash.Dash(
 app.config.suppress_callback_exceptions = True
 
 # Common plot theming should go there
+#_sequence_colors = [
+#    "#0d0887",
+#    "#46039f",
+#    "#7201a8",
+#    "#9c179e",
+#    "#bd3786",
+#    "#d8576b",
+#    "#ed7953",
+#    "#fb9f3a",
+#    "#fdca26",
+#    "#f0f921",
+#]
+
 _sequence_colors = [
-    "#0d0887",
-    "#46039f",
-    "#7201a8",
-    "#9c179e",
-    "#bd3786",
-    "#d8576b",
-    "#ed7953",
-    "#fb9f3a",
-    "#fdca26",
-    "#f0f921",
+    "#4a2572",
+    "#8b256a",
+    "#cd2561",
+    "#e83f55",
+    "#f76147",
+    "#ff8e32",
+    "#ffc515",
+    "#fff11c",
+    "#fff88e",
+    "#ffffff",
+]
+"""
+_divergent_colors = [
+    "#4a2572",
+    "#6e4d8d",
+    "#9277a9",
+    "#b6a3c5",
+    "#dad0e2",
+    "#ffffff",
+    "#ffd81f",
+    "#ffc12c",
+    "#ffa935",
+    "#ff8f3b",
+    "#ff7240",
+]
+"""
+_divergent_colors = [
+    "#9e0142",
+    "#d53e4f",
+    "#f46d43",
+    "#fdae61",
+    "#fee08b",
+    "#ffffbf",
+    "#e6f598",
+    "#abdda4",
+    "#66c2a5",
+    "#3288bd",
+    "#5e4fa2",
 ]
 
-_divergent_colors = [
-    "#67001f",
-    "#d6604d",
-    "#f4a582",
-    "#fddbc7",
-    "#f7f7f7",
-    "#d1e5f0",
-    "#92c5de",
-    "#4393c3",
-    "#2166ac",
-    "#053061",
-]
 
 sequence_colorscale = [
     (i / (len(_sequence_colors) - 1), c) for i, c in enumerate(_sequence_colors)

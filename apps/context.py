@@ -52,6 +52,7 @@ layout = html.Div(
         utils.graph(fig_vol),
         utils.graph(fig_gap),
         utils.graph(fig_vol2),
+        utils.two_graphs(utils.graph(fig_vol), utils.graph(fig_vol2)),
         utils.takeaways(
             "This is a conclusion section written again with **Markdown**. It has its own utils component."
         ),
@@ -107,5 +108,8 @@ layout = html.Div(
         ),
         html.H4(["Button"]),
         html.Button("Submit", id="button"),
+        utils.markdown_content(
+            "We would like all components except those with a grey background to have a margin with end of page."
+        ),
     ]
 )

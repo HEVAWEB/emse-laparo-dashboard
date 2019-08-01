@@ -49,6 +49,11 @@ footer {
     margin: 0 -4rem;
 }
 
+code{
+   color: #9491AD;
+   background: #F4F2F7;
+}
+
 .graph h4 {
     margin-top: 0;
     padding-top: 4rem;

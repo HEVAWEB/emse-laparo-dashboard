@@ -22,23 +22,8 @@ app = dash.Dash(
 
 app.config.suppress_callback_exceptions = True
 
-# Common plot theming should go there
-#_sequence_colors = [
-#    "#0d0887",
-#    "#46039f",
-#    "#7201a8",
-#    "#9c179e",
-#    "#bd3786",
-#    "#d8576b",
-#    "#ed7953",
-#    "#fb9f3a",
-#    "#fdca26",
-#    "#f0f921",
-#]
-
 _sequence_colors = [
     "#4a2572",
-    "#8b256a",
     "#cd2561",
     "#e83f55",
     "#f76147",
@@ -48,18 +33,18 @@ _sequence_colors = [
     "#fff88e",
     "#ffffff",
 ]
-"""
+
 _divergent_colors = [
     "#4a2572",
-    "#6e4d8d",
-    "#9277a9",
-    "#b6a3c5",
+    "#674588",
+    "#84669e",
+    "#a088b4",
+    "#bdaccb",
     "#dad0e2",
-    "#ffffff",
-    "#ffd81f",
-    "#ffc12c",
-    "#ffa935",
-    "#ff8f3b",
+    "#ffe9ae",
+    "#ffd075",
+    "#ffb452",
+    "#ff9541",
     "#ff7240",
 ]
 """
@@ -76,7 +61,7 @@ _divergent_colors = [
     "#3288bd",
     "#5e4fa2",
 ]
-
+"""
 
 sequence_colorscale = [
     (i / (len(_sequence_colors) - 1), c) for i, c in enumerate(_sequence_colors)
@@ -116,15 +101,15 @@ _base_template = pio.to_templated(
             paper_bgcolor="rgba(0,0,0,0)",
             colorway=[
                 "#4A2572",
-                "#DD255F",
-                "#FF3C48",
-                "#FF7240",
-                "#FABB00",
-                "#FFEF00",
-                "#ACCB44",
-                "#4CA094",
                 "#188C9C",
+                "#FF7240",
+                "#DD255F",
                 "#326AB1",
+                "#ACCB44",
+                "#FABB00",
+                "#FF3C48",
+                "#4CA094",
+                "#FFEF00",
             ],
             colorscale=dict(
                 sequential=sequence_colorscale, diverging=divergent_colorscale

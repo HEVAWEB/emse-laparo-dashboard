@@ -146,7 +146,7 @@ As for the export format, Plotly graphs can be safely serialised to **Json**, th
 
 #### 2. Dash Callbacks
 
-Plotly graphs already have some builtin interactivity like "zooming" or "panning", but we are more ambitious than these 🚀. We want to update a graph with menus, sliders, add sunbursts, etc.
+Plotly graphs already have some builtin interactivity like "zooming" or "panning", but we are too ambitious to settle for this 🚀. We want to update a graph with menus, sliders, add sunbursts, etc.
 This is exactly what Dash was designed for.
 
 Each interaction must be implemented as a Python function in its dedicated app (folder `apps/`).
@@ -177,7 +177,7 @@ app.layout = html.Div(
 ```
 
 Do you see how the layout is composed of a very basic HTML structure?
-An important element to notice is the `dcc.Location`, a particular Dash component which keeps
+An important element to notice here is the `dcc.Location`, a particular Dash component which keeps
 track of the webpage URL with an unique id.
 
 Next we have these lines:
@@ -223,6 +223,10 @@ snippet:
 import json
 from homemade.utils import NumpyEncoder
 
+# prefered way
+fig.write_json("<output-path>")
+
+# old way
 with open("<output-path>", "w", encoding="utf-8") as f:
     json.dump(fig.to_dict(), f, cls=NumpyEncoder)
 ```
@@ -274,26 +278,28 @@ Graphs are typically stored using **json** or **pickle** formats.
 
 ```python
 import json
-import plotly.graph_objs as go
+import plotly.graph_objects as go
 
 with open("<path to your file>", "r", encoding="utf-8") as f:
     graph = go.Figure(json.load(f))
+    graph.layout.template = "heva_theme"
 ```
 
 2.  Pickle
 
 ```python
 import pickle
-import plotly.graph_objs as go
+import plotly.graph_objects as go
 
 with open("<path to your file>", "rb") as f:
     graph = go.Figure(pickle.load(f))
+    graph.layout.template = "heva_theme"
 ```
 
 A few words on the codes above, we build a new Plotly figure with
 `go.Figure()` on the loaded figure for a good reason: it allows us to
-override the layout with the HEVA theme. This is why graphs in the
-dashboard look different from the ones you exported earlier.
+override the layout with HEVA's theme. This is why graphs in the
+dashboard may look different from the ones you exported earlier.
 
 #### Define a callback in an app?
 
@@ -310,12 +316,12 @@ it in `app.py` and import it in every app where it is needed.
 
 ### How to deploy a dashboard
 
-1.  Ask a developper to create the [.hevaweb.com]{.title-ref} subdomain
+1.  Ask a developper to create the `.hevaweb.com` subdomain
     (same as the project name on GitLab)
 2.  Change the default authentication credentials in
-    [identifiants.csv]{.title-ref}
+    `identifiants.csv`
 3.  Push your changes to GitLab
-4.  In **CI/CD** \> **Pipelines**, wait for the job(s) to finish and
+4.  In **CI/CD** > **Pipelines**, wait for the job(s) to finish and
     then use the **Manual job** button on the right to deploy your
     dashboard.
 

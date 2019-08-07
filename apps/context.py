@@ -34,7 +34,7 @@ traces_gap = [
     )
     for name, df_continent in df_gap.loc[df_gap["year"] == 2007].groupby("continent")
 ]
-layout_gap = dict(title="Gapminder 2007 - Categorical colorway")
+layout_gap = dict(title="Gapminder 2007 - Categorical colorway", hovermode="closest")
 fig_gap = go.Figure(data=traces_gap, layout=layout_gap)
 
 traces_vol2 = [

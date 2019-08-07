@@ -43,20 +43,26 @@ It is mandatory since forking is not an option because of GitLab's limitations (
 To do so:
 
 1.  Create a new **empty** GitLab repository in the correct
-    group/subgroup.
+    group/subgroup (from the internet interface of GitLab).
+
+    Warning: do not select the box **Initialize repository with a README** (so that your project is empty).
 
     > You should choose a friendly name: how about
     > **client-study-dashboard**?
+    
+    Remark: once created, your new repository has an URL, most likely: https://gitlab.hevaweb.com/data_science/client-study-dashboard
 
 2.  Create a local copy of the template repository with the following
     command lines:
 
-    1.  `git clone -o upstream https://gitlab.hevaweb.com/web/dashboard-template <your friendly name>` with `<your friendly name>` being **client-study-dashboard**
+    1. Choose a directory on your computer, this is where your dashboard will be stored (ex: `C:\Users\MPRODEL\Documents\Missions`).
+    
+    2. `git clone -o upstream https://gitlab.hevaweb.com/web/dashboard-template <your friendly name>` with `<your friendly name>` being **client-study-dashboard**
         for example.
-    2.  `cd <your friendly name>`
-    3.  `git remote add origin <your new gitlab repo url>` with the
-        URL we got from step **1.**
-    4.  `git push -u origin master`
+    3.  `cd <your friendly name>`
+    4.  `git remote add origin <your new gitlab repo url>` with the
+        URL we got from step **1** (most likely: https://gitlab.hevaweb.com/data_science/client-study-dashboard) 
+    5.  `git push -u origin master`
 
     🎉 Tada! You are good to go. We needed those steps to be able to
     update your dashboard and the template from one to another.
@@ -103,10 +109,17 @@ To do so:
 
     3.  Run a development server (Windows & Unix)
 
+        * Go into your work directory (where your dashboard is)
+        * Open a Windows cmd invite (tip: just write 'cmd' in the path at the top of the screen)
+        * Type:
+        
         ```bash
         python index.py
         ```
-
+        
+        * By default, you can now open your pretty dashboard at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
+        * Warning: do not close your Windows invite, otherwise it closes the dahsboard.
+        
     4.  **Optional** On Unix platforms, run production server with
 
         ```bash

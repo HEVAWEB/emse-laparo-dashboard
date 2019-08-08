@@ -1,3 +1,5 @@
+import pathlib
+
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -22,6 +24,7 @@ LOGO_CLIENT = "assets/logoHEVA_RVB.svg"
 menu = html.Ul(
     children=[
         dcc.Link("Context", href="/context", className="nav-item"),
+        dcc.Link("Gallery", href="/gallery", className="nav-item"),
         dcc.Link("Variables", href="/vars", className="nav-item"),
         dcc.Link("Results", href="/results", className="nav-item"),
         dcc.Link("Methodology", href="/methods", className="nav-item"),
@@ -35,6 +38,7 @@ pages = {
     "/methods": method.layout,
     "/vars": vars.layout,
     "/results": results.layout,
+    # "/gallery"
 }
 
 
@@ -84,4 +88,10 @@ def display_page(pathname):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+
+    # Watch md files for full reload
+    content_path = (
+        pathlib.Path(__file__).parent.joinpath("assets", "contents").resolve()
+    )
+    extra_files = list(content_path.rglob("*.md"))
+    app.run_server(debug=True, extra_files=extra_files)

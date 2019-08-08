@@ -160,6 +160,8 @@ you should do these steps instead:
         ```bash
         python index.py
         ```
+        
+        > You may also use the utility script provided `launch_artemis.bat`
 
         * By default, you can now open your pretty dashboard at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
         * Warning: do not close your Windows invite, otherwise it closes the dahsboard.

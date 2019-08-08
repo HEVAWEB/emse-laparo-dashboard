@@ -134,14 +134,22 @@ To do so:
 
 ## Instructions
 
+### Where to start with ARTEMIS?
+* The directory `apps`: define the pages of the dashboard
+* The directory `assets`: text contents
+* The directory `builds`: graphs
+* The file `index.py`: general info (name, menu)
+
 ### How to include text documents in the dashboard?
 
-The easy way is to include a **Markdown**
-file in `assets/` (or `assets/contents/`). An example is given in
-`apps/context.py` using `assets/contents/demo.md`. You could write all
-the text you need in Python using Dash\'s HTML components for structure.
+The easy way is to include a **Markdown** file in `assets/contents/`. 
+An example is given in `assets/contents/demo.md`.
+Then, the content is added to the dashboard with the Python file `apps/context.py`.
 
 See also <https://dash.plot.ly/dash-core-components/markdown>.
+
+Remark: instead of using Markdown, you could write all the text you need in Python using Dash\'s HTML components for structure (not recommended).
+
 
 ### How to create interactives graphs?
 

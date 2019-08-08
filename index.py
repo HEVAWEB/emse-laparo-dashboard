@@ -5,7 +5,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import app
-from apps import context, method, results, vars
+from apps import context, gallery, method, results, vars
 from utils import __version__
 
 # Import your pages above
@@ -38,7 +38,7 @@ pages = {
     "/methods": method.layout,
     "/vars": vars.layout,
     "/results": results.layout,
-    # "/gallery"
+    "/gallery": gallery.layout,
 }
 
 

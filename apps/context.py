@@ -1,58 +1,16 @@
 import dash_core_components as dcc
 import dash_html_components as html
-import numpy as np
-import pandas as pd
-import plotly.graph_objs as go
 
 import utils
 
+# Load markdown text content
 with open("assets/contents/demo.md", "r", encoding="utf-8") as f:
     content = f.read()
 
-df_volcano = pd.read_csv(
-    "https://raw.githubusercontent.com/plotly/datasets/master/volcano.csv"
-)
-
-traces_vol = [go.Heatmap(z=df_volcano.to_numpy())]
-layout_vol = dict(title="Volcano heatmap - Sequential colorscale")
-fig_vol = go.Figure(data=traces_vol, layout=layout_vol)
-
-df_gap = pd.read_csv(
-    "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
-)
-
-traces_gap = [
-    go.Scatter(
-        x=df_continent["lifeExp"],
-        y=df_continent["gdpPercap"],
-        name=name,
-        mode="markers",
-        marker=dict(
-            size=df_continent["pop"], sizeref=200000, sizemode="area", sizemin=4
-        ),
-        text=df_continent["country"],
-    )
-    for name, df_continent in df_gap.loc[df_gap["year"] == 2007].groupby("continent")
-]
-layout_gap = dict(title="Gapminder 2007 - Categorical colorway", hovermode="closest")
-fig_gap = go.Figure(data=traces_gap, layout=layout_gap)
-
-traces_vol2 = [
-    go.Heatmap(z=df_volcano.to_numpy() - np.median(df_volcano.values), zmid=0)
-]
-layout_vol2 = dict(title="Volcano heatmap - Divergent colorscale")
-fig_vol2 = go.Figure(data=traces_vol2, layout=layout_vol2)
-
-del df_volcano
-del df_gap
-
+# Define the page's content
 layout = html.Div(
     [
         utils.markdown_content(content),
-        utils.graph(fig_vol),
-        utils.graph(fig_gap),
-        utils.graph(fig_vol2),
-        utils.two_graphs(utils.graph(fig_vol), utils.graph(fig_vol2)),
         utils.takeaways(
             "This is a conclusion section written again with **Markdown**. It has its own utils component."
         ),

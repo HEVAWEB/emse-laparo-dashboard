@@ -134,10 +134,10 @@ To do so:
 
 ## Instructions
 
-### How to include text documents in the dashboard
+### How to include text documents in the dashboard?
 
 The easy way is to include a **Markdown**
-file stored in `assets/` (or `assets/contents/`). An example is given in
+file in `assets/` (or `assets/contents/`). An example is given in
 `apps/context.py` using `assets/contents/demo.md`. You could write all
 the text you need in Python using Dash\'s HTML components for structure.
 
@@ -145,8 +145,8 @@ See also <https://dash.plot.ly/dash-core-components/markdown>.
 
 ### How to create interactives graphs?
 
-This is a two-steps answer: (1) use Plotly graphing library and (2) add some
-Dash callbacks.
+This is a two-step answer: (1) use Plotly graphing library and (2) add some
+Dash callbacks (to make interactive graphs :green_heart:).
 
 #### 1. Plotly Graphing Libraries
 

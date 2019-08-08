@@ -4,27 +4,28 @@
 
 ## Contents
 
-- [Contents](#contents)
-- [References](#references)
-- [Getting Started : how to create a dashboard ?](#getting-started--how-to-create-a-dashboard-)
-  - [Create your project on Gitlab](#create-your-project-on-gitlab)
-  - [Prepare your Python 🐍](#prepare-your-python-)
-- [Instructions](#instructions)
-  - [How to include text documents in the dashboard](#how-to-include-text-documents-in-the-dashboard)
-  - [How to create interactives graphs?](#how-to-create-interactives-graphs)
-    - [1. Plotly Graphing Libraries](#1-plotly-graphing-libraries)
-    - [2. Dash Callbacks](#2-dash-callbacks)
-    - [3. Export graphs](#3-export-graphs)
-  - [What file(s) do I need to modify to\...](#what-files-do-i-need-to-modify-to)
-    - [Add/Remove a page?](#addremove-a-page)
-    - [Include an asset?](#include-an-asset)
-    - [Include graphs?](#include-graphs)
-    - [Define a callback in an app?](#define-a-callback-in-an-app)
-    - [Share something across apps?](#share-something-across-apps)
-  - [How to deploy a dashboard](#how-to-deploy-a-dashboard)
-  - [How to update your dashboard with the template\'s latest developments](#how-to-update-your-dashboard-with-the-templates-latest-developments)
-  - [How to update the template with something from your dashboard](#how-to-update-the-template-with-something-from-your-dashboard)
-  - [What if my question is not listed here?](#what-if-my-question-is-not-listed-here)
+1. [Contents](#contents)
+2. [References](#references)
+3. [Getting Started : how to create a dashboard ?](#getting-started--how-to-create-a-dashboard)
+   1. [Create your project on Gitlab](#create-your-project-on-gitlab)
+   2. [Prepare your Python 🐍](#prepare-your-python-%f0%9f%90%8d)
+4. [Instructions](#instructions)
+   1. [Where to start with ARTEMIS?](#where-to-start-with-artemis)
+   2. [How to include text documents in the dashboard?](#how-to-include-text-documents-in-the-dashboard)
+   3. [How to create interactives graphs?](#how-to-create-interactives-graphs)
+      1. [1. Plotly Graphing Libraries](#1-plotly-graphing-libraries)
+      2. [2. Dash Callbacks](#2-dash-callbacks)
+      3. [3. Export graphs](#3-export-graphs)
+   4. [What file(s) do I need to modify to\...](#what-files-do-i-need-to-modify-to)
+      1. [Add/Remove a page?](#addremove-a-page)
+      2. [Include an asset?](#include-an-asset)
+      3. [Include graphs?](#include-graphs)
+      4. [Define a callback in an app?](#define-a-callback-in-an-app)
+      5. [Share something across apps?](#share-something-across-apps)
+   5. [How to deploy a dashboard](#how-to-deploy-a-dashboard)
+   6. [How to update your dashboard with the template\'s latest developments](#how-to-update-your-dashboard-with-the-templates-latest-developments)
+   7. [How to update the template with something from your dashboard](#how-to-update-the-template-with-something-from-your-dashboard)
+   8. [What if my question is not listed here?](#what-if-my-question-is-not-listed-here)
 
 ## References
 
@@ -42,41 +43,84 @@ First of all, create a copy of this Git repository (in "Web") in your own GitLab
 It is mandatory since forking is not an option because of GitLab's limitations (unfortunately).
 To do so:
 
-1.  Create a new **empty** GitLab repository in the correct
+#### New repository
+
+Create a new **empty** GitLab repository in the correct
     group/subgroup (from the internet interface of GitLab).
 
-    Warning: do not select the box **Initialize repository with a README** (so that your project is empty).
+Warning: do not select the box **Initialize repository with a README** (so that your project is truly empty).
 
-    > You should choose a friendly name: how about
-    > **client-study-dashboard**?
-    
-    Remark: once created, your new repository has an URL, most likely: https://gitlab.hevaweb.com/data_science/client-study-dashboard
+> You should choose a friendly name: how about
+> **client-study-dashboard**?
 
-2.  Create a local copy of the template repository with the following
+Remark: once created, your new repository has an URL, most likely: `https://gitlab.hevaweb.com/data_science/client-study-dashboard`
+
+
+#### **Option 1**: Command line
+
+Create a local copy of the template repository with the following
     command lines:
 
-    1. Choose a directory on your computer, this is where your dashboard will be stored (ex: `C:\Users\MPRODEL\Documents\Missions`).
+1. Choose a directory on your computer, this is where your dashboard will be stored (ex: `C:\Users\MPRODEL\Documents\Missions`).
+
+2. `git clone -o upstream https://gitlab.hevaweb.com/web/dashboard-template <your friendly name>` with `<your friendly name>` being **client-study-dashboard**
+    for example.
+3.  `cd <your friendly name>`
+4.  `git remote add origin <your new gitlab repo url>` with the
+    URL we got from step **1** (most likely: https://gitlab.hevaweb.com/data_science/client-study-dashboard)
+5.  `git push -u origin master`
+
+🎉 Tada! You are good to go. We needed those steps to be able to
+update your dashboard and the template from one to another.
+
+> **Please note that the steps above are for creating a dashboard.**
+
+If you want to clone an existing dashboard (already on GitLab),
+you should do these steps instead:
+
+1.  `git clone <your url>`
+2.  `cd <your dashboard>`
+3.  `git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template`
     
-    2. `git clone -o upstream https://gitlab.hevaweb.com/web/dashboard-template <your friendly name>` with `<your friendly name>` being **client-study-dashboard**
-        for example.
-    3.  `cd <your friendly name>`
-    4.  `git remote add origin <your new gitlab repo url>` with the
-        URL we got from step **1** (most likely: https://gitlab.hevaweb.com/data_science/client-study-dashboard) 
-    5.  `git push -u origin master`
+#### **Option 2** : Sourcetree
 
-    🎉 Tada! You are good to go. We needed those steps to be able to
-    update your dashboard and the template from one to another.
+1. Clone the template with Sourcetree
+    - Use the template URL
+    - Give it the name you want (the friendly name for coherence)
+    - Choose the correct path on your file system
+    
+2. Create the **upstream** remote
+    - **Settings** (top right) > **Remote** tab 
+    - Select `origin` (it should have the template URL) > **Edit**
+    - Uncheck **Default remote**
+    - Replace `origin` with `upstream`
+    
+3. Create the **origin** remote
+    - **Settings** (top right) > **Remote** tab > **Add**
+    - Name: `origin`, check **Default remote**, URL: your GitLab project URL from step 1
+    -Validate
+    
+4. Push the content to `origin`
 
-    > **Please note that the steps above are for creating a dashboard.**
 
-    If you want to clone an existing dashboard (already on GitLab),
-    you should do these steps instead:
+🎉 Tada! You are good to go. We needed those steps to be able to
+update your dashboard and the template from one to another.
 
-    1.  `git clone <your url>`
-    2.  `cd <your dashboard>`
-    3.  `git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template`
+> **Please note that the steps above are for creating a dashboard.**
 
-### Prepare your Python 🐍
+If you want to clone an existing dashboard (already on GitLab),
+you should do these steps instead:
+
+1. Clone the template with Sourcetree
+    - Use the template URL
+    - Choose the correct path on your file system
+    
+2. Create the **upstream** remote
+    - **Settings** (top right) > **Remote** tab > **Add**
+    - Name: `upstream`, **do not check Default remote**, URL: the dashboard template URL on GitLab
+    -Validate
+
+### Tame your Python 🐍
 
 1.  Get your Python settings up-to-date 💻
 
@@ -112,14 +156,14 @@ To do so:
         * Go into your work directory (where your dashboard is)
         * Open a Windows cmd invite (tip: just write 'cmd' in the path at the top of the screen)
         * Type:
-        
+
         ```bash
         python index.py
         ```
-        
+
         * By default, you can now open your pretty dashboard at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
         * Warning: do not close your Windows invite, otherwise it closes the dahsboard.
-        
+
     4.  **Optional** On Unix platforms, run production server with
 
         ```bash
@@ -135,21 +179,24 @@ To do so:
 ## Instructions
 
 ### Where to start with ARTEMIS?
-* The directory `apps`: define the pages of the dashboard
-* The directory `assets`: text contents
-* The directory `builds`: graphs
-* The file `index.py`: general info (name, menu)
+
+In the root directory of any Artemis project you should see a bunch of files and sub-directories.
+Here are the ones you should know about:
+
+- The directory `apps`: define the pages' content, layout, intreactivity of the dashboard
+- The directory `assets`: text contents, images, fonts, etc.
+- The directory `builds`: Plotly graphs
+- The file `index.py`: general info (name, menu)
 
 ### How to include text documents in the dashboard?
 
-The easy way is to include a **Markdown** file in `assets/contents/`. 
+The easy way is to include a **Markdown** file in `assets/contents/`.
 An example is given in `assets/contents/demo.md`.
 Then, the content is added to the dashboard with the Python file `apps/context.py`.
 
 See also <https://dash.plot.ly/dash-core-components/markdown>.
 
-Remark: instead of using Markdown, you could write all the text you need in Python using Dash\'s HTML components for structure (not recommended).
-
+Remark: instead of using Markdown, you could write all the text you need in Python using Dash\'s HTML components for structure (**not recommended**).
 
 ### How to create interactives graphs?
 

@@ -10,24 +10,25 @@ __version__ = "1.3.0a"
 __all__ = ("graph", "markdown_content", "__version__")
 
 
-def graph(fig: Any, **kwargs: Any) -> html.Div:
+def graph(fig: Any, loading=True, **kwargs: Any) -> html.Div:
     """
     Utility function for Plotly graphs.
 
     :param fig: Plotly/Plotly-express figure (loaded with json/pickle accepted)
+    :param loading: Enclose fig in loading component. Should be False for interactive TAK.
     :param kwargs: Keyword arguments passed to dcc.Graph constructor
     :return: Html placeholder for graph
     """
-    return html.Div(
-        [
-            dcc.Loading(
-                [dcc.Graph(figure=fig, config=config, **kwargs)],
-                color="#fc5b26",
-                type="dot",
-            )
-        ],
-        className="graph",
-    )
+    if loading:
+        content = dcc.Loading(
+            [dcc.Graph(figure=fig, config=config, **kwargs)],
+            color="#fc5b26",
+            type="dot",
+        )
+    else:
+        content = dcc.Graph(figure=fig, config=config, **kwargs)
+
+    return html.Div([content], className="graph")
 
 
 def two_graphs(graph1: html.Div, graph2: html.Div) -> html.Div:

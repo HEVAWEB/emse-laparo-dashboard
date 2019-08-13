@@ -395,3 +395,16 @@ table {
 .notifier-note .notifier-close {
     color: #FC5B26;
 }
+
+.rc-slider {
+    margin: 10px 0;
+}
+
+.rc-slider-track {
+    background-color: #FC5B26;
+}
+
+.rc-slider-dot-active, .rc-slider-handle {
+    border-color: #FC5B26;
+}
+

@@ -7,7 +7,14 @@ import dash_html_components as html
 from app import config
 
 __version__ = "1.3.0a"
-__all__ = ("graph", "markdown_content", "__version__")
+__all__ = (
+    "graph",
+    "two_graphs",
+    "takeaways",
+    "simple_table",
+    "markdown_content",
+    "__version__",
+)
 
 
 def graph(fig: Any, loading=True, **kwargs: Any) -> html.Div:
@@ -66,17 +73,17 @@ def markdown_content(content: str, class_name: str = "text") -> dcc.Markdown:
     return dcc.Markdown([content], dangerously_allow_html=True, className=class_name)
 
 
-def takeaways(content: str) -> html.Div:
+def takeaways(content: str, title="Takeaways") -> html.Div:
     """
     Utility function for small emphasized conclusions
 
     :param content: Textual markdown content
     :return: html placeholder for takeaways
     """
-    return html.Div([html.H4(["Takeaways"]), markdown_content(content, "conclusion")])
+    return html.Div([html.H4([title]), markdown_content(content, "conclusion")])
 
 
-def simple_table(content: str) -> html.Div:
+def simple_table(content: str) -> dcc.Markdown:
     """
     Utility function for simple results table
 

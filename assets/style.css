@@ -8,7 +8,7 @@ body {
     font-size: 1.6em;
     line-height: 1.6;
     font-weight: 400;
-    margin: 4rem;
+    margin: 4rem 4rem 2rem 4rem;
 }
 
 body ::-moz-selection {
@@ -27,8 +27,13 @@ body ::selection {
 }
 
 footer {
+    height: 0;
+}
+
+.footer {
     text-align: center;
     color: #aeaeae;
+    height: 2rem;
 }
 
 #tabs {
@@ -49,9 +54,9 @@ footer {
     margin: 0 -4rem;
 }
 
-code{
-   color: #9491AD;
-   background: #F4F2F7;
+code {
+    color: #9491AD;
+    background: #F4F2F7;
 }
 
 .graph h4 {
@@ -404,7 +409,49 @@ table {
     background-color: #FC5B26;
 }
 
-.rc-slider-dot-active, .rc-slider-handle {
+.rc-slider-dot-active, .rc-slider-handle, .rc-slider-handle:hover {
     border-color: #FC5B26;
 }
 
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    margin: 5px 0;
+    color: #555;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline;
+}
+
+label > .label-body {
+    display: inline-block;
+    margin-left: .5rem;
+    font-weight: normal;
+}
+
+.two-graphs {
+    background-color: #f9f9fb;
+    margin: 0 -4rem !important;
+    padding: 0 4rem;
+}

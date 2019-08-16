@@ -76,7 +76,7 @@ app.layout = html.Div(
             ],
             className="columns col-gapless",
         ),
-        html.Footer([f"{__version__}"]),
+        html.Footer([f"{__version__}"], className="footer"),
     ]
 )
 

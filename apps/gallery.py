@@ -108,12 +108,25 @@ boxplot_gapminder = px.box(
     xaxis_title="Continent",
 )
 
+scaled_volcano = (
+    df_volcano.to_numpy()
+    - (np.max(df_volcano.to_numpy()) + np.min(df_volcano.to_numpy())) / 2
+)
+
 heatmap_volcano_2 = go.Figure(
-    data=[go.Heatmap(z=df_volcano.to_numpy() - np.median(df_volcano.values), zmid=0)],
+    data=[
+        go.Heatmap(
+            z=scaled_volcano,
+            zmid=0,
+            zmax=scaled_volcano.max(),
+            zmin=scaled_volcano.min(),
+        )
+    ],
     layout=dict(title="Volcano heatmap - Divergent colorscale"),
 )
 
 del df_volcano
+del scaled_volcano
 del df_gap
 
 layout = html.Div(

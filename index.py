@@ -4,7 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-from app import app
+from app import app, config
 from apps import context, gallery, method, results, vars
 from utils import __version__
 
@@ -12,6 +12,8 @@ from utils import __version__
 
 # Change the webpage tab title here if needed
 app.title = "HEVA Study"
+config["locale"] = "fr"
+
 
 # Global title: Client - Study
 title = [html.H2("Client"), html.H1("Study")]

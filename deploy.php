@@ -9,7 +9,7 @@ $project_path = "/var/www/$project_name";
 
 $supervisor = <<<EOL
 "[program:$project_name]
-command                 = $project_path/shared/venv/bin/gunicorn --chdir $project_path/current -b unix://$project_path/gunicorn.sock index:app.server
+command                 = $project_path/current/venv/bin/gunicorn --chdir $project_path/current -b unix://$project_path/gunicorn.sock index:app.server
 numprocs                = 1
 autostart               = true
 autorestart             = true

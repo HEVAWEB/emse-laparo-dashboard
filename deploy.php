@@ -31,6 +31,7 @@ set('shared_files', ['']);
 set('shared_dirs', ['logs']);
 set('writable_dirs', ['logs']);
 set('allow_anonymous_stats', false);
+set('keep_releases', 1);
 
 // Hosts
 host('production')

@@ -86,6 +86,14 @@ task('protect_access', function() {
     }
 });
 
+task('upload', function () {
+    $env_path = __DIR__ . DIRECTORY_SEPARATOR . '.env';
+    if (file_exists($env_path)) {   
+        upload($env_path, '{{release_path}}');
+    }
+});
+
+
 desc('Deploying ' . $project_name);
 task('deploy', [
     'deploy:info',
@@ -93,6 +101,7 @@ task('deploy', [
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
+    'upload',
     'python_env',
     'deploy:shared',
     'deploy:writable',

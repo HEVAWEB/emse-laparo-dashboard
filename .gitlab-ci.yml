@@ -4,6 +4,10 @@ include:
   - project: 'devops/ci-templates'
     ref: master
     file: '/api-templates.yml'
+    
+cache:
+  paths:
+    - .env
 
 stages:
   - deploy
@@ -18,6 +22,7 @@ deploy:
     - echo "SSH Key installed"
   script:
     - echo "Deploy to production"
+    - cp $ENVS .env || true
     - dep deploy production
   environment:
     name: ${CI_PROJECT_NAME}

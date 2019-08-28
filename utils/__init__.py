@@ -6,7 +6,7 @@ import dash_html_components as html
 
 from app import config
 
-__version__ = "1.3.0a"
+__version__ = "1.3.0"
 __all__ = (
     "graph",
     "two_graphs",

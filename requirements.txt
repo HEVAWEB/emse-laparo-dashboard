@@ -23,7 +23,7 @@ Flask==1.1.1
 Flask-Compress==1.4.0
 future==0.17.1
 gunicorn==19.9.0
-heva-theme==1.1.0
+-e git+ssh://git@gitlab.hevaweb.com/data_science/plotly-heva-theme.git@v1.1.0#egg=heva-theme
 identify==1.4.2
 idna==2.8
 importlib-metadata==0.18

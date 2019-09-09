@@ -15,13 +15,14 @@ layout = html.Div(
             "This is a conclusion section written again with **Markdown**. It has its own utils component."
         ),
         utils.markdown_content("You can integrate tables like graphs"),
-        utils.simple_table(
+        utils.table_from_md(
             """| Tables |  Are | Cool |
             |----------|:-------------:|------:|
             | col 1 is | left-aligned | $1600 |
             | col 2 is | centered | $12 |
             | col 3 is | *right-aligned* |**$1** |"""
         ),
+        utils.table_from_csv("builds/iris.csv"),
         html.H3(["Components"]),
         html.H4(["Dropdown"]),
         dcc.Dropdown(

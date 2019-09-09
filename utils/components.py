@@ -94,7 +94,7 @@ def table_from_csv(path: Union[str, Path]) -> dcc.Markdown:
         header = next(reader)
         nb_cols = len(header)
         lines.append(f"| {' | '.join(header)} |")
-        lines.append(f"{'|--' * nb_cols} |")
+        lines.append(f"|-- {'|--:' * (nb_cols-1)} |")
         for row in reader:
             lines.append(f"| {' | '.join(row)} |")
 

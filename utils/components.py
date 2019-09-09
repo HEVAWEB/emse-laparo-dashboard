@@ -1,4 +1,6 @@
-from typing import Any
+import csv
+from pathlib import Path
+from typing import Any, Union
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -6,8 +8,7 @@ from heva_theme import config
 
 
 def graph(fig: Any, loading=True, **kwargs: Any) -> html.Div:
-    """
-    Utility function for Plotly graphs.
+    """Utility function for Plotly graphs.
 
     :param fig: Plotly/Plotly-express figure (loaded with json/pickle accepted)
     :param loading: Enclose fig in loading component. Should be False for interactive TAK.
@@ -27,11 +28,11 @@ def graph(fig: Any, loading=True, **kwargs: Any) -> html.Div:
 
 
 def two_graphs(graph1: html.Div, graph2: html.Div) -> html.Div:
-    """
-    Utility function for laying side by side two graphs
+    """Utility function for laying side by side two graphs
+
     :param graph1: result of utils.graph
     :param graph2: result of utils.graph
-    :return:
+    :return: html layout for side by side graphs
     """
     return html.Div(
         [
@@ -49,8 +50,7 @@ def two_graphs(graph1: html.Div, graph2: html.Div) -> html.Div:
 
 
 def markdown_content(content: str, class_name: str = "text") -> dcc.Markdown:
-    """
-    Utility function for textual content.
+    """Utility function for textual content.
 
     This is a simple wrapper for dcc.Markdown with default value for the best aesthetics.
 
@@ -62,8 +62,7 @@ def markdown_content(content: str, class_name: str = "text") -> dcc.Markdown:
 
 
 def takeaways(content: str, title="À retenir") -> html.Div:
-    """
-    Utility function for small emphasized conclusions
+    """Utility function for small emphasized conclusions
 
     :param content: Textual markdown content
     :param title: Section title
@@ -72,11 +71,32 @@ def takeaways(content: str, title="À retenir") -> html.Div:
     return html.Div([html.H4([title]), markdown_content(content, "conclusion")])
 
 
-def simple_table(content: str) -> dcc.Markdown:
-    """
-    Utility function for simple results table
+def table_from_md(content: str) -> dcc.Markdown:
+    """Utility function for simple results table
 
     :param content: Textual markdown content
-    :return: html placeholder for table
+    :return: Markdown rendered table
     """
+    return dcc.Markdown([content], dangerously_allow_html=True, className="table graph")
+
+
+def table_from_csv(path: Union[str, Path]) -> dcc.Markdown:
+    """Generate markdown table from csv content
+
+    :param path:
+    :return: Markdown rendered table
+    """
+    lines = []
+    with open(path, "r", encoding="utf-8", newline="") as f:
+        dialect = csv.Sniffer().sniff(f.read(1024))
+        f.seek(0)
+        reader = csv.reader(f, dialect)
+        header = next(reader)
+        nb_cols = len(header)
+        lines.append(f"| {' | '.join(header)} |")
+        lines.append(f"{'|--' * nb_cols} |")
+        for row in reader:
+            lines.append(f"| {' | '.join(row)} |")
+
+    content = "\n".join(lines)
     return dcc.Markdown([content], dangerously_allow_html=True, className="table graph")

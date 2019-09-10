@@ -1,10 +1,41 @@
 import csv
+import re
 from pathlib import Path
 from typing import Any, Union
 
 import dash_core_components as dcc
 import dash_html_components as html
 from heva_theme import config
+
+
+class MarkdownReader:
+    """Convenient reader with splits.
+
+    This class makes it easy to access various parts of the content.
+    You may delimit sections in your file with
+
+    .. code-block:: md
+
+        [//]: # (section)
+
+    """
+
+    def __init__(self, content: str) -> None:
+        self.sections = list(re.compile("\n\[//\]: # \(section\)\n").split(content))
+
+    def __getitem__(self, section):
+        if isinstance(section, slice):
+            content = "".join(self.sections[section])
+        else:
+            content = self.sections[section]
+        return markdown_content(content)
+
+    def __iter__(self):
+        return iter(self.sections)
+
+    def full(self):
+        """Get the full rendered markdown content"""
+        return markdown_content("".join(self.sections))
 
 
 def graph(fig: Any, loading=True, **kwargs: Any) -> html.Div:

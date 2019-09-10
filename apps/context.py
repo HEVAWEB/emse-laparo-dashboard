@@ -1,30 +1,32 @@
 import dash_core_components as dcc
 import dash_html_components as html
-import pandas as pd
+import plotly.graph_objects as go
 
 import utils
 
 # Load markdown text content
 with open("assets/contents/demo.md", "r", encoding="utf-8") as f:
-    content = f.read()
+    content = utils.MarkdownReader(f.read())
+
+# Make the simple plot
+simple_fig = go.Figure(
+    data=[go.Scatter(x=[0, 1, 2, 3, 4], y=[2, 3, 4, 6, 1])],
+    layout=dict(title="Un graphe simple"),
+)
 
 # Define the page's content
 layout = html.Div(
     [
-        utils.markdown_content(content),
-        utils.takeaways(
-            "This is a conclusion section written again with **Markdown**. It has its own utils component."
-        ),
-        utils.markdown_content("You can integrate tables like graphs"),
-        utils.table_from_md(
-            """| Tables |  Are | Cool |
-            |----------|:-------------:|------:|
-            | col 1 is | left-aligned | $1600 |
-            | col 2 is | centered | $12 |
-            | col 3 is | *right-aligned* |**$1** |"""
-        ),
-        utils.table_from_df(pd.read_csv("builds/iris.csv")),
-        html.H3(["Components"]),
+        content[0],
+        utils.table_from_csv("builds/iris.csv"),
+        content[1],
+        utils.takeaways("Le Markdown c'est cool."),
+        content[2],
+        utils.graph(simple_fig),
+        content[3],
+        utils.two_graphs(utils.graph(simple_fig), utils.graph(simple_fig)),
+        content[4],
+        html.H3(["Zone expérimentale - Réservée au design !"]),
         html.H4(["Dropdown"]),
         dcc.Dropdown(
             options=[
@@ -68,8 +70,5 @@ layout = html.Div(
         ),
         html.H4(["Button"]),
         html.Button("Submit", id="button"),
-        utils.markdown_content(
-            "We would like all components except those with a grey background to have a margin with end of page."
-        ),
     ]
 )

@@ -1,5 +1,6 @@
 """Utils functions"""
 from .components import (
+    MarkdownReader,
     graph,
     markdown_content,
     table_from_csv,
@@ -9,10 +10,11 @@ from .components import (
     two_graphs,
 )
 
-__version__ = "1.3.0"
+__version__ = "1.4.0a"
 __all__ = (
     "__version__",
     "graph",
+    "MarkdownReader",
     "markdown_content",
     "table_from_csv",
     "table_from_df",

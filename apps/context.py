@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import pandas as pd
 
 import utils
 
@@ -22,7 +23,7 @@ layout = html.Div(
             | col 2 is | centered | $12 |
             | col 3 is | *right-aligned* |**$1** |"""
         ),
-        utils.table_from_csv("builds/iris.csv"),
+        utils.table_from_df(pd.read_csv("builds/iris.csv")),
         html.H3(["Components"]),
         html.H4(["Dropdown"]),
         dcc.Dropdown(

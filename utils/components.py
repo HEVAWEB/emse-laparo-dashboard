@@ -1,7 +1,7 @@
 import csv
 import re
 from pathlib import Path
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -117,10 +117,11 @@ def table_from_md(content: str) -> dcc.Markdown:
     return dcc.Markdown([content], dangerously_allow_html=True, className="table graph")
 
 
-def table_from_csv(path: Union[str, Path]) -> dcc.Markdown:
+def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.Div:
     """Generate markdown table from csv content.
 
     :param path: File path
+    :param title: Optional table title
     :return: Markdown rendered table
     """
 
@@ -132,25 +133,39 @@ def table_from_csv(path: Union[str, Path]) -> dcc.Markdown:
         header = next(reader)
         nb_cols = len(header)
         lines.append(f"| {' | '.join(header)} |")
-        lines.append(f"|-- {'|--:' * (nb_cols-1)} |")
+        lines.append(f"|:--: {'|:--:' * (nb_cols-1)} |")
         for row in reader:
             lines.append(f"| {' | '.join(row)} |")
 
-    content = "\n".join(lines)
-    return dcc.Markdown([content], dangerously_allow_html=True, className="table graph")
+    content = [
+        dcc.Markdown(["\n".join(lines)], dangerously_allow_html=True, className="table")
+    ]
+
+    if title:
+        content.insert(0, html.H4(title))
+
+    return html.Div(content, className="graph")
 
 
-def table_from_df(df: pd.DataFrame) -> dcc.Markdown:
+def table_from_df(df: pd.DataFrame, title: Optional[str] = None) -> html.Div:
     """Generate markdown table from dataframe.
 
     :param df: DataFrame
+    :param title: Optional table title
     :return: Markdown rendered table
     """
 
-    lines = [f"| {' | '.join(df.columns)} |", f"|-- {'|--:' * (len(df.columns) - 1)} |"]
+    lines = [
+        f"| {' | '.join(df.columns)} |",
+        f"|:--: {'|:--:' * (len(df.columns) - 1)} |",
+    ]
     for row in df.itertuples(index=False):
         row_as_str = (f"{cell}" for cell in row)
         lines.append(f"| {' | '.join(row_as_str)} |")
 
-    content = "\n".join(lines)
-    return dcc.Markdown([content], dangerously_allow_html=True, className="table graph")
+    content = [dcc.Markdown(["\n".join(lines)], className="table")]
+
+    if title:
+        content.insert(0, html.H4(title))
+
+    return html.Div(content, className="graph")

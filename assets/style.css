@@ -457,3 +457,12 @@ label > .label-body {
     margin: 0 -4rem !important;
     padding: 0 4rem;
 }
+
+code {
+    border-radius: 3px;
+}
+
+.hljs {
+    background-color: #073642;
+    color: #aeaeae;
+}

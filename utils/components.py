@@ -79,7 +79,7 @@ def two_graphs(graph1: html.Div, graph2: html.Div) -> html.Div:
                 className="column col-6 col-xl-12",
             ),
         ],
-        className="columns col-gapless",
+        className="columns two-graphs",
     )
 
 

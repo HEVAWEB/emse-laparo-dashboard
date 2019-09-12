@@ -166,9 +166,11 @@ strong {
 }
 
 hr {
-    border-top: 0.05rem solid #fefefe;
-    height: 0.05rem;
-    margin: 1rem 0;
+    background-color: #FC5B26;
+    border-width: 0;
+    height: 2px;
+    width: 50%;
+    margin: 2rem auto;
 }
 
 .intro {

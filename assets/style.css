@@ -458,11 +458,11 @@ label > .label-body {
     padding: 0 4rem;
 }
 
-code {
-    border-radius: 3px;
+.two-graphs .graph {
+    margin: 0;
+    padding: 0;
 }
 
-.hljs {
-    background-color: #073642;
-    color: #aeaeae;
+code {
+    border-radius: 3px;
 }

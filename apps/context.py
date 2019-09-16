@@ -22,7 +22,7 @@ layout = html.Div(
         content[1],
         utils.takeaways("Le Markdown c'est cool."),
         content[2],
-        utils.two_graphs(utils.graph(simple_fig), content[3]),
+        utils.two_graphs(content[3], utils.graph(simple_fig)),
         utils.two_graphs(utils.graph(simple_fig), utils.graph(simple_fig)),
         content[4],
         html.H3(["Zone expérimentale - Réservée au design !"]),

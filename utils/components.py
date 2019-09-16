@@ -93,7 +93,12 @@ def markdown_content(content: str, class_name: str = "text") -> dcc.Markdown:
     :return: Markdown rendered element
     """
 
-    return dcc.Markdown([content], dangerously_allow_html=True, className=class_name)
+    return dcc.Markdown(
+        [content],
+        dangerously_allow_html=True,
+        className=class_name,
+        highlight_config={"theme": "dark"},
+    )
 
 
 def takeaways(content: str, title="À retenir") -> html.Div:

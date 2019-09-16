@@ -36,8 +36,8 @@ menu = html.Ul(
 )
 pages = {
     # Default page
-    "/": context.layout,
-    "/context": context.layout,
+    "/": title + [context.layout],
+    "/context": title + [context.layout],
     "/methods": method.layout,
     "/vars": vars.layout,
     "/results": results.layout,
@@ -87,7 +87,7 @@ app.layout = html.Div(
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
     """ Update page content with sidebar links"""
-    return title + [pages.get(pathname, html.H1(["Page not found"]))]
+    return pages.get(pathname, html.H1(["Page not found"]))
 
 
 if __name__ == "__main__":

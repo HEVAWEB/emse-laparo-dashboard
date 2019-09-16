@@ -4,7 +4,7 @@ include:
   - project: 'devops/ci-templates'
     ref: master
     file: '/api-templates.yml'
-    
+
 cache:
   paths:
     - .env
@@ -13,6 +13,8 @@ stages:
   - deploy
 
 deploy:
+  except:
+    - tags
   extends: .deploy
   before_script:
     - echo "Deploy branch:$CI_COMMIT_REF_NAME commit:$CI_COMMIT_SHA"

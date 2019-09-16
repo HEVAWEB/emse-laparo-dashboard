@@ -8,19 +8,20 @@ from app import app, config
 from apps import context, gallery, method, results, vars
 from utils import __version__
 
-# Import your pages above
-
-# Change the webpage tab title here if needed
-app.title = "HEVA Study"
+# Dashboard language
 config["locale"] = "fr"
 
-
-# Global title: Client - Study
-title = [html.H2("Client"), html.H1("Study")]
-
-# Change client logo
+# Client - study configuration
+CLIENT = "HEVA"
+STUDY = "Study"
 LOGO_HEVA = "assets/logoHEVA_RVB.svg"
 LOGO_CLIENT = "assets/logoHEVA_RVB.svg"
+
+# Change the webpage tab title here if needed
+app.title = f"{CLIENT} {STUDY}"
+
+# Global title: Client - Study
+title = [html.H2(CLIENT), html.H1(STUDY)]
 
 # Sidebar links: add/remove entries if needed
 menu = html.Ul(
@@ -91,9 +92,8 @@ def display_page(pathname):
 
 if __name__ == "__main__":
 
-    # Watch md files for full reload
-    content_path = (
-        pathlib.Path(__file__).parent.joinpath("assets", "contents").resolve()
-    )
-    extra_files = list(content_path.rglob("*.md"))
+    # Watch md & built files for full reload
+    content_path = pathlib.Path(__file__).parent / "assets" / "contents"
+    builds_path = pathlib.Path(__file__).parent / "builds"
+    extra_files = [*content_path.rglob("*.md"), *builds_path.rglob("*")]
     app.run_server(debug=True, extra_files=extra_files)

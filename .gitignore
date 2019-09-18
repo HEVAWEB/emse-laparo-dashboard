@@ -132,3 +132,6 @@ dmypy.json
 
 # npm
 node_modules
+
+# styles
+assets/style.css

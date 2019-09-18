@@ -8,9 +8,19 @@ include:
 cache:
   paths:
     - .env
+    - assets/style.css
 
 stages:
+  - build
   - deploy
+
+build:
+  except:
+    - tags
+  stage: build
+  script:
+    - yarn
+    - yarn build
 
 deploy:
   except:

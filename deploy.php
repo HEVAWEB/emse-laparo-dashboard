@@ -88,9 +88,11 @@ task('protect_access', function() {
 
 task('upload', function () {
     $env_path = __DIR__ . DIRECTORY_SEPARATOR . '.env';
-    if (file_exists($env_path)) {   
+    $style_path = __DIR__ . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'style.css';
+    if (file_exists($env_path)) {
         upload($env_path, '{{release_path}}');
     }
+    upload($style_path, '{{release_path}}');
 });
 
 

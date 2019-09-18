@@ -153,9 +153,9 @@ utils.graph(figure)
 
 Voyons ensemble de quoi sont composées ces quelques lignes :
 
-- Nous rajoutons davantage d'imports. Pour charger un fichier `.json` nous avons besoin du module `json`. Pour modifier des graphes Plotly nous importons le module `plotly.graph_objects` que nous renommons en `go` par commodité.
-- Nous lisons comme précédemment le fichier, à la différence que nous devons le comprendre comme un fichier `json` et non un fichier texte. C'est pourquoi nous utilisons plus la méthode `f.read()`, mais `json.load(f)`. Enfin, nous créons une figure Plotly à partir de ce résultat.
-- À l'aide de cette ligne, nous modifions le thème du graphe pour utiliser celui de HEVA. Cela a notamment pour effet de changer les couleurs utilisées pour coller au mieux à la charte graphique HEVA.
+1. Nous rajoutons davantage d'imports. Pour charger un fichier `.json` nous avons besoin du module `json`. Pour modifier des graphes Plotly nous importons le module `plotly.graph_objects` que nous renommons en `go` par commodité.
+2. Nous lisons comme précédemment le fichier, à la différence que nous devons le comprendre comme un fichier `json` et non un fichier texte. C'est pourquoi nous utilisons plus la méthode `f.read()`, mais `json.load(f)`. Enfin, nous créons une figure Plotly à partir de ce résultat.
+3. À l'aide de cette ligne, nous modifions le thème du graphe pour utiliser celui de HEVA. Cela a notamment pour effet de changer les couleurs utilisées pour coller au mieux à la charte graphique HEVA.
 
 Nous pouvons également mettre deux graphes côte à côte facilement avec :
 

@@ -11,7 +11,12 @@ with open("assets/contents/demo.md", "r", encoding="utf-8") as f:
 # Make the simple plot
 simple_fig = go.Figure(
     data=[go.Scatter(x=[0, 1, 2, 3, 4], y=[2, 3, 4, 6, 1])],
-    layout=dict(title="Un graphe simple"),
+    layout=dict(
+        title="Un graphe simple",
+        margin=dict(r=10, l=20),
+        xaxis=dict(automargin=True),
+        yaxis=dict(automargin=True),
+    ),
 )
 
 # Define the page's content

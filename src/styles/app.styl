@@ -1,0 +1,52 @@
+@import 'variables/*'
+@import '_typography'
+@import '_buttons'
+@import '_inputs'
+@import '_common'
+@import 'components/*'
+
+#page-content
+    background-color $contentBackgroundColor
+    padding 4rem 4rem 0 4rem
+
+.text
+    padding 0 0 2rem 0
+
+.tools
+    background-color $toolsBackgroundColor
+    box-shadow inset 0px -8px 8px $toolsBoxShadowColor
+    padding 2rem 4rem
+    margin 0 -4rem
+    border-bottom solid 1px $toolsBorderBottomColor
+
+.intro
+    width 66%
+    font-style italic
+    font-size 2.0rem
+    line-height 1.4
+    margin 3rem 0
+    color $introTextColor
+    text-align justify
+    border-left 4px solid $introBorderLeftColor
+    padding-left 16px
+
+.conclusion
+    width 66%
+    text-align justify
+    border-left 4px solid $conclusionBorderLeftColor
+    padding-left 16px
+    margin-bottom 2rem
+    p
+        font-size 1.8rem
+        font-weight 700
+        line-height 1.6
+
+.bg-paper
+    background $paperBackgroundColor !important
+
+.embed-img
+    border solid $embeddedImgBordercolor 1px
+    max-width 500px
+    margin auto
+    width 100%
+

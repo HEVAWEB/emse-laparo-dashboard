@@ -1,0 +1,17 @@
+{
+  "name": "artemis",
+  "version": "1.0.0",
+  "repository": "https://gitlab.hevaweb.com/web/dashboard-template",
+  "author": "HEVA <abatisse@hevaweb.com>",
+  "license": "MIT",
+  "dependencies": {
+    "stylus": "^0.54.7"
+  },
+  "scripts": {
+    "start": "npm run watch:stylus & npm run watch:python",
+    "watch:stylus": "stylus -w src/styles/app.styl -o assets/style.css",
+    "watch:python": "python index.py",
+    "build": "npm run build:stylus",
+    "build:stylus": "stylus -c src/styles/app.styl -o assets/style.css"
+  }
+}

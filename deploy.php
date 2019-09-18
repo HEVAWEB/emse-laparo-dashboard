@@ -92,7 +92,7 @@ task('upload', function () {
     if (file_exists($env_path)) {
         upload($env_path, '{{release_path}}');
     }
-    upload($style_path, '{{release_path}}');
+    upload($style_path, '{{release_path}}' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR);
 });
 
 

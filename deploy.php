@@ -35,7 +35,7 @@ set('keep_releases', 1);
 
 // Hosts
 host('production')
-    ->hostname('172.16.11.59')
+    ->hostname('172.16.11.55')
     ->user('hevadev')
     ->set('deploy_path', $project_path)
     ->set('branch', 'master');

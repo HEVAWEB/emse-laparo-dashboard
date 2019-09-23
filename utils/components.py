@@ -132,7 +132,7 @@ def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.
 
     lines = []
     with open(path, "r", encoding="utf-8", newline="") as f:
-        dialect = csv.Sniffer().sniff(f.read(1024))
+        dialect = csv.Sniffer().sniff(f.read())
         f.seek(0)
         reader = csv.reader(f, dialect)
         header = next(reader)

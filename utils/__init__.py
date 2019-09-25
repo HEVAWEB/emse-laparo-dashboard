@@ -22,3 +22,5 @@ __all__ = (
     "takeaways",
     "two_graphs",
 )
+
+translations = {"eula": {"fr": "Mentions légales", "en": "Terms of Use"}}

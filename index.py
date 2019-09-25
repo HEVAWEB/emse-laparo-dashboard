@@ -5,8 +5,8 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, gallery, method, results, vars
-from utils import __version__
+from apps import context, eula, gallery, method, results, vars
+from utils import __version__, translations
 
 # Dashboard language
 config["locale"] = "fr"
@@ -42,6 +42,7 @@ pages = {
     "/vars": vars.layout,
     "/results": results.layout,
     "/gallery": gallery.layout,
+    "/eula": eula.layout,
 }
 
 
@@ -79,7 +80,14 @@ app.layout = html.Div(
             ],
             className="columns col-gapless",
         ),
-        html.Footer([f"{__version__}"], className="footer"),
+        html.Div(
+            [
+                html.Span(f"v{__version__}"),
+                dcc.Link(translations["eula"][config["locale"]], href="/eula"),
+                html.Span("© 2019"),
+            ],
+            className="footer",
+        ),
     ]
 )
 
@@ -93,7 +101,7 @@ def display_page(pathname):
 if __name__ == "__main__":
 
     # Watch md & built files for full reload
-    content_path = pathlib.Path(__file__).parent / "assets" / "contents"
+    content_path = pathlib.Path(__file__).parent / "assets"
     builds_path = pathlib.Path(__file__).parent / "builds"
     extra_files = [*content_path.rglob("*.md"), *builds_path.rglob("*")]
     app.run_server(debug=True, extra_files=extra_files)

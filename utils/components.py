@@ -119,7 +119,9 @@ def table_from_md(content: str) -> dcc.Markdown:
     :return: Markdown rendered table
     """
 
-    return dcc.Markdown([content], dangerously_allow_html=True, className="table graph")
+    return dcc.Markdown(
+        [content.rstrip()], dangerously_allow_html=True, className="table graph"
+    )
 
 
 def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.Div:
@@ -132,7 +134,7 @@ def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.
 
     lines = []
     with open(path, "r", encoding="utf-8", newline="") as f:
-        dialect = csv.Sniffer().sniff(f.read())
+        dialect = csv.Sniffer().sniff(f.read().rstrip())
         f.seek(0)
         reader = csv.reader(f, dialect)
         header = next(reader)
@@ -140,7 +142,8 @@ def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.
         lines.append(f"| {' | '.join(header)} |")
         lines.append(f"|:--: {'|:--:' * (nb_cols-1)} |")
         for row in reader:
-            lines.append(f"| {' | '.join(row)} |")
+            if row:
+                lines.append(f"| {' | '.join(row)} |")
 
     content = [
         dcc.Markdown(["\n".join(lines)], dangerously_allow_html=True, className="table")

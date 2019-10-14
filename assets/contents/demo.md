@@ -35,7 +35,7 @@ Le Markdown permet de créer des listes ordonnées et non ordonnées assez facil
 2. Second élément ordonné
     - Premier élément non ordonné
     - Second élément non ordonné
-    
+
 ### Emphase et liens
 
 Markdown possède deux niveaux d'emphase de texte.
@@ -74,13 +74,13 @@ Il est possible de définir une table en Markdown avec la syntaxe suivante :
 
 Avez-vous remarqué que nous avons choisi l'alignement des colonnes et ajouter de l'emphase sur des cellules ?
 
-Notons également que nous fournissons un moyen simple d'intégrer un fichier `.csv` comme un graphe à partir du code Python : 
+Notons également que nous fournissons un moyen simple d'intégrer un fichier `.csv` comme un graphe à partir du code Python :
 
 ```python
 import utils
 
 # À ajouter bien sûr au layout de la page
-utils.table_from_csv("builds/iris.csv")
+utils.table_from_csv("builds/iris.csv", "Un exemple de table")
 ```
 
 [//]: # (section)

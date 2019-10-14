@@ -23,7 +23,7 @@ simple_fig = go.Figure(
 layout = html.Div(
     [
         content[0],
-        utils.table_from_csv("builds/iris.csv"),
+        utils.table_from_csv("builds/iris.csv", "Un exemple de table"),
         content[1],
         utils.takeaways("Le Markdown c'est cool."),
         content[2],

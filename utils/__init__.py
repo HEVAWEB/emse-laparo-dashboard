@@ -20,6 +20,7 @@ __all__ = (
     "table_from_df",
     "table_from_md",
     "takeaways",
+    "translations",
     "two_graphs",
 )
 

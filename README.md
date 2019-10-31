@@ -6,7 +6,7 @@
 
 1. [Contents](#contents)
 2. [Changelog](#changelog)
-   1. [1.4.2-alpha](#142-alpha)
+   1. [1.4.2](#142)
    2. [1.4.1](#141)
    3. [1.4.0](#140)
 3. [References](#references)
@@ -36,9 +36,11 @@
 
 ## Changelog
 
-### 1.4.2-alpha
+### 1.4.2
 
 - Improve simple tables. Using DataFrames, users may now reorient tables & group row by a label
+- Allow users to pass a configuration dict to figure in order to change image export size for example
+- Major dependencies updates, dashboard should be notably more reactive
 
 ### 1.4.1
 

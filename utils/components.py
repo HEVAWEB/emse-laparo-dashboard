@@ -7,8 +7,8 @@ from typing import Any, Optional, Union
 
 import dash_core_components as dcc
 import dash_html_components as html
+import heva_theme
 import pandas as pd
-from heva_theme import config
 
 
 class MarkdownReader:
@@ -41,23 +41,26 @@ class MarkdownReader:
         return markdown_content("".join(self.sections))
 
 
-def graph(fig: Any, loading=True, **kwargs: Any) -> html.Div:
+def graph(fig: Any, loading=True, config=None, **kwargs: Any) -> html.Div:
     """Utility function for Plotly graphs.
 
     :param fig: Plotly/Plotly-express figure (loaded with json/pickle accepted)
     :param loading: Enclose fig in loading component. Should be False for interactive TAK.
+    :param config: Plotly figure configuration (export size, modebar buttons, etc.)
     :param kwargs: Keyword arguments passed to dcc.Graph constructor
     :return: Html placeholder for graph
     """
 
+    graph_config = config if config else heva_theme.config
+
     if loading:
         content = dcc.Loading(
-            [dcc.Graph(figure=fig, config=config, **kwargs)],
+            [dcc.Graph(figure=fig, config=graph_config, **kwargs)],
             color="#fc5b26",
             type="dot",
         )
     else:
-        content = dcc.Graph(figure=fig, config=config, **kwargs)
+        content = dcc.Graph(figure=fig, config=graph_config, **kwargs)
 
     return html.Div([content], className="graph")
 

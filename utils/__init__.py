@@ -10,7 +10,7 @@ from .components import (
     two_graphs,
 )
 
-__version__ = "1.4.2a"
+__version__ = "1.4.2"
 __all__ = (
     "__version__",
     "graph",

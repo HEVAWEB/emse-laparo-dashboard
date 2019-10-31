@@ -80,7 +80,7 @@ Notons également que nous fournissons un moyen simple d'intégrer un fichier `.
 import utils
 
 # À ajouter bien sûr au layout de la page
-utils.table_from_csv("builds/iris.csv", "Un exemple de table")
+utils.table_from_csv("builds/iris.csv", "Table CSV directe")
 ```
 
 [//]: # (section)

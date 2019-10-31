@@ -1,5 +1,7 @@
 import csv
 import re
+from collections import Counter
+from itertools import islice
 from pathlib import Path
 from typing import Any, Optional, Union
 
@@ -129,7 +131,7 @@ def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.
 
     :param path: File path
     :param title: Optional table title
-    :return: Markdown rendered table
+    :return: Markdown-HTML rendered table
     """
 
     lines = []
@@ -155,25 +157,186 @@ def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.
     return html.Div(content, className="graph")
 
 
-def table_from_df(df: pd.DataFrame, title: Optional[str] = None) -> html.Div:
-    """Generate markdown table from dataframe.
+def table_from_df(
+    df: pd.DataFrame, title: Optional[str] = None, orient_vertically: bool = True
+) -> html.Div:
+    """Generate HTML table from dataframe.
+
+    This function is able to regroup common index columns/rows.
 
     :param df: DataFrame
     :param title: Optional table title
-    :return: Markdown rendered table
+    :param orient_vertically: Table orientation, header is first row, else first column. Default True
+    :return: HTML rendered table
     """
+    regroup = False
+    if "flag" in df.columns:
+        df = df.drop(columns=["flag"])
+        regroup = True
 
-    lines = [
-        f"| {' | '.join(df.columns)} |",
-        f"|:--: {'|:--:' * (len(df.columns) - 1)} |",
-    ]
-    for row in df.itertuples(index=False):
-        row_as_str = (f"{cell}" for cell in row)
-        lines.append(f"| {' | '.join(row_as_str)} |")
+    if orient_vertically:
+        if regroup:
+            table = _make_v_regrouped_table(df)
+        else:
+            table = _make_v_table(df)
+    else:
+        if regroup:
+            table = _make_h_regrouped_table(df)
+        else:
+            table = _make_h_table(df)
 
-    content = [dcc.Markdown(["\n".join(lines)], className="table")]
-
+    content = []
     if title:
-        content.insert(0, html.H4(title))
-
+        content.append(html.H4(title))
+    content.append(table)
     return html.Div(content, className="graph")
+
+
+def _make_v_table(df: pd.DataFrame) -> html.Table:
+    """Generate a long HTML table.
+
+    This is the simplest case:
+
+    - DataFrame column names become table header
+    - No regrouping
+
+    :param df: DataFrame
+    :return: HTML table
+    """
+    table = html.Table([], className="table")
+
+    # Add header
+    table.children = [
+        html.Tr([html.Th([col], style={"textAlign": "center"}) for col in df.columns])
+    ]
+
+    # Add all rows
+    for row in df.itertuples(index=False):
+        table.children.append(
+            html.Tr([html.Td([cell], style={"textAlign": "center"}) for cell in row])
+        )
+    return table
+
+
+def _make_v_regrouped_table(df: pd.DataFrame) -> html.Table:
+    """Generate a long HTML table with the 1st column regrouped
+
+    :param df: DataFrame
+    :return: HTML table
+    """
+    table = html.Table([], className="table")
+
+    # Add header
+    table.children = [
+        html.Tr([html.Th([col], style={"textAlign": "center"}) for col in df.columns])
+    ]
+
+    # For each group, we trace the first row with the proper height
+    # then we add the following row minus the first cell
+    for name, group in df.groupby(df.columns[0], sort=False):
+        rowspan = len(group)
+        row_iterator = group.itertuples(index=False)
+
+        # First row need to define the `rowspan` of the 1st cell
+        first_row = next(row_iterator)
+        group_table_rows = [
+            html.Tr(
+                [
+                    html.Td(
+                        [first_row[0]], rowSpan=rowspan, style={"textAlign": "center"}
+                    ),
+                    *[
+                        html.Td(cell, style={"textAlign": "center"})
+                        for cell in first_row[1:]
+                    ],
+                ]
+            )
+        ]
+
+        # Then we add the following rows
+        for row in row_iterator:
+            group_table_rows.append(
+                html.Tr(
+                    [html.Td([cell], style={"textAlign": "center"}) for cell in row[1:]]
+                )
+            )
+        table.children.extend(group_table_rows)
+    return table
+
+
+def _make_h_table(df: pd.DataFrame) -> html.Table:
+    """Generate a wide HTML table
+
+    :param df: DataFrame
+    :return: HTML table
+    """
+    table = html.Table([], className="table")
+
+    # Transpose dataframe & iterate on row; first attribute is the header
+    df = df.T
+
+    # Add all rows with first cell as header
+    for row in df.itertuples():
+        table.children.append(
+            html.Tr(
+                [
+                    html.Th([row[0]], style={"textAlign": "center"}),
+                    *[html.Td(cell, style={"textAlign": "center"}) for cell in row[1:]],
+                ]
+            )
+        )
+    return table
+
+
+def _make_h_regrouped_table(df: pd.DataFrame) -> html.Table:
+    """Generate a wide HTML table with 1st row regrouped
+
+    :param df: DataFrame
+    :return: HTML table
+    """
+    table = html.Table([], className="table")
+    df = df.T
+    bordered_style = {"borderLeft": ".05rem solid #dadee4"}
+
+    # We will need a counter to place the separators
+    row_iterator = df.itertuples()
+    first_row = next(row_iterator)
+    first_row_counter = Counter(first_row[1:])
+
+    # Add header with columns grouped
+    table.children = [
+        html.Tr(
+            [
+                html.Th([first_row[0]], style={"textAlign": "center"}),
+                *[
+                    html.Td(k, colSpan=v, style={"textAlign": "center"})
+                    for k, v in first_row_counter.items()
+                ],
+            ]
+        )
+    ]
+
+    # Add each line with the proper grouping
+    for row in row_iterator:
+
+        th = html.Th([row[0]], style={"textAlign": "center"})
+
+        # Group cells by agregations
+        tds = []
+        slices = first_row_counter.values()
+        iter_cells = iter(row[1:])
+        groups_cells = (islice(iter_cells, sl) for sl in slices)
+
+        # Do not put a separator for the 1st column
+        first_group = next(groups_cells)
+        cells = [html.Td(cell, style={"textAlign": "center"}) for cell in first_group]
+        tds.extend(cells)
+
+        for group in groups_cells:
+            cells = [html.Td(cell, style={"textAlign": "center"}) for cell in group]
+            cells[0].style.update(**bordered_style)
+            tds.extend(cells)
+
+        table.children.append(html.Tr([th, *tds]))
+
+    return table

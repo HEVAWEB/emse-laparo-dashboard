@@ -6,8 +6,9 @@
 
 1. [Contents](#contents)
 2. [Changelog](#changelog)
-   1. [1.4.1](#141)
-   2. [1.4.0](#140)
+   1. [1.4.2-alpha](#142-alpha)
+   2. [1.4.1](#141)
+   3. [1.4.0](#140)
 3. [References](#references)
 4. [Getting Started : how to create a dashboard ?](#getting-started--how-to-create-a-dashboard)
    1. [Create your project on Gitlab](#create-your-project-on-gitlab)
@@ -34,6 +35,10 @@
    8. [What if my question is not listed here?](#what-if-my-question-is-not-listed-here)
 
 ## Changelog
+
+### 1.4.2-alpha
+
+- Improve simple tables. Using DataFrames, users may now reorient tables & group row by a label
 
 ### 1.4.1
 

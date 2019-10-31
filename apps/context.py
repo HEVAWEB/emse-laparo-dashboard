@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import pandas as pd
 import plotly.graph_objects as go
 
 import utils
@@ -19,11 +20,22 @@ simple_fig = go.Figure(
     ),
 )
 
+# Description dataframe for datatables
+df = pd.read_csv("builds/description.csv")
+
 # Define the page's content
 layout = html.Div(
     [
         content[0],
-        utils.table_from_csv("builds/iris.csv", "Un exemple de table"),
+        utils.table_from_df(
+            df, title="Orientez les tables en largeur...", orient_vertically=False
+        ),
+        utils.two_graphs(
+            utils.table_from_df(
+                df, title="... ou en hauteur !", orient_vertically=True
+            ),
+            utils.table_from_csv("builds/iris.csv", "Table CSV directe"),
+        ),
         content[1],
         utils.takeaways("Le Markdown c'est cool."),
         content[2],

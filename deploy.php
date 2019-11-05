@@ -41,14 +41,6 @@ host('production')
     ->set('deploy_path', $project_path)
     ->set('branch', 'master');
 
-task('python_env', function() {
-    within('{{release_path}}', function () {
-        run('python3 -m venv ./venv');
-        run('source ./venv/bin/activate && pip install gunicorn && deactivate');
-        run("./venv/bin/python -m pip install --no-cache-dir -r requirements.txt");
-    });
-});
-
 task('supervisor', function() use ($supervisor, $project_name) {
     $supervisor_conf_path = "/home/hevadev/.supervisor/$project_name.conf";
     if (run("cat $supervisor_conf_path; true") == "") {
@@ -57,33 +49,6 @@ task('supervisor', function() use ($supervisor, $project_name) {
         run("supervisorctl update");
     } else {
         run("supervisorctl restart $project_name");
-    }
-});
-
-task('protect_access', function() {
-    if (file_exists('identifiants.csv')) {
-        $rows = array_map(function($file_content) {
-            return str_getcsv($file_content, ';');
-        }, file('identifiants.csv'));
-        if (sizeof($rows) > 1) {
-            $contents = "";
-            foreach ($rows as $key => $row) {
-                if (sizeof($row) <> 2) {
-                    throw new \Exception("Le fichier identifiant.csv ne respecte pas le format 'login;password'");
-                }
-                if ($key > 0) {
-                    $login = $row[0];
-                    $password = $row[1];
-                    $hash = base64_encode(sha1($password, true));
-                    $contents .=  "$login:{SHA}$hash" . PHP_EOL;
-                }
-            }
-            run("echo \"$contents\" > {{release_path}}/.htpasswd");
-        } else {
-            writeln('Aucun identifiants trouvés dans le ficher "identifants.csv" !');
-        }
-    } else {
-        writeln('Aucun fichier "identifants.csv" trouvé !');
     }
 });
 

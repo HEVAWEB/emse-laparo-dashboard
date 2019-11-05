@@ -2,8 +2,9 @@
 namespace Deployer;
 
 require 'recipe/common.php';
+require 'recipe/heva.php';
 
-$project_name = isset($_ENV['CI_PROJECT_NAME']) ? $_ENV['CI_PROJECT_NAME'] : 'dashboard-template';
+$project_name = isset($_ENV['CI_PROJECT_NAME']) ? slug($_ENV['CI_PROJECT_NAME']) : 'dashboard-template';
 $project_namespace = isset($_ENV['CI_PROJECT_NAMESPACE']) ? $_ENV['CI_PROJECT_NAMESPACE'] : 'web';
 $project_path = "/var/www/$project_name";
 

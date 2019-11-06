@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
 import pandas as pd
 import plotly.graph_objects as go
 
@@ -23,6 +24,15 @@ simple_fig = go.Figure(
 # Description dataframe for datatables
 df = pd.read_csv("builds/description.csv")
 
+# Datatable
+df_iris = pd.read_csv("builds/iris.csv")
+table = dash_table.DataTable(
+    columns=[{"name": i, "id": i} for i in df_iris.columns],
+    data=df_iris.to_dict(orient="records"),
+    export_format="csv",
+    sort_action="native",
+)
+
 # Define the page's content
 layout = html.Div(
     [
@@ -43,6 +53,35 @@ layout = html.Div(
         utils.two_graphs(utils.graph(simple_fig), utils.graph(simple_fig)),
         content[4],
         html.H3(["Zone expérimentale - Réservée au design !"]),
+        html.H4("Tabs"),
+        dcc.Tabs(
+            id="tabs",
+            value="tab-1",
+            children=[
+                dcc.Tab(
+                    label="Tab1",
+                    value="tab-1",
+                    className="custom-tab",
+                    selected_className="custom-tab--selected",
+                ),
+                dcc.Tab(
+                    label="Tab2",
+                    value="tab-2",
+                    className="custom-tab",
+                    selected_className="custom-tab--selected",
+                ),
+                dcc.Tab(
+                    label="Tab3",
+                    value="tab-3",
+                    className="custom-tab",
+                    selected_className="custom-tab--selected",
+                ),
+            ],
+            parent_className="custom-tabs",
+            className="custom-tabs-container",
+        ),
+        html.H4("Data table"),
+        table,
         html.H4(["Dropdown"]),
         dcc.Dropdown(
             options=[

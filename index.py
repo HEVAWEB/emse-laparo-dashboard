@@ -5,7 +5,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, eula, gallery, method, results, variables
+from apps import context, design, eula, gallery, method, results, variables
 from utils import __version__, translations
 
 # Dashboard language
@@ -27,6 +27,7 @@ title = [html.H2(CLIENT), html.H1(STUDY)]
 menu = html.Ul(
     children=[
         dcc.Link("Contexte", href="/context", className="nav-item"),
+        dcc.Link("Zone 51", href="/design", className="nav-item"),
         dcc.Link("Méthodologie", href="/methods", className="nav-item"),
         dcc.Link("Gallerie", href="/gallery", className="nav-item"),
         dcc.Link("Variables", href="/vars", className="nav-item"),
@@ -38,6 +39,7 @@ pages = {
     # Default page
     "/": title + [context.layout],
     "/context": title + [context.layout],
+    "/design": design.layout,
     "/methods": method.layout,
     "/vars": variables.layout,
     "/results": results.layout,

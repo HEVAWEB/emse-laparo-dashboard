@@ -13,7 +13,11 @@ h1, h2, h3, h4, h5, h6
     font-weight 700
     line-height 1.3
     font-family $secondaryFont
-    color $secondaryColor
+    color $inkTextColor
+
+h3, h4, h5, h6
+    margin-top 4rem
+    margin-bottom 1.2rem
 
 h1
     font-size 3.2rem
@@ -25,22 +29,16 @@ h2
 h3
     width 66%
     font-size 2.8rem
-    margin-top 4rem
 
 h4
     font-size 2.0rem
-    margin-bottom 1.2rem
-    margin-top 4rem
+    margin-bottom 2.0rem
 
 h5
     font-size 1.8rem
-    margin-bottom 1.2rem
-    margin-top 4rem
 
 h6
     font-size 1.6rem
-    margin-bottom 1.2rem
-    margin-top 4rem
     color $primaryColor
 
 a
@@ -60,7 +58,7 @@ p
     line-height 1.6
     margin-top 1.6rem
     margin-bottom 0
-    color $secondaryColor
+    color $inkTextColor
     text-align justify
 
 em
@@ -93,3 +91,43 @@ ul li::before
 ul ul, ul ol, ol ol, ol ul
     margin 0 0 1.5rem 3rem
     font-size 80%
+
+
+
+.intro, .conclusion, blockquote
+    margin 0 0 3rem 0
+    width 66%
+    border-left-width 4px
+    border-left-style solid
+    text-align justify
+    padding-left 16px
+    color $blockquotePagragraphBackgroundColor
+    p
+      padding 0
+      margin 0
+
+.intro
+    border-left-color $introBorderLeftColor
+    font-style italic
+    font-size 2.0rem
+    line-height 1.4
+    color $secondaryTextColor
+
+.conclusion
+    border-left-color $conclusionBorderLeftColor
+    p
+        font-size 1.8rem
+        font-weight 700
+        line-height 1.6
+
+blockquote
+    border-left-color $blockquoteBorderLeftColor
+    background-color $blockquoteBackgroundColor
+    padding-top 16px
+    padding-bottom 16px
+    p
+        font-size 1.6rem
+        font-style italic
+
+label
+  margin-right 16px

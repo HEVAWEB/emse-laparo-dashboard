@@ -1,18 +1,27 @@
+.graph, .two-graphs, .tools, .custom-tabs-container, .dash-table-container
+  background-color $containerBackgroundColor
+  padding 4rem
+  margin 0 -4rem
+  &>*:first-child
+    margin-top 0
+
+.tools, .custom-tabs-container
+  box-shadow inset 0px -8px 8px $toolsBoxShadowColor
+  border-bottom solid 1px $toolsBorderBottomColor
+
 .graph
-    background-color $graphBackgroundColor
-    padding 0 4rem 1rem 4rem
-    margin 0 -4rem
-    h4
-        margin-top 0
-        padding-top 4rem
-        font-family $secondaryFont
-        color $graphTitleTextColor
-        font-size 2rem
+  h4
+    margin-top 0
+    font-family $secondaryFont
+    color $graphTitleTextColor
+    font-size 2rem
 
 .two-graphs
-    background-color $graphBackgroundColor
-    margin 0 -4rem !important
-    padding 0 4rem 1rem 4rem
-    .graph
-        margin 0
-        padding 0
+  margin 0 -4rem !important
+  padding 0 4rem 1rem 4rem
+  .graph
+    margin 0
+    padding 0
+
+.custom-tabs-container
+  padding 0 4rem

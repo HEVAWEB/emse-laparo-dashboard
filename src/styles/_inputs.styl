@@ -7,3 +7,21 @@ label
         display inline-block
         margin-left .5rem
         font-weight normal
+
+.form-label
+  text-align right
+  margin 20px
+
+.Select-control, input, textarea
+  border-width 1px
+  border-style solid
+  border-color $borderColor
+  line-height 20px
+  padding 10px
+  border-radius 4px
+  &:hover
+    border-color $borderColorHover
+  &:focus
+    border-color $borderColorFocus
+  &:diabled
+    border-color salmon

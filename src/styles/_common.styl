@@ -1,36 +1,53 @@
 body
-    background-color $bodyBackgroundColor
-    margin 4rem 4rem 2rem 4rem
-    ::-moz-selection, :selection
-        background $bodyBackgroundColor
+  background-color $bodyBackgroundColor
+  margin 4rem 4rem 2rem 4rem
+  color $inkTextColor
+  ::-moz-selection, :selection
+      background $bodyBackgroundColor
+
 
 footer
-    height 0
+  height 0
 
 .footer
-    text-align center
-    color $footerTextColor
-    height 2rem
-    *
-        margin-right: 1em
-    a
-        color $footerTextColor
+  text-align center
+  color $footerTextColor
+  height 2rem
+  *
+      margin-right: 1em
+  a
+      color $footerTextColor
 
 
 hr
-    background-color $whitePurple
-    border-width 0
-    height 2px
-    width 100%
-    margin 2rem auto
+  background-color $borderColor
+  border-width 0
+  height 2px
+  width 100%
+  margin 2rem auto
+
 
 code
-    color $codeTextColor
-    background $codeBackgroundColor
-    border-radius 3px
+  color $codeTextColor
+  background $codeBackgroundColor
+  border-radius 3px
 
-table
-    margin auto
-    border-collapse collapse
-    border-spacing 0
-    width 100%
+
+table,
+table td,
+table th,
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td,
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th
+  background-color transparent
+  font-family $primaryFont
+  border-bottom .05rem solid $tableBorderColor !important
+  border-left hidden !important
+  border-right hidden
+  padding .6rem .4rem
+  text-align left !important
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th,
+table th
+  border-top hidden !important
+  border-bottom 0.3rem solid $tableBorderColor !important
+  font-weight 700

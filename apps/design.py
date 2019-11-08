@@ -197,22 +197,37 @@ layout = html.Div(
         dcc.Slider(
             min=0, max=9, marks={i: "Label {}".format(i) for i in range(10)}, value=5
         ),
+        html.Br(),
+        dcc.Slider(
+            min=0,
+            max=9,
+            marks={i: "Disabled".format(i) for i in range(10)},
+            value=5,
+            disabled=True,
+        ),
         html.H4(["Range Slider"]),
         dcc.RangeSlider(count=1, min=-5, max=10, step=0.5, value=[-3, 7]),
         html.H4(["Simple Input"]),
         dcc.Input(placeholder="Enter a value...", type="text", value=""),
+        dcc.Input(placeholder="Disabled", type="text", value="", disabled=True),
         html.H4(["Textarea"]),
         dcc.Textarea(
             placeholder="Enter a value...",
             value="This is a TextArea component",
             style={"width": "100%"},
         ),
+        dcc.Textarea(
+            placeholder="Enter a value...",
+            value="Disabled",
+            style={"width": "100%"},
+            disabled=True,
+        ),
         html.H4(["Checklist"]),
         dcc.Checklist(
             options=[
                 {"label": "New York City", "value": "NYC"},
                 {"label": "Montréal", "value": "MTL"},
-                {"label": "San Francisco", "value": "SF"},
+                {"label": "Disabled", "value": "SF", "disabled": True},
             ],
             value=["MTL", "SF"],
         ),
@@ -221,11 +236,12 @@ layout = html.Div(
             options=[
                 {"label": "New York City", "value": "NYC"},
                 {"label": "Montréal", "value": "MTL"},
-                {"label": "San Francisco", "value": "SF"},
+                {"label": "Disabled", "value": "SF", "disabled": True},
             ],
             value="MTL",
         ),
         html.H4(["Button"]),
-        html.Button("Submit", id="button"),
+        html.Button("Default", id="button"),
+        html.Button("Disabled", id="button", disabled=True),
     ]
 )

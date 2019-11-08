@@ -2,8 +2,9 @@ body
   background-color $bodyBackgroundColor
   margin 4rem 4rem 2rem 4rem
   color $inkTextColor
+
   ::-moz-selection, :selection
-      background $bodyBackgroundColor
+    background $bodyBackgroundColor
 
 
 footer
@@ -13,10 +14,12 @@ footer
   text-align center
   color $footerTextColor
   height 2rem
+
   *
-      margin-right: 1em
+    margin-right: 1em
+
   a
-      color $footerTextColor
+    color $footerTextColor
 
 
 hr
@@ -32,6 +35,8 @@ code
   background $codeBackgroundColor
   border-radius 3px
 
+table
+  border-right hidden
 
 table,
 table td,
@@ -42,12 +47,19 @@ table th,
   font-family $primaryFont
   border-bottom .05rem solid $tableBorderColor !important
   border-left hidden !important
-  border-right hidden
   padding .6rem .4rem
   text-align left !important
 
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th,
-table th
+table thead th
   border-top hidden !important
   border-bottom 0.3rem solid $tableBorderColor !important
   font-weight 700
+
+.table.table-hover
+  tr:hover, tbody tr:hover
+    background-color $lightGrey
+
+table tr td.bordered-cell
+  border-left .05rem solid $tableBorderColor !important
+

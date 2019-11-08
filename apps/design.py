@@ -41,7 +41,7 @@ layout = html.Div(
             """
         ```python
         import foo
-        
+
         foo.bar()
         ```
         """
@@ -92,10 +92,8 @@ layout = html.Div(
         ),
         html.H4("Table simple"),
         utils.table_from_df(df_iris),
-        html.Hr(),
         html.H4("Data table"),
         table,
-        html.Hr(),
         html.H4("Toolbar"),
         html.Div(
             [
@@ -147,8 +145,6 @@ layout = html.Div(
                                                 },
                                             ],
                                             value="reg",
-                                            labelStyle=dict(marginRight="5px"),
-                                            inputStyle=dict(marginRight="2px"),
                                             id="gran-dropdown",
                                         )
                                     ],
@@ -183,7 +179,6 @@ layout = html.Div(
             ],
             className="tools",
         ),
-        html.Hr(),
         html.H4(["Dropdown"]),
         dcc.Dropdown(
             options=[
@@ -193,6 +188,7 @@ layout = html.Div(
             ],
             value="MTL",
         ),
+        html.Hr(),
         html.H4(["Slider"]),
         dcc.Slider(
             min=0, max=9, marks={i: "Label {}".format(i) for i in range(10)}, value=5
@@ -205,11 +201,28 @@ layout = html.Div(
             value=5,
             disabled=True,
         ),
+        html.Hr(),
         html.H4(["Range Slider"]),
         dcc.RangeSlider(count=1, min=-5, max=10, step=0.5, value=[-3, 7]),
+        html.Hr(),
         html.H4(["Simple Input"]),
         dcc.Input(placeholder="Enter a value...", type="text", value=""),
-        dcc.Input(placeholder="Disabled", type="text", value="", disabled=True),
+        dcc.Input(placeholder="Disabled", type="text", disabled=True),
+        html.Hr(),
+        html.H4(["Dropdown"]),
+        dcc.Dropdown(
+            options=[
+                {"label": "Label1", "value": 0},
+                {"label": "Label2", "value": 1},
+                {"label": "Label3", "value": 2},
+            ],
+            value=0,
+            searchable=False,
+            clearable=False,
+            multi=True,
+            #style={"width": "33%"},
+        ),
+        html.Hr(),
         html.H4(["Textarea"]),
         dcc.Textarea(
             placeholder="Enter a value...",
@@ -222,6 +235,7 @@ layout = html.Div(
             style={"width": "100%"},
             disabled=True,
         ),
+        html.Hr(),
         html.H4(["Checklist"]),
         dcc.Checklist(
             options=[
@@ -231,6 +245,7 @@ layout = html.Div(
             ],
             value=["MTL", "SF"],
         ),
+        html.Hr(),
         html.H4(["Radio items"]),
         dcc.RadioItems(
             options=[
@@ -240,6 +255,7 @@ layout = html.Div(
             ],
             value="MTL",
         ),
+        html.Hr(),
         html.H4(["Button"]),
         html.Button("Default", id="button"),
         html.Button("Disabled", id="button", disabled=True),

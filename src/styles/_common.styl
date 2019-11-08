@@ -20,7 +20,7 @@ footer
 
 
 hr
-  background-color $borderColor
+  background-color rgba($borderColor, 0.5)
   border-width 0
   height 2px
   width 100%
@@ -36,9 +36,9 @@ code
 table,
 table td,
 table th,
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td,
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th
-  background-color transparent
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td, td.focused,
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th, th.focused
+  background-color transparent !important
   font-family $primaryFont
   border-bottom .05rem solid $tableBorderColor !important
   border-left hidden !important

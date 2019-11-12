@@ -36,6 +36,9 @@
 
 ## Changelog
 
+### 1.4.3
+- Visual improvements
+
 ### 1.4.2
 
 - Improve simple tables. Using DataFrames, users may now reorient tables & group row by a label

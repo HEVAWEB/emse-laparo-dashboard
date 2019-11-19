@@ -250,12 +250,8 @@ def _make_v_regrouped_table(df: pd.DataFrame) -> html.Table:
         # First row need to define the `rowspan` of the 1st cell
         first_row = next(row_iterator)
         group_table_rows = [
-            html.Tr(
-                [
-                    html.Td([first_row[0]], rowSpan=rowspan),
-                    *[html.Td(cell) for cell in first_row[1:]],
-                ]
-            )
+            html.Tr([html.Td([first_row[0]], rowSpan=rowspan + 1),],),
+            html.Tr([*[html.Td(cell) for cell in first_row[1:]],]),
         ]
 
         # Then we add the following rows

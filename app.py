@@ -12,11 +12,16 @@ external_stylesheets = [
     "https://fonts.googleapis.com/css?family=Montserrat:700",
 ]
 
+external_scripts = [
+    "https://www.google-analytics.com/analytics.js"
+]
+
 server = Flask(__name__)
 app = dash.Dash(
     server=server,
     name=__name__,
     external_stylesheets=external_stylesheets,
+    external_scripts=external_scripts,
     serve_locally=False,
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
 )

@@ -2,6 +2,7 @@ import pathlib
 
 import dash_core_components as dcc
 import dash_html_components as html
+import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
@@ -89,6 +90,11 @@ app.layout = html.Div(
                 html.Span("© 2019"),
             ],
             className="footer",
+        ),
+        rgpd_dash.RgpdDash(
+            trackingCode="UA-75404337-15",
+            isDebug=False,
+            locale="fr"
         ),
     ]
 )

@@ -96,6 +96,14 @@ Pour la gestion des Cookies et des choix de l’Utilisateur, la configuration de
 À tout moment, l’Utilisateur peut faire le choix d’exprimer et de modifier ses souhaits en matière de Cookies.
 HEVA pourra en outre faire appel aux services de prestataires externes pour l’aider à recueillir et traiter les informations décrites dans cette section.
 
+Les cookies autres que les Cookies Nécessaires ne sont déposés sur vos terminaux qu’à condition que vous y consentiez. À tout moment, l’Utilisateur peut néanmoins revenir sur son consentement à ce que HEVA dépose ce type de cookies.
+
+##### Cookies analytics
+
+[//]: # (section)
+
+Vous consentez ou non à l’activation de traceurs sur votre terminal, afin de réaliser des mesures d’audiences et statistiques, visant à optimiser nos services et à répondre au mieux aux besoins des utilisateurs
+
 #### 10. Droit applicable et attribution de juridiction.
 
 Tout litige en relation avec l’utilisation du site {site} est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de LYON.

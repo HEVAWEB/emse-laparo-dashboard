@@ -1,18 +1,18 @@
 input[type="checkbox"],
 input[type="radio"]
-    display inline
+  display inline
 
 label
   margin-right 16px !important
+
   & > .label-body
-      display inline-block
-      margin-left .5rem
-      font-weight normal
+    display inline-block
+    margin-left .5rem
+    font-weight normal
 
 .form-label
   text-align right
   margin 20px
-
 
 .Select-control, input, textarea
   border-width 1px
@@ -24,53 +24,9 @@ label
   margin-right 8px
   margin-bottom 8px
   color $inkTextColor
-/*
-  &:hover
-    border-color $borderColorHover
-  &:focus
-    border-color $borderColorFocus
-  &::placeholder
-     color: $placeholderTextColor
-  &::-webkit-input-placeholder
-     color: $placeholderTextColor
-  &::-moz-placeholder
-     color: $placeholderTextColor
-  &::-moz-placeholder
-     color: $placeholderTextColor
-  &:-ms-input-placeholder
-     color: $placeholderTextColor
- &:disabled
-   border-color $borderColorDisabled
-   color $disabledTextColor
-   &:hover
-     border-color $borderColorDisabled
-   &::placeholder
-      color: $disabledTextColor
-   &::-webkit-input-placeholder
-      color: $$disabledTextColor
-   &::-moz-placeholder
-      color: $disabledTextColor
-   &::-moz-placeholder
-      color: $disabledTextColor
-   &:-ms-input-placeholder
-      color: $disabledTextColor
-
-.Select.is-focused:not(.is-open) > .Select-control
-  border-color $borderColorFocus
-  box-shadow: none
-
-.Select--multi .Select-value
-  border 1px solid rgba($linkTextColor, 0.24)
-  background-color rgba($linkTextColor, 0.08)
-  color: $linkTextColor
-  line-height 1.3
-
-.Select--multi .Select-value-icon
-  border-right 1px solid rgba($linkTextColor, 0.24)
-*/
 
 .Select-control
-  padding 0px
+  padding 0
 
 .VirtualizedSelectFocusedOption
   background-color rgba($linkTextColor, 0.08)

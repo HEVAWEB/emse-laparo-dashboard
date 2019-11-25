@@ -12,6 +12,8 @@ table = dash_table.DataTable(
     data=df_iris.to_dict(orient="records"),
     export_format="csv",
     sort_action="native",
+    style_table={"overflowX": "scroll"},
+    style_cell={"minWidth": "120px"},
 )
 
 layout = html.Div(
@@ -220,7 +222,7 @@ layout = html.Div(
             searchable=False,
             clearable=False,
             multi=True,
-            #style={"width": "33%"},
+            # style={"width": "33%"},
         ),
         html.Hr(),
         html.H4(["Textarea"]),
@@ -257,7 +259,7 @@ layout = html.Div(
         ),
         html.Hr(),
         html.H4(["Button"]),
-        html.Button("Default", id="button"),
-        html.Button("Disabled", id="button", disabled=True),
+        html.Button("Default"),
+        html.Button("Disabled", disabled=True),
     ]
 )

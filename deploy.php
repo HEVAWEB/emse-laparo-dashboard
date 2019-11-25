@@ -34,6 +34,13 @@ set('writable_dirs', ['logs']);
 set('allow_anonymous_stats', false);
 set('keep_releases', 1);
 
+set('domain', 'hevaweb.com');
+set('ovh_app_key', $_ENV['OVH_HEVAWEB_APP_KEY']);
+set('ovh_app_secret', $_ENV['OVH_HEVAWEB_APP_SECRET']);
+set('ovh_consumer_key', $_ENV['OVH_HEVAWEB_APP_CONSUMER_KEY']);
+set('ovh_target', '91.134.26.24');
+set('ovh_field_type', 'A');
+
 // Hosts
 host('production')
     ->hostname('172.16.11.55')
@@ -67,6 +74,7 @@ task('deploy', [
     'deploy:info',
     'deploy:prepare',
     'deploy:lock',
+    'ovh:add_subdomain',
     'deploy:release',
     'deploy:update_code',
     'upload',

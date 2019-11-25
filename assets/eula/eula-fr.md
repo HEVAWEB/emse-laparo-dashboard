@@ -4,14 +4,15 @@
 
 En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet {site} l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
 
-*Editeur* : SAS HEVA Capital social de 535800€ – 186 avenue Thiers 69006 LYON – France – SIRET : 48424846300024<br>
+*Editeur* : SAS HEVA Capital social de 53 580€ – 186 avenue Thiers 69006 LYON – France – SIRET : 48424846300024<br>
 *Responsables publication* : Alexandre VAINCHTOCK et Ludovic LAMARSALLE (Représentants légaux de la société HEVA)<br>
 *Hébergeur* : OVH – 2 rue Kellermann 59100 Roubaix – Tel : 1007<br>
 *Délégué à la protection des données* : KGA Avocats – 44 avenue des Champs Elysées 75008 PARIS France - dpo@hevaweb.com
 
 #### 2. Conditions générales d’utilisation du site et des services proposés
 
-Le Site constitue une œuvre de l’esprit protégée par les dispositions du Code de la Propriété Intellectuelle et des Réglementations Internationales applicables. Le Client ne peut en aucune manière réutiliser, céder ou exploiter pour son propre compte tout ou partie des éléments ou travaux du Site à l'exception des exports permis par le site.
+Le Site constitue une œuvre de l’esprit protégée par les dispositions du Code de la Propriété Intellectuelle et des Réglementations Internationales applicables.
+Le Client ne peut en aucune manière réutiliser, céder ou exploiter pour son propre compte tout ou partie des éléments ou travaux du Site à l'exception des exports permis par le site.
 
 L’utilisation du site {site} implique l’acceptation pleine et entière des conditions générales d’utilisation ci-après décrites.
 Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment, les utilisateurs du site {site} sont donc invités à les consulter de manière régulière.
@@ -96,7 +97,8 @@ Pour la gestion des Cookies et des choix de l’Utilisateur, la configuration de
 À tout moment, l’Utilisateur peut faire le choix d’exprimer et de modifier ses souhaits en matière de Cookies.
 HEVA pourra en outre faire appel aux services de prestataires externes pour l’aider à recueillir et traiter les informations décrites dans cette section.
 
-Les cookies autres que les Cookies Nécessaires ne sont déposés sur vos terminaux qu’à condition que vous y consentiez. À tout moment, l’Utilisateur peut néanmoins revenir sur son consentement à ce que HEVA dépose ce type de cookies.
+Les cookies autres que les Cookies Nécessaires ne sont déposés sur vos terminaux qu’à condition que vous y consentiez.
+À tout moment, l’Utilisateur peut néanmoins revenir sur son consentement à ce que HEVA dépose ce type de cookies.
 
 ##### Cookies analytics
 
@@ -106,4 +108,5 @@ Vous consentez ou non à l’activation de traceurs sur votre terminal, afin de 
 
 #### 10. Droit applicable et attribution de juridiction.
 
-Tout litige en relation avec l’utilisation du site {site} est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de LYON.
+Tout litige en relation avec l’utilisation du site {site} est soumis au droit français.
+En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de LYON.

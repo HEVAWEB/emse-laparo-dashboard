@@ -56,10 +56,23 @@ table thead th
   border-bottom 0.3rem solid $tableBorderColor !important
   font-weight 700
 
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th
+  .column-header-name
+    margin 0 3px
+
+  .column-header--sort svg.svg-inline--fa path
+    fill $sortIconColor !important
+
+
 .table.table-hover
   tr:hover, tbody tr:hover
     background-color $lightGrey
 
-table tr td.bordered-cell
-  border-left .05rem solid $tableBorderColor !important
+table tr tbody
+  th .column-header--sort
+    margin-right 2px !important
+    fill $primaryColor !important
+
+  td.bordered-cell
+    border-left .05rem solid $tableBorderColor !important
 

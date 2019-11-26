@@ -38,7 +38,7 @@ set('domain', 'hevaweb.com');
 set('ovh_app_key', $_ENV['OVH_HEVAWEB_APP_KEY']);
 set('ovh_app_secret', $_ENV['OVH_HEVAWEB_APP_SECRET']);
 set('ovh_consumer_key', $_ENV['OVH_HEVAWEB_APP_CONSUMER_KEY']);
-set('ovh_target', '91.134.26.24');
+set('ovh_target', '91.134.26.25');
 set('ovh_field_type', 'A');
 
 // Hosts

@@ -1,9 +1,15 @@
 import dash
+import toml
 from flask import Flask
-from heva_theme import config, set_style
+from heva_theme import config as plotconfig, set_style
 
 set_style()
-__all__ = ("app", "config")
+__all__ = ("app", "config", "plotconfig")
+
+config = toml.load("config.toml")
+config["lang"] = config.get("lang", "fr")
+
+plotconfig["locale"] = config["lang"]
 
 external_stylesheets = [
     "https://unpkg.com/spectre.css@0.5.8/dist/spectre.min.css",

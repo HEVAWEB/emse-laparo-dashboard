@@ -9,9 +9,6 @@ from app import app, config
 from apps import context, design, eula, gallery, method, results, variables
 from utils import __version__, translations
 
-# Dashboard language
-config["locale"] = "fr"
-
 # Client - study configuration
 CLIENT = "HEVA"
 STUDY = "Study"
@@ -86,15 +83,15 @@ app.layout = html.Div(
         html.Div(
             [
                 html.Span(f"v{__version__}"),
-                dcc.Link(translations["eula"][config["locale"]], href="/eula"),
+                dcc.Link(translations["eula"][config["lang"]], href="/eula"),
                 html.Span("© 2019"),
             ],
             className="footer",
         ),
         rgpd_dash.RgpdDash(
-            trackingCode="UA-75404337-15",
-            isDebug=False,
-            locale="fr"
+            trackingCode=config["tracking"]["code"],
+            isDebug=config["tracking"]["debug"],
+            locale=config["lang"],
         ),
     ]
 )

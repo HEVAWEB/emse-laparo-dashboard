@@ -27,7 +27,7 @@ menu = html.Ul(
         dcc.Link("Contexte", href="/context", className="nav-item"),
         dcc.Link("Zone 51", href="/design", className="nav-item"),
         dcc.Link("Méthodologie", href="/methods", className="nav-item"),
-        dcc.Link("Gallerie", href="/gallery", className="nav-item"),
+        dcc.Link("Galerie", href="/gallery", className="nav-item"),
         dcc.Link("Variables", href="/vars", className="nav-item"),
         dcc.Link("Résultats", href="/results", className="nav-item"),
     ],

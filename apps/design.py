@@ -3,7 +3,6 @@ import dash_html_components as html
 import dash_table
 import pandas as pd
 
-# Datatable
 import utils
 
 df_iris = pd.read_csv("builds/iris.csv")
@@ -199,7 +198,7 @@ layout = html.Div(
         dcc.Slider(
             min=0,
             max=9,
-            marks={i: "Disabled".format(i) for i in range(10)},
+            marks={i: "Disabled" for i in range(10)},
             value=5,
             disabled=True,
         ),
@@ -222,7 +221,6 @@ layout = html.Div(
             searchable=False,
             clearable=False,
             multi=True,
-            # style={"width": "33%"},
         ),
         html.Hr(),
         html.H4(["Textarea"]),

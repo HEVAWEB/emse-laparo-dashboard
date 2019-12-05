@@ -7,6 +7,7 @@ from .components import (
     table_from_df,
     table_from_md,
     takeaways,
+    toolbar,
     two_graphs,
 )
 
@@ -20,6 +21,7 @@ __all__ = (
     "table_from_df",
     "table_from_md",
     "takeaways",
+    "toolbar",
     "translations",
     "two_graphs",
 )

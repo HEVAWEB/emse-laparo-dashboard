@@ -96,89 +96,63 @@ layout = html.Div(
         html.H4("Data table"),
         table,
         html.H4("Toolbar"),
-        html.Div(
+        utils.toolbar(
             [
-                html.Form(
+                html.Div(
+                    [html.Label(["Indicateur"], className="form-label")],
+                    className="col-3 col-sm-12",
+                ),
+                html.Div(
                     [
-                        html.Div(
-                            [
-                                html.Div(
-                                    [
-                                        html.Label(
-                                            ["Indicateur"], className="form-label"
-                                        )
-                                    ],
-                                    className="col-3 col-sm-12",
-                                ),
-                                html.Div(
-                                    [
-                                        dcc.Dropdown(
-                                            options=[
-                                                {"label": "Label1", "value": 0},
-                                                {"label": "Label2", "value": 1},
-                                                {"label": "Label3", "value": 2},
-                                            ],
-                                            value=0,
-                                            searchable=False,
-                                            clearable=False,
-                                            multi=True,
-                                            id="ind-dropdown",
-                                        )
-                                    ],
-                                    className="col-9 col-sm-12",
-                                ),
-                                html.Div(
-                                    [
-                                        html.Label(
-                                            ["Granularité"], className="form-label"
-                                        )
-                                    ],
-                                    className="col-3 col-sm-12",
-                                ),
-                                html.Div(
-                                    [
-                                        dcc.RadioItems(
-                                            options=[
-                                                {"label": "Régionale", "value": "reg"},
-                                                {
-                                                    "label": "Départementale",
-                                                    "value": "dep",
-                                                },
-                                            ],
-                                            value="reg",
-                                            id="gran-dropdown",
-                                        )
-                                    ],
-                                    className="col-9 col-sm-12",
-                                ),
-                                html.Div(
-                                    [html.Label(["Année"], className="form-label")],
-                                    className="col-3 col-sm-12",
-                                ),
-                                html.Div(
-                                    [
-                                        dcc.Slider(
-                                            min=2017,
-                                            max=2019,
-                                            marks={
-                                                2017: "2017",
-                                                2018: "2018",
-                                                2019: "2019",
-                                            },
-                                            value=2019,
-                                            id="year-slider",
-                                        )
-                                    ],
-                                    className="col-4 col-sm-12",
-                                ),
+                        dcc.Dropdown(
+                            options=[
+                                {"label": "Label1", "value": 0},
+                                {"label": "Label2", "value": 1},
+                                {"label": "Label3", "value": 2},
                             ],
-                            className="form-group",
+                            value=0,
+                            searchable=False,
+                            clearable=False,
+                            multi=True,
+                            id="ind-dropdown",
                         )
                     ],
-                    className="form-horizontal",
-                )
-            ],
-            className="tools",
+                    className="col-9 col-sm-12",
+                ),
+                html.Div(
+                    [html.Label(["Granularité"], className="form-label")],
+                    className="col-3 col-sm-12",
+                ),
+                html.Div(
+                    [
+                        dcc.RadioItems(
+                            options=[
+                                {"label": "Régionale", "value": "reg"},
+                                {"label": "Départementale", "value": "dep",},
+                            ],
+                            value="reg",
+                            id="gran-dropdown",
+                        )
+                    ],
+                    className="col-9 col-sm-12",
+                ),
+                html.Div(
+                    [html.Label(["Année"], className="form-label")],
+                    className="col-3 col-sm-12",
+                ),
+                html.Div(
+                    [
+                        dcc.Slider(
+                            min=2017,
+                            max=2019,
+                            marks={2017: "2017", 2018: "2018", 2019: "2019",},
+                            value=2019,
+                            id="year-slider",
+                        )
+                    ],
+                    className="col-4 col-sm-12",
+                ),
+            ]
         ),
         html.H4(["Dropdown"]),
         dcc.Dropdown(

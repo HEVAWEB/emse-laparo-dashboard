@@ -3,7 +3,7 @@ import re
 from collections import Counter
 from itertools import islice
 from pathlib import Path
-from typing import Any, Optional, Union
+from typing import Any, Iterable, Optional, Union
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -336,3 +336,19 @@ def _make_h_regrouped_table(df: pd.DataFrame) -> html.Table:
         table.children.append(html.Tr([th, *tds]))
 
     return table
+
+
+def toolbar(form_entries: Iterable):
+    """Stylized toolbar for UI component
+
+    :param form_entries: Label & components
+    """
+    return html.Div(
+        [
+            html.Form(
+                [html.Div(children=form_entries, className="form-group",)],
+                className="form-horizontal",
+            )
+        ],
+        className="tools",
+    )

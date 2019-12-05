@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.4
+
+- Major improvements on deployment
+- Analytics cookies & RGPD compliance
+- Toolbar component
+- Quality checklist :white_check_mark:
+
 ## 1.4.3
 - Visual improvements
 

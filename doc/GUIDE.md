@@ -7,9 +7,10 @@
 3. [Getting Started : how to create a dashboard ?](#getting-started--how-to-create-a-dashboard)
    1. [Create your project on Gitlab](#create-your-project-on-gitlab)
       1. [New repository](#new-repository)
-      2. [**Option 1**: Command line](#option-1-command-line)
-      3. [**Option 2** : Sourcetree](#option-2--sourcetree)
+      2. [Option 1: Command line](#option-1-command-line)
+      3. [Option 2 : Sourcetree](#option-2--sourcetree)
    2. [Tame your Python 🐍](#tame-your-python-%f0%9f%90%8d)
+   3. [Add stylus for pretty dashboards](#add-stylus-for-pretty-dashboards)
 4. [Instructions](#instructions)
    1. [Where to start with ARTEMIS?](#where-to-start-with-artemis)
    2. [How to include text documents in the dashboard?](#how-to-include-text-documents-in-the-dashboard)
@@ -17,14 +18,14 @@
       1. [1. Plotly Graphing Libraries](#1-plotly-graphing-libraries)
       2. [2. Dash Callbacks](#2-dash-callbacks)
       3. [3. Export graphs](#3-export-graphs)
-   4. [What file(s) do I need to modify to\...](#what-files-do-i-need-to-modify-to)
+   4. [What file(s) do I need to modify to...](#what-files-do-i-need-to-modify-to)
       1. [Add/Remove a page?](#addremove-a-page)
       2. [Include an asset?](#include-an-asset)
       3. [Include graphs?](#include-graphs)
       4. [Define a callback in an app?](#define-a-callback-in-an-app)
       5. [Share something across apps?](#share-something-across-apps)
    5. [How to deploy a dashboard](#how-to-deploy-a-dashboard)
-   6. [How to update your dashboard with the template\'s latest developments](#how-to-update-your-dashboard-with-the-templates-latest-developments)
+   6. [How to update your dashboard with the template's latest developments](#how-to-update-your-dashboard-with-the-templates-latest-developments)
    7. [How to update the template with something from your dashboard](#how-to-update-the-template-with-something-from-your-dashboard)
    8. [What if my question is not listed here?](#what-if-my-question-is-not-listed-here)
 
@@ -169,6 +170,12 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
         ```bash
         deactivate
         ```
+
+### Add stylus for pretty dashboards
+
+1. Install latest LTS Node.js version https://nodejs.org/ and make sure `npm` is added to the PATH
+2. Open a Windows cmd or another terminal and install globally stylus `npm install -g stylus`
+3. For each dashboard you may then open a terminal at its root folder and launch the following command `npm run build`. This will build the `.css` file needed to style your dashboard.
 
 ## Instructions
 

@@ -2,11 +2,11 @@ appdirs==1.4.3
 attrs==19.3.0
 black==19.10b0
 Click==7.0
-dash==1.7.0
-dash-core-components==1.6.0
+dash==1.8.0
+dash-core-components==1.7.0
 dash-html-components==1.0.2
-dash-renderer==1.2.2
-dash-table==4.5.1
+dash-renderer==1.2.3
+dash-table==4.6.0
 Flask==1.1.1
 Flask-Compress==1.4.0
 future==0.18.2

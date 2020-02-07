@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.5 (dev)
+- Remove uneeded dependencies for a lighter deployment
+- New favicon
+
 ## 1.4.4
 
 - Major improvements on deployment

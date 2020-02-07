@@ -18,7 +18,11 @@ external_stylesheets = [
     "https://fonts.googleapis.com/css?family=Montserrat:700",
 ]
 
-external_scripts = ["https://cdn.plot.ly/plotly-locale-fr-latest.js"]
+
+external_scripts = (
+    ["https://cdn.plot.ly/plotly-locale-fr-latest.js"] if config["lang"] == "fr" else []
+)
+
 server = Flask(__name__)
 app = dash.Dash(
     server=server,

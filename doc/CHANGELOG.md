@@ -1,6 +1,8 @@
 # Changelog
 
 ## 1.4.5 (dev)
+
+- Expose HEVA's plotly theme in app.py for ease of use
 - Remove uneeded dependencies for a lighter deployment
 - New favicon
 

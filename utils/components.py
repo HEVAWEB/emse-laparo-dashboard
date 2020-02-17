@@ -7,8 +7,9 @@ from typing import Any, Iterable, Optional, Union
 
 import dash_core_components as dcc
 import dash_html_components as html
-import heva_theme
 import pandas as pd
+
+from app import plotconfig
 
 
 class MarkdownReader:
@@ -51,7 +52,7 @@ def graph(fig: Any, loading=True, config=None, **kwargs: Any) -> html.Div:
     :return: Html placeholder for graph
     """
 
-    graph_config = config if config else heva_theme.config
+    graph_config = config if config else plotconfig
 
     if loading:
         content = dcc.Loading(

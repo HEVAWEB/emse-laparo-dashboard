@@ -6,7 +6,7 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, design, eula, gallery, method, results, variables
+from apps import context, design, eula, gallery, method, results
 from utils import __version__, translations
 
 # Client - study configuration
@@ -28,7 +28,6 @@ menu = html.Ul(
         html.Li(dcc.Link("Zone 51", href="/design"), className="nav-item"),
         html.Li(dcc.Link("Méthodologie", href="/methods"), className="nav-item"),
         html.Li(dcc.Link("Galerie", href="/gallery"), className="nav-item"),
-        html.Li(dcc.Link("Variables", href="/vars"), className="nav-item"),
         html.Li(dcc.Link("Résultats", href="/results"), className="nav-item"),
     ],
     className="nav",
@@ -39,7 +38,6 @@ pages = {
     "/context": title + [context.layout],
     "/design": design.layout,
     "/methods": method.layout,
-    "/vars": variables.layout,
     "/results": results.layout,
     "/gallery": gallery.layout,
     "/eula": eula.layout,

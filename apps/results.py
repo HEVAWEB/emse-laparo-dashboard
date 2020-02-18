@@ -1,3 +1,5 @@
 import dash_html_components as html
 
-layout = html.Div([])
+import utils
+
+layout = html.Div([utils.markdown_content("Pas de contenu.")])

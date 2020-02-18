@@ -1,13 +1,64 @@
 .sidebar
+  background-color $bodyBackgroundColor
   display flex
   flex-direction column
-  position fixed
-  top 4rem
-  bottom 0
-  margin-left -5rem
+
+  section
+    flex-direction column
 
   ul
-    li
-      &::before
-        color transparent
-        margin-left 0
+    flex-direction column
+    margin-right 2rem
+    margin-left auto
+
+  .navbar
+    display flex
+    position sticky
+    top 4rem
+    flex-direction column
+
+    .nav-links
+      margin-top 2rem
+
+.sidebar-logo
+  max-width 80px
+  align-self flex-end
+  margin-right 2rem
+
+.logo-client
+  position fixed
+  bottom 4rem
+  align-self flex-end
+
+
+@media (max-width: 960px)
+  .sidebar
+    flex-direction row
+    align-items center
+
+    .navbar
+      top 0
+      position relative
+      flex-direction row
+      align-items start
+      width 100%
+      justify-content space-between
+      flex-wrap nowrap
+      margin 2rem 2rem 0 2rem
+
+      .navbar-section
+        flex-grow 0
+
+        .nav
+          text-align center
+
+      .nav-links
+        margin-top 0
+
+      .logo-client
+        position relative
+        bottom inherit
+        align-self inherit
+
+  .sidebar-logo
+    margin 0

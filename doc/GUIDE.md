@@ -375,9 +375,9 @@ Since all apps can access the `app.py` module namespace, if you need an asset in
 
 ### How to deploy a dashboard
 
-1.  Ask a developper to create the `.hevaweb.com` subdomain (same as the project name on GitLab)
-2.  Change the default authentication credentials in `identifiants.csv`
-3.  Push your changes to GitLab
+1.  Change the default authentication credentials in `identifiants.csv`
+2.  Push your changes to GitLab
+3.  Enable the `deployer_heva_dashboard` key (Git -> Settings -> Repository -> Deploys keys)
 4.  In **CI/CD** > **Pipelines**, wait for the job(s) to finish and then use the **Manual job** button on the right to deploy your dashboard.
 
 Feel free to reach a dev for help.

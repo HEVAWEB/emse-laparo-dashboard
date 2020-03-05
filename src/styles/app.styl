@@ -9,10 +9,15 @@
 #page-content
   background-color $contentBackgroundColor
   padding 0 4rem 0 4rem
+  overflow-x hidden
   h2:first-child
     margin-top 2rem
   .text:last-child
     margin-bottom 2rem
+
+@media (max-width: 960px)
+  #page-content
+    padding 0 2rem 0 2rem
 
 .bg-paper
   background $paperBackgroundColor !important

@@ -6,7 +6,7 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, design, eula, gallery, method, results, variables
+from apps import context, design, eula, gallery, method, results
 from utils import __version__, translations
 
 # Client - study configuration
@@ -24,12 +24,11 @@ title = [html.H2(CLIENT), html.H1(STUDY)]
 # Sidebar links: add/remove entries if needed
 menu = html.Ul(
     children=[
-        dcc.Link("Contexte", href="/context", className="nav-item"),
-        dcc.Link("Zone 51", href="/design", className="nav-item"),
-        dcc.Link("Méthodologie", href="/methods", className="nav-item"),
-        dcc.Link("Galerie", href="/gallery", className="nav-item"),
-        dcc.Link("Variables", href="/vars", className="nav-item"),
-        dcc.Link("Résultats", href="/results", className="nav-item"),
+        html.Li(dcc.Link("Contexte", href="/context"), className="nav-item"),
+        html.Li(dcc.Link("Zone 51", href="/design"), className="nav-item"),
+        html.Li(dcc.Link("Méthodologie", href="/methods"), className="nav-item"),
+        html.Li(dcc.Link("Galerie", href="/gallery"), className="nav-item"),
+        html.Li(dcc.Link("Résultats", href="/results"), className="nav-item"),
     ],
     className="nav",
 )
@@ -39,7 +38,6 @@ pages = {
     "/context": title + [context.layout],
     "/design": design.layout,
     "/methods": method.layout,
-    "/vars": variables.layout,
     "/results": results.layout,
     "/gallery": gallery.layout,
     "/eula": eula.layout,
@@ -54,31 +52,47 @@ app.layout = html.Div(
         html.Div(
             [
                 html.Div(
-                    children=[
+                    [
                         html.Div(
-                            [
-                                html.Img(
-                                    src=LOGO_HEVA, className="img-responsive logo_heva"
-                                )
+                            children=[
+                                html.Div(
+                                    [
+                                        html.Section(
+                                            [
+                                                html.Img(
+                                                    src=LOGO_HEVA,
+                                                    className="img-responsive sidebar-logo hide-xs",
+                                                )
+                                            ],
+                                            className="navbar-section",
+                                        ),
+                                        html.Section(
+                                            menu, className="navbar-section nav-links"
+                                        ),
+                                        html.Section(
+                                            [
+                                                html.Img(
+                                                    src=LOGO_HEVA,
+                                                    className="img-responsive sidebar-logo hide-xs",
+                                                )
+                                            ],
+                                            className="navbar-section  logo-client",
+                                        ),
+                                    ],
+                                    className="navbar",
+                                ),
                             ],
-                            className="logo-HEVA-container",
+                            className="column col-2 sidebar col-lg-12",
                         ),
-                        menu,
                         html.Div(
-                            [
-                                html.Img(
-                                    src=LOGO_CLIENT,
-                                    className="img-responsive logo-client",
-                                )
-                            ],
-                            className="logo-client-container",
+                            id="page-content",
+                            className="column col-10 col-ml-auto col-lg-12",
                         ),
                     ],
-                    className="column col-2 sidebar",
+                    className="columns col-gapless",
                 ),
-                html.Div(id="page-content", className="column col-10 col-ml-auto"),
             ],
-            className="columns col-gapless",
+            className="container",
         ),
         html.Div(
             [

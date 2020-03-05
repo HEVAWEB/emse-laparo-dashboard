@@ -2,6 +2,7 @@
 
 ## 1.4.5 (dev)
 
+- New sidebar menu, both the menu and the content are now a bit more responsive
 - Expose HEVA's plotly theme in app.py for ease of use
 - Remove uneeded dependencies for a lighter deployment
 - New favicon

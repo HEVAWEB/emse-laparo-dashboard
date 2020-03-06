@@ -72,7 +72,7 @@ app.layout = html.Div(
                                         html.Section(
                                             [
                                                 html.Img(
-                                                    src=LOGO_HEVA,
+                                                    src=LOGO_CLIENT,
                                                     className="img-responsive sidebar-logo hide-xs",
                                                 )
                                             ],

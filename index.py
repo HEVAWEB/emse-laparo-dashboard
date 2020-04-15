@@ -6,14 +6,14 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, design, eula, gallery, method, results
+from apps import context, eula, method, desc_cancer, evt_cancer, pec_cancer
 from utils import __version__, translations
 
 # Client - study configuration
-CLIENT = "HEVA"
-STUDY = "Study"
+CLIENT = "Pfizer"
+STUDY = "MTEV"
 LOGO_HEVA = "assets/logoHEVA_RVB.svg"
-LOGO_CLIENT = "assets/logoHEVA_RVB.svg"
+LOGO_CLIENT = "assets/pfizer.png"
 
 # Change the webpage tab title here if needed
 app.title = f"{CLIENT} {STUDY}"
@@ -25,10 +25,27 @@ title = [html.H2(CLIENT), html.H1(STUDY)]
 menu = html.Ul(
     children=[
         html.Li(dcc.Link("Contexte", href="/context"), className="nav-item"),
-        html.Li(dcc.Link("Zone 51", href="/design"), className="nav-item"),
         html.Li(dcc.Link("Méthodologie", href="/methods"), className="nav-item"),
-        html.Li(dcc.Link("Galerie", href="/gallery"), className="nav-item"),
-        html.Li(dcc.Link("Résultats", href="/results"), className="nav-item"),
+        html.Li(
+            dcc.Link(
+                "Description des patients avec MTEV par cancer d'intérêt",
+                href="/desc_cancer",
+            ),
+            className="nav-item",
+        ),
+        html.Li(
+            dcc.Link(
+                "Taux d'évènements de MTEV par cancer d'intérêt", href="/evt_cancer"
+            ),
+            className="nav-item",
+        ),
+        html.Li(
+            dcc.Link(
+                "Prise en charge des patients avec MTEV par cancer d'intérêt",
+                href="/pec_cancer",
+            ),
+            className="nav-item",
+        ),
     ],
     className="nav",
 )
@@ -36,13 +53,12 @@ pages = {
     # Default page
     "/": title + [context.layout],
     "/context": title + [context.layout],
-    "/design": design.layout,
     "/methods": method.layout,
-    "/results": results.layout,
-    "/gallery": gallery.layout,
+    "/desc_cancer": desc_cancer.layout,
+    "/evt_cancer": evt_cancer.layout,
+    "/pec_cancer": pec_cancer.layout,
     "/eula": eula.layout,
 }
-
 
 # You should not feel the need to modify the code bellow
 
@@ -118,7 +134,6 @@ def display_page(pathname):
 
 
 if __name__ == "__main__":
-
     # Watch md & built files for full reload
     content_path = pathlib.Path(__file__).parent / "assets"
     builds_path = pathlib.Path(__file__).parent / "builds"

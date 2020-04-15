@@ -352,4 +352,11 @@ def toolbar(form_entries: Iterable):
             )
         ],
         className="tools",
+        style={
+            # "position": "sticky",
+            # "top": "0",
+            # "padding": "0 4rem",
+            "zIndex": 10,
+        }
+
     )

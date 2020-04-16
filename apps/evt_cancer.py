@@ -1,4 +1,3 @@
-import dash_core_components as dcc
 import dash_html_components as html
 import numpy as np
 import pandas as pd
@@ -8,7 +7,7 @@ from dash.dependencies import Input, Output
 
 import utils
 from app import app
-from .common_cancer import OPTIONS_CANCER
+from .commons import toolbar
 
 TYPE_NAMES = {
     "total": "MTEV total",
@@ -51,26 +50,7 @@ del tx_t_df, tx_m_df, tx_tot_df
 layout = html.Div(
     [
         html.H3("Taux d'évènements de MTEV par cancer d'intérêt"),
-        utils.toolbar(
-            [
-                html.Div(
-                    [html.Label(["Cancer(s)"], className="form-label")],
-                    className="col-2 col-sm-12",
-                ),
-                html.Div(
-                    [
-                        dcc.Dropdown(
-                            id="tx-cancer-dropdown",
-                            options=OPTIONS_CANCER,
-                            multi=True,
-                            value=["Digestif bas", "Digestif haut", "Glioblastome"],
-                            clearable=False,
-                        ),
-                    ],
-                    className="col-10 col-sm-12",
-                ),
-            ]
-        ),
+        toolbar,
         html.Div([], id="fig-tx-tot"),
         utils.markdown_content("Commentaire des données à rajouter."),
         utils.takeaways("Conclusion à rajouter."),
@@ -79,23 +59,14 @@ layout = html.Div(
 
 
 @app.callback(Output("fig-tx-tot", "children"), [Input("tx-cancer-dropdown", "value")])
-def update_figures(cancers):
+def update_figure(cancers):
     sub_ds = ds.sel(cancer=cancers)
     size_ref = sub_ds["n_mtev"].max().item() / 30 ** 2
 
-    if len(cancers) <= 5:
-        fig = create_fig_few_points(sub_ds, size_ref)
-    else:
-        fig = create_fig_many_points(sub_ds, size_ref)
-
-    return utils.graph(fig)
-
-
-def create_fig_few_points(ds: xr.Dataset, size_ref):
     data = []
 
-    ds = ds.sortby(ds.sel(type="total")["tx"], ascending=False)
-    for name, da in ds.groupby("type"):
+    sub_ds = sub_ds.sortby(sub_ds.sel(type="total")["tx"], ascending=False)
+    for name, da in sub_ds.groupby("type"):
         da = da.squeeze("type", drop=True)
 
         full_name = TYPE_NAMES.get(name)
@@ -115,17 +86,18 @@ def create_fig_few_points(ds: xr.Dataset, size_ref):
                 text=da["n_mtev"],
                 customdata=da["n"],
                 hovertemplate="<b>%{x}</b><br>"
-                "N total : <b>%{customdata}</b><br>"
-                f"N {full_name} : <b>"
-                "%{text}</b><br>"
-                "Taux : <b>%{y:.1%}</b><extra></extra>",
+                              "N total : <b>%{customdata}</b><br>"
+                              f"N {full_name} : <b>"
+                              "%{text}</b><br>"
+                              "Taux : <b>%{y:.1%}</b><extra></extra>",
             )
         )
 
     fig = go.Figure(
         data=data,
         layout={
-            "title": "Taux d'événements de MTEV par cancer",
+            "title": "Taux d'événements de MTEV par cancer<br><span style='font-size:12'>"
+                     "La taille des bulles représente le nombre de patients concernés</span>",
             "yaxis": {
                 "tickformat": ".1%",
                 "title": "Taux d'événements",
@@ -137,54 +109,5 @@ def create_fig_few_points(ds: xr.Dataset, size_ref):
             "margin": {"pad": 5},
         },
     )
-    return fig
+    return utils.graph(fig)
 
-
-def create_fig_many_points(ds: xr.Dataset, size_ref):
-    data = []
-
-    ds = ds.sortby(ds.sel(type="total")["tx"], ascending=True)
-    for name, da in ds.groupby("type"):
-        da = da.squeeze("type", drop=True)
-
-        full_name = TYPE_NAMES.get(name)
-
-        data.append(
-            go.Scatter(
-                y=da["cancer"],
-                x=da["tx"],
-                marker={
-                    "size": da["n_mtev"],
-                    "sizemin": 3,
-                    "sizeref": size_ref,
-                    "sizemode": "area",
-                },
-                mode="markers",
-                name=full_name,
-                text=da["n_mtev"],
-                customdata=da["n"],
-                hovertemplate="<b>%{y}</b><br>"
-                "N total : <b>%{customdata}</b><br>"
-                f"N {full_name} : <b>"
-                "%{text}</b><br>"
-                "Taux : <b>%{x:.1%}</b><extra></extra>",
-            )
-        )
-
-    fig = go.Figure(
-        data=data,
-        layout={
-            "title": "Taux d'événements de MTEV par cancer",
-            "xaxis": {
-                "tickformat": ".1%",
-                "title": "Taux d'événements",
-                "rangemode": "tozero",
-                "zerolinecolor": "#9491AD",
-            },
-            "yaxis": {"automargin": True},
-            "hovermode": "closest",
-            "legend": {"title": "Dénombrement"},
-            "margin": {"pad": 5},
-        },
-    )
-    return fig

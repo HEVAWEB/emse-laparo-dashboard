@@ -1,0 +1,15 @@
+Cancer;N patients;Moyenne;Ecart type;Minimum;Q1;Médiane;Q3;Maximum
+Digestif bas; 7 011   ; 1.4   ; 1.2   ; 1   ; 1   ; 1   ; 1   ; 54   
+Digestif haut; 2 232   ; 1.4   ; 1.3   ; 1   ; 1   ; 1   ; 1   ; 34   
+Glioblastome; 883   ; 1.3   ; 0.8   ; 1   ; 1   ; 1   ; 1   ; 9   
+Gynécologique; 3 580   ; 1.4   ; 1.1   ; 1   ; 1   ; 1   ; 2   ; 21   
+Lymphome; 2 093   ; 1.5   ; 1.0   ; 1   ; 1   ; 1   ; 2   ; 14   
+Mélanome; 550   ; 1.6   ; 1.5   ; 1   ; 1   ; 1   ; 2   ; 18   
+Myélome; 2 080   ; 1.5   ; 1.8   ; 1   ; 1   ; 1   ; 2   ; 41   
+ORL; 1 746   ; 1.4   ; 1.4   ; 1   ; 1   ; 1   ; 1   ; 44   
+Pancréas; 3 237   ; 1.4   ; 1.5   ; 1   ; 1   ; 1   ; 1   ; 34   
+Poumon; 8 339   ; 1.5   ; 1.3   ; 1   ; 1   ; 1   ; 2   ; 40   
+Prostate; 1 959   ; 1.3   ; 0.9   ; 1   ; 1   ; 1   ; 1   ; 21   
+Sein; 3 614   ; 1.3   ; 1.0   ; 1   ; 1   ; 1   ; 1   ; 22   
+Testicule; 213   ; 1.7   ; 1.4   ; 1   ; 1   ; 1   ; 2   ; 9   
+Urothélial; 2 901   ; 1.4   ; 0.8   ; 1   ; 1   ; 1   ; 1   ; 13   

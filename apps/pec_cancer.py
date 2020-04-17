@@ -36,6 +36,8 @@ sej_df = pd.read_csv(
     "builds/pec_k_sej.csv", encoding="cp1252", sep=";", thousands=" "
 ).sort_values(by="Moyenne", ascending=False)
 
+counting_template = "%{y:.2%}<br>%{text} patient(s)"
+
 layout = html.Div(
     [
         html.H3("Prise en charge des patients avec MTEV par cancer d'intérêt"),
@@ -56,31 +58,35 @@ layout = html.Div(
 )
 def update_pass_figure(cancers):
     df = pass_df.loc[pass_df["Cancer"].isin(cancers)]
+    norm_serie = sej_df.loc[sej_df["Cancer"].isin(cancers)]["N patients"]
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Réanimation"],
+                y=df["Réanimation"] / norm_serie,
                 text=df["Réanimation"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Réanimation",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Soins intensifs"],
+                y=df["Soins intensifs"] / norm_serie,
                 text=df["Soins intensifs"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Soins intensifs",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Surveillance continue"],
+                y=df["Surveillance continue"] / norm_serie,
                 text=df["Surveillance continue"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Surveillance continue",
@@ -88,9 +94,10 @@ def update_pass_figure(cancers):
         ],
         layout={
             "title": "Dénombrement des patients par type de passage",
-            "yaxis": {"title": "Nombre de patients"},
+            "yaxis": {"title": "Nombre de patients", "tickformat": ".1%"},
             "legend_title": "Type de passage",
-            "margin": {"pad": 5, "t": 60, "l": 50, "r": 0},
+            "margin": {"pad": 5, "t": 60, "l": 60, "r": 0},
+            "bargroupgap": 0.05,
         },
     )
     if len(cancers) > 6:
@@ -103,31 +110,36 @@ def update_pass_figure(cancers):
 )
 def update_proc_figure(cancers):
     df = proc_df.loc[proc_df["Cancer"].isin(cancers)]
+    norm_series = sej_df.loc[sej_df["Cancer"].isin(cancers)]["N patients"]
+
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Thromvectomie"],
+                y=df["Thromvectomie"] / norm_series,
                 text=df["Thromvectomie"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Thromvectomie",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Thromboaspiration"],
+                y=df["Thromboaspiration"] / norm_series,
                 text=df["Thromboaspiration"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Thromboaspiration",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Fibrinolyse"],
+                y=df["Fibrinolyse"] / norm_series,
                 text=df["Fibrinolyse"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Fibrinolyse",
@@ -135,9 +147,10 @@ def update_proc_figure(cancers):
         ],
         layout={
             "title": "Dénombrement des patients par procédure réalisée",
-            "yaxis": {"title": "Nombre de patients"},
+            "yaxis": {"title": "Nombre de patients", "tickformat": ".1%"},
             "legend_title": "Procédure",
-            "margin": {"pad": 5, "t": 60, "l": 50, "r": 0},
+            "margin": {"pad": 5, "t": 60, "l": 60, "r": 0},
+            "bargroupgap": 0.05,
         },
     )
     if len(cancers) > 6:
@@ -148,32 +161,41 @@ def update_proc_figure(cancers):
 @app.callback(Output("fig-pec-urg", "children"), [Input("tx-cancer-dropdown", "value")])
 def update_urg_figure(cancers):
     df = urg_df.loc[urg_df["Cancer"].isin(cancers)]
+    norm_series = costs_df.loc[costs_df["Cancer"].isin(cancers)]["n (séjours)"]
+
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Oui"],
+                y=df["Oui"] / norm_series,
                 text=df["Oui"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Oui",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Non"],
+                y=df["Non"] / norm_series,
                 text=df["Non"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Non",
             ),
         ],
         layout={
-            "title": "Dénombrement des patients par mode d'arrivée",
-            "yaxis": {"title": "Nombre de patients", "autorange": True},
+            "title": "Dénombrement des séjours par mode d'arrivée",
+            "yaxis": {
+                "title": "Nombre de patients",
+                "autorange": True,
+                "tickformat": ".1%",
+            },
             "legend_title": "Arrivée par les urgences",
-            "margin": {"pad": 5, "t": 60, "l": 50, "r": 0},
+            "margin": {"pad": 5, "t": 60, "l": 60, "r": 0},
+            "bargroupgap": 0.05,
         },
     )
     if len(cancers) > 6:
@@ -184,59 +206,71 @@ def update_urg_figure(cancers):
 @app.callback(Output("fig-pec-out", "children"), [Input("tx-cancer-dropdown", "value")])
 def update_out_figure(cancers):
     df = out_df.loc[out_df["Cancer"].isin(cancers)]
+    norm_series = costs_df.loc[costs_df["Cancer"].isin(cancers)]["n (séjours)"]
+
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Retour au domicile"],
+                y=df["Retour au domicile"] / norm_series,
                 text=df["Retour au domicile"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Retour au domicile",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Transfert définitif"],
+                y=df["Transfert définitif"] / norm_series,
                 text=df["Transfert définitif"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Transfert définitif",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Transfert provisoire "],
+                y=df["Transfert provisoire "] / norm_series,
                 text=df["Transfert provisoire "],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Transfert provisoire ",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Mutation vers une autre unité médicale"],
+                y=df["Mutation vers une autre unité médicale"] / norm_series,
                 text=df["Mutation vers une autre unité médicale"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Mutation vers<br>une autre unité médicale",
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Décès"],
+                y=df["Décès"] / norm_series,
                 text=df["Décès"],
-                hoverinfo="text+name",
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
                 textposition="outside",
                 textfont_size=10,
                 name="Décès",
             ),
         ],
         layout={
-            "title": "Dénombrement des patients par mode de sortie",
-            "yaxis": {"title": "Nombre de patients", "autorange": True},
+            "title": "Dénombrement des séjours par mode de sortie",
+            "yaxis": {
+                "title": "Nombre de patients",
+                "autorange": True,
+                "tickformat": ".1%",
+            },
             "legend_title": "Mode de sortie",
-            "margin": {"pad": 5, "t": 60, "l": 50, "r": 0},
+            "margin": {"pad": 5, "t": 60, "l": 60, "r": 0},
+            "bargroupgap": 0.05,
         },
     )
     if len(cancers) > 6:
@@ -258,7 +292,7 @@ def update_costs_figure(cancers):
                 "range": [0, 15000],
                 "ticksuffix": " €",
             },
-            "margin": {"pad": 5, "t": 60, "l": 50},
+            "margin": {"pad": 5, "t": 60, "l": 60},
         },
     )
     fig.update_traces(
@@ -299,7 +333,7 @@ def update_sej_dur_figure(cancers):
         layout={
             "title": "Distribution des durées de séjour",
             "yaxis": {"title": "Durée de séjour", "range": [0, 25], "ticksuffix": " j"},
-            "margin": {"pad": 5, "t": 60, "l": 50},
+            "margin": {"pad": 5, "t": 60, "l": 60},
         },
     )
     fig.update_traces(

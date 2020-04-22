@@ -10,19 +10,15 @@ from .commons import toolbar
 
 pass_df = pd.read_csv(
     "builds/pec_k_pass.csv", encoding="cp1252", sep=";", thousands=" "
-).sort_values(by="Soins intensifs", ascending=False)
+)
 
 proc_df = pd.read_csv(
     "builds/pec_k_proc.csv", encoding="cp1252", sep=";", thousands=" "
-).sort_values(by="Thromboaspiration", ascending=False)
+)
 
-urg_df = pd.read_csv(
-    "builds/pec_k_urg.csv", encoding="cp1252", sep=";", thousands=" "
-).sort_values(by="Oui", ascending=False)
+urg_df = pd.read_csv("builds/pec_k_urg.csv", encoding="cp1252", sep=";", thousands=" ")
 
-out_df = pd.read_csv(
-    "builds/pec_k_out.csv", encoding="cp1252", sep=";", thousands=" "
-).sort_values(by="Retour au domicile", ascending=False)
+out_df = pd.read_csv("builds/pec_k_out.csv", encoding="cp1252", sep=";", thousands=" ")
 
 costs_df = pd.read_csv(
     "builds/pec_k_costs.csv", encoding="cp1252", sep=";", thousands=" "
@@ -57,13 +53,20 @@ layout = html.Div(
     Output("fig-pec-pass", "children"), [Input("tx-cancer-dropdown", "value")]
 )
 def update_pass_figure(cancers):
-    df = pass_df.loc[pass_df["Cancer"].isin(cancers)]
-    norm_serie = sej_df.loc[sej_df["Cancer"].isin(cancers)]["N patients"]
+    df = (
+        pass_df.loc[pass_df["Cancer"].isin(cancers)]
+        .assign(
+            norm=sej_df.loc[sej_df["Cancer"].isin(cancers)]["N patients"],
+            sorter=lambda x: x["Soins intensifs"] / x["norm"],
+        )
+        .sort_values(by="sorter", ascending=False)
+    )
+
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Réanimation"] / norm_serie,
+                y=df["Réanimation"] / df["norm"],
                 text=df["Réanimation"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -73,7 +76,7 @@ def update_pass_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Soins intensifs"] / norm_serie,
+                y=df["Soins intensifs"] / df["norm"],
                 text=df["Soins intensifs"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -83,7 +86,7 @@ def update_pass_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Surveillance continue"] / norm_serie,
+                y=df["Surveillance continue"] / df["norm"],
                 text=df["Surveillance continue"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -109,14 +112,21 @@ def update_pass_figure(cancers):
     Output("fig-pec-proc", "children"), [Input("tx-cancer-dropdown", "value")]
 )
 def update_proc_figure(cancers):
-    df = proc_df.loc[proc_df["Cancer"].isin(cancers)]
-    norm_series = sej_df.loc[sej_df["Cancer"].isin(cancers)]["N patients"]
+
+    df = (
+        proc_df.loc[proc_df["Cancer"].isin(cancers)]
+        .assign(
+            norm=sej_df.loc[sej_df["Cancer"].isin(cancers)]["N patients"],
+            sorter=lambda x: x["Thromboaspiration"] / x["norm"],
+        )
+        .sort_values(by="sorter", ascending=False)
+    )
 
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Thromvectomie"] / norm_series,
+                y=df["Thromvectomie"] / df["norm"],
                 text=df["Thromvectomie"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -126,7 +136,7 @@ def update_proc_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Thromboaspiration"] / norm_series,
+                y=df["Thromboaspiration"] / df["norm"],
                 text=df["Thromboaspiration"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -136,7 +146,7 @@ def update_proc_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Fibrinolyse"] / norm_series,
+                y=df["Fibrinolyse"] / df["norm"],
                 text=df["Fibrinolyse"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -160,14 +170,21 @@ def update_proc_figure(cancers):
 
 @app.callback(Output("fig-pec-urg", "children"), [Input("tx-cancer-dropdown", "value")])
 def update_urg_figure(cancers):
-    df = urg_df.loc[urg_df["Cancer"].isin(cancers)]
-    norm_series = costs_df.loc[costs_df["Cancer"].isin(cancers)]["n (séjours)"]
+
+    df = (
+        urg_df.loc[urg_df["Cancer"].isin(cancers)]
+        .assign(
+            norm=costs_df.loc[costs_df["Cancer"].isin(cancers)]["n (séjours)"],
+            sorter=lambda x: x["Oui"] / x["norm"],
+        )
+        .sort_values(by="sorter", ascending=False)
+    )
 
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Oui"] / norm_series,
+                y=df["Oui"] / df["norm"],
                 text=df["Oui"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -177,7 +194,7 @@ def update_urg_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Non"] / norm_series,
+                y=df["Non"] / df["norm"],
                 text=df["Non"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -196,6 +213,7 @@ def update_urg_figure(cancers):
             "legend_title": "Arrivée par les urgences",
             "margin": {"pad": 5, "t": 60, "l": 60, "r": 0},
             "bargroupgap": 0.05,
+            "barmode": "stack",
         },
     )
     if len(cancers) > 6:
@@ -205,14 +223,21 @@ def update_urg_figure(cancers):
 
 @app.callback(Output("fig-pec-out", "children"), [Input("tx-cancer-dropdown", "value")])
 def update_out_figure(cancers):
-    df = out_df.loc[out_df["Cancer"].isin(cancers)]
-    norm_series = costs_df.loc[costs_df["Cancer"].isin(cancers)]["n (séjours)"]
+
+    df = (
+        out_df.loc[out_df["Cancer"].isin(cancers)]
+        .assign(
+            norm=costs_df.loc[costs_df["Cancer"].isin(cancers)]["n (séjours)"],
+            sorter=lambda x: x["Retour au domicile"] / x["norm"],
+        )
+        .sort_values(by="sorter", ascending=False)
+    )
 
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Retour au domicile"] / norm_series,
+                y=df["Retour au domicile"] / df["norm"],
                 text=df["Retour au domicile"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -222,7 +247,7 @@ def update_out_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Transfert définitif"] / norm_series,
+                y=df["Transfert définitif"] / df["norm"],
                 text=df["Transfert définitif"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -232,7 +257,7 @@ def update_out_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Transfert provisoire "] / norm_series,
+                y=df["Transfert provisoire "] / df["norm"],
                 text=df["Transfert provisoire "],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -242,7 +267,7 @@ def update_out_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Mutation vers une autre unité médicale"] / norm_series,
+                y=df["Mutation vers une autre unité médicale"] / df["norm"],
                 text=df["Mutation vers une autre unité médicale"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,
@@ -252,7 +277,7 @@ def update_out_figure(cancers):
             ),
             go.Bar(
                 x=df["Cancer"],
-                y=df["Décès"] / norm_series,
+                y=df["Décès"] / df["norm"],
                 text=df["Décès"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_template,

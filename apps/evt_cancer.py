@@ -11,7 +11,7 @@ from .commons import toolbar
 
 TYPE_NAMES = {
     "total": "MTEV total",
-    "m": "Embolie pulmonaire",
+    "m": "Embolie",
     "t": "Thrombose veineuse",
 }
 
@@ -85,11 +85,10 @@ def update_figure(cancers):
                 name=full_name,
                 text=da["n_mtev"],
                 customdata=da["n"],
-                hovertemplate="<b>%{x}</b><br>"
-                              "N total : <b>%{customdata}</b><br>"
-                              f"N {full_name} : <b>"
+                hovertemplate="N total : <b>%{customdata}</b><br>"
+                              f"N patients : <b>"
                               "%{text}</b><br>"
-                              "Taux : <b>%{y:.1%}</b><extra></extra>",
+                              "Taux : <b>%{y:.1%}",
             )
         )
 

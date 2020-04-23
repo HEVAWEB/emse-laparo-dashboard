@@ -22,11 +22,11 @@ out_df = pd.read_csv("builds/pec_k_out.csv", encoding="cp1252", sep=";", thousan
 
 costs_df = pd.read_csv(
     "builds/pec_k_costs.csv", encoding="cp1252", sep=";", thousands=" "
-).sort_values(by="Moyenne", ascending=False)
+).sort_values(by="Médiane", ascending=False)
 
 sej_dur_df = pd.read_csv(
     "builds/pec_k_sej_dur.csv", encoding="cp1252", sep=";", thousands=" "
-).sort_values(by="Moyenne", ascending=False)
+).sort_values(by="Médiane", ascending=False)
 
 sej_df = pd.read_csv(
     "builds/pec_k_sej.csv", encoding="cp1252", sep=";", thousands=" "

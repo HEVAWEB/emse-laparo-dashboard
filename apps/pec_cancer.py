@@ -97,7 +97,7 @@ def update_pass_figure(cancers):
         ],
         layout={
             "title": "Dénombrement des patients par type de passage",
-            "yaxis": {"title": "Nombre de patients", "tickformat": ".1%"},
+            "yaxis": {"title": "Proportion des patients", "tickformat": ".1%"},
             "legend_title": "Type de passage",
             "margin": {"pad": 5, "t": 60, "l": 60, "r": 0},
             "bargroupgap": 0.05,
@@ -157,7 +157,7 @@ def update_proc_figure(cancers):
         ],
         layout={
             "title": "Dénombrement des patients par procédure réalisée",
-            "yaxis": {"title": "Nombre de patients", "tickformat": ".1%"},
+            "yaxis": {"title": "Proportion des patients", "tickformat": ".1%"},
             "legend_title": "Procédure",
             "margin": {"pad": 5, "t": 60, "l": 60, "r": 0},
             "bargroupgap": 0.05,
@@ -206,7 +206,7 @@ def update_urg_figure(cancers):
         layout={
             "title": "Dénombrement des séjours par mode d'arrivée",
             "yaxis": {
-                "title": "Nombre de patients",
+                "title": "Proportion des séjours",
                 "autorange": True,
                 "tickformat": ".1%",
             },
@@ -289,7 +289,7 @@ def update_out_figure(cancers):
         layout={
             "title": "Dénombrement des séjours par mode de sortie",
             "yaxis": {
-                "title": "Nombre de patients",
+                "title": "Proportion des séjours",
                 "autorange": True,
                 "tickformat": ".1%",
             },

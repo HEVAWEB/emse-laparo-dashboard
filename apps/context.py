@@ -2,5 +2,8 @@ import dash_html_components as html
 
 import utils
 
-# Define the page's content
-layout = html.Div([utils.markdown_content("Pas de contenu.")])
+
+with open("assets\contents\context.md", "r", encoding="utf-8") as f:
+    content = utils.markdown_content(f.read())
+
+layout = html.Div([content])

@@ -52,8 +52,9 @@ layout = html.Div(
         html.H3("Taux d'évènements de MTEV par cancer d'intérêt"),
         toolbar,
         html.Div([], id="fig-tx-tot"),
-        utils.markdown_content("Commentaire des données à rajouter."),
-        utils.takeaways("Conclusion à rajouter."),
+        utils.takeaways("Le cancer du pancréas présente le plus fort taux d'évènement MTEV "
+                        "par patients (14.5%), le cancer du poumon présente le plus grands "
+                        "nombre de patients ayant un événement MTEV (8339)."),
     ]
 )
 

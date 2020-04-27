@@ -66,6 +66,11 @@ L'étude rétrospective sur l’année précédente permet d’étudier la duré
     <figcaption class="figure-caption text-center">Schéma de la période d'étude</figcaption>
 </figure>
 
+<figure class="figure">
+    <img src="assets/comorbs.png" class="img-responsive p-centered" alt="Figure. Recherche des comorbidités"  style="max-height: 300px"/>
+    <figcaption class="figure-caption text-center">Recherche des comorbidités</figcaption>
+</figure>
+
 
 
 

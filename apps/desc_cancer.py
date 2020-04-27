@@ -351,8 +351,7 @@ def update_comor_focus_figure(cancers):
             ),
         ],
         layout={
-            "title": "Dénombrement des patients par comorbidité<br>"
-            "<span style='font-size:12px'>Focus sur les chimiothérapies</span>",
+            "title": "Dénombrement des patients par chimiothérapies",
             "yaxis": {
                 "title": "Proportion des patients",
                 "autorange": True,

@@ -1,10 +1,9 @@
 Les utilisateurs disposent ainsi des espaces suivants :
 
-**À changer**
+- Contexte : permet de présenter les objectifs principaux et secondaires de l'étude
+- Méthodologie : présente la sélection de la population d'étude ainsi que la période de suivi
+- Description des patients avec MTEV par cancer d'intérêt : restitution des résultats
+- Taux d'évènements de MTEV par cancer d'intérêt : restitution des résultats
+- Prise en charge des patients avec MTEV par cancer d'intérêt : restitution des résultats
 
-- Contexte  : permet de présenter les objectifs principaux et secondaires de l'étude, la pathologie et la population d'étude, etc.
-- Suivi des indicateurs : restitution de résultats sous formes de graphes, de cartes interactives et d’exports de données.
-- Galerie : restitutions interactives complémentaires
-- Méthodologie : permet de décrire la méthodologie de l’études à travers notamment les plans d'analyses statistiques, les étapes de traitement des données, des annexes, etc.
-
-L’analyse des données a été faite à partir de **Décrire ici la source de données/ l’etude/ autorisation CNIL/ MR006 …**.
+L’analyse des données a été faite à partir des données PMSI MCO 2014 à 2018.

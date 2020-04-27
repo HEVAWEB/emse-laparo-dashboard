@@ -109,7 +109,7 @@ def update_age_dist_figure(cancers):
         }
     )
 
-    fig.update_yaxes(tickformat=".0%")
+    fig.update_yaxes(tickformat=".0%", range=[0, .2])
     fig.update_xaxes(title_text="Âge", row=n_cancers, col=1)
 
     return utils.graph(fig)
@@ -223,7 +223,7 @@ def update_meta_figure(cancers):
 def update_comor_figure(cancers):
     df = (
         comor_df.loc[comor_df["Cancer"].isin(cancers)]
-        .assign(sorter=lambda x: x["Chimio. Total"] / x["Total"],)
+        .assign(sorter=lambda x: x["Chirurgie"] / x["Total"],)
         .sort_values(by="sorter", ascending=False)
     )
 
@@ -279,16 +279,6 @@ def update_comor_figure(cancers):
                 textfont_size=10,
                 name="Grossesse",
             ),
-            go.Bar(
-                x=df["Cancer"],
-                y=df["Chimio. Total"] / df["Total"],
-                text=df["Chimio. Total"],
-                texttemplate="%{y:.1%}",
-                hovertemplate=counting_template,
-                textposition="outside",
-                textfont_size=10,
-                name="Chimio.",
-            ),
         ],
         layout={
             "title": "Dénombrement des patients par comorbidité",
@@ -319,6 +309,16 @@ def update_comor_focus_figure(cancers):
 
     fig = go.Figure(
         data=[
+            go.Bar(
+                x=df["Cancer"],
+                y=df["Chimio. Total"] / df["Total"],
+                text=df["Chimio. Total"],
+                texttemplate="%{y:.1%}",
+                hovertemplate=counting_template,
+                textposition="outside",
+                textfont_size=10,
+                name="Total",
+            ),
             go.Bar(
                 x=df["Cancer"],
                 y=df["Chimio. GHS"] / df["Total"],

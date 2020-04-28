@@ -66,7 +66,7 @@ app.layout = html.Div(
                                             className="navbar-section",
                                         ),
                                         html.Section(
-                                            id="navbar-section",
+                                            id="navbar-menu",
                                             className="navbar-section nav-links",
                                         ),
                                         html.Section(
@@ -112,7 +112,7 @@ app.layout = html.Div(
 
 
 @app.callback(
-    [Output("page-content", "children"), Output("navbar-section", "children")],
+    [Output("page-content", "children"), Output("navbar-menu", "children")],
     [Input("url", "pathname")],
 )
 def display_page(pathname):
@@ -125,7 +125,7 @@ def display_page(pathname):
     children_menu = [
         html.Li(dcc.Link(title, href=href), className="nav-item")
         if href != pathname
-        else html.Li(dcc.Link(title, href=href), className="nav-item-focus")
+        else html.Li(dcc.Link(title, href=href), className="nav-item nav-item-focus")
         for href, title in navbar_titles.items()
     ]
 

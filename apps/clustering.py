@@ -38,7 +38,7 @@ layout = html.Div(
         html.Div(id="type_selector_out"),
         html.Div(
             [
-                content[3],
+                content[2],
                 dcc.Dropdown(
                     id="patient_selector_in",
                     clearable=False)

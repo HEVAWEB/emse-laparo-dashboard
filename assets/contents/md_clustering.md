@@ -1,67 +1,15 @@
-# Clustering
-
-**TO DO**
-
-TO DO
+## Clustering analysis
 
 [//]: # (section)
 
-**TO DO**
+**Number of clusters**
 
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
+Please select a number of clusters:
 
 [//]: # (section)
 
-**TO DO**
+**Detail of each cluster**
 
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
-
-[//]: # (section)
-
-**TO DO**
-
-TO DO
+Please select a cluster:
 
 [//]: # (section)

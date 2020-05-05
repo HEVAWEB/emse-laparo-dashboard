@@ -13,7 +13,7 @@ from utils import __version__, translations
 CLIENT = "EMSE"
 STUDY = "Laparotomy"
 LOGO_HEVA = "assets/logoHEVA_RVB.svg"
-LOGO_CLIENT = "assets/logoHEVA_RVB.svg"
+LOGO_CLIENT = "assets/logoEMSE_RVB.png"
 
 # Change the webpage tab title here if needed
 app.title = f"{CLIENT} {STUDY}"

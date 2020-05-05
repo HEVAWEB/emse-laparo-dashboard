@@ -6,12 +6,12 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, design, eula, gallery, method, results
+from apps import context, clustering, eula
 from utils import __version__, translations
 
 # Client - study configuration
-CLIENT = "HEVA"
-STUDY = "Study"
+CLIENT = "EMSE"
+STUDY = "Laparotomy"
 LOGO_HEVA = "assets/logoHEVA_RVB.svg"
 LOGO_CLIENT = "assets/logoHEVA_RVB.svg"
 
@@ -24,11 +24,8 @@ title = [html.H2(CLIENT), html.H1(STUDY)]
 # Sidebar links: add/remove entries if needed
 menu = html.Ul(
     children=[
-        html.Li(dcc.Link("Contexte", href="/context"), className="nav-item"),
-        html.Li(dcc.Link("Zone 51", href="/design"), className="nav-item"),
-        html.Li(dcc.Link("Méthodologie", href="/methods"), className="nav-item"),
-        html.Li(dcc.Link("Galerie", href="/gallery"), className="nav-item"),
-        html.Li(dcc.Link("Résultats", href="/results"), className="nav-item"),
+        html.Li(dcc.Link("Context", href="/context"), className="nav-item"),
+        html.Li(dcc.Link("Clustering", href="/clustering"), className="nav-item"),
     ],
     className="nav",
 )
@@ -36,10 +33,7 @@ pages = {
     # Default page
     "/": title + [context.layout],
     "/context": title + [context.layout],
-    "/design": design.layout,
-    "/methods": method.layout,
-    "/results": results.layout,
-    "/gallery": gallery.layout,
+    "/clustering": clustering.layout,
     "/eula": eula.layout,
 }
 

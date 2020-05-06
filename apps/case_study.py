@@ -10,7 +10,7 @@ import utils
 from app import app
 
 # MD
-with open("assets/contents/md_clustering.md", "r", encoding="utf-8") as f:
+with open("assets/contents/md_case_study.md", "r", encoding="utf-8") as f:
     content = utils.MarkdownReader(f.read())
 
 filename = f"builds/dico_plotly.json"
@@ -24,44 +24,43 @@ layout = html.Div(
             [
                 content[1],
                 dcc.Dropdown(
-                    id="type_selector_in",
+                    id="nbclust_selector_in",
                     options=[
                         {"label": k, "value": k}
                         for k in dico_plotly
                     ],
                     value=list(dico_plotly.keys())[0],
-                    clearable=False
-                    ),
-
+                    clearable=False,
+                    placeholder='Select the number of clusters'),
             ]
         ),
-        html.Div(id="type_selector_out"),
+        html.Div(id="nbclust_selector_out"),
         html.Div(
             [
                 content[2],
                 dcc.Dropdown(
-                    id="patient_selector_in",
-                    clearable=False)
+                    id="cluster_selector_in",
+                    clearable=False,
+                    placeholder='Select the cluster')
             ]
         ),
-        html.Div(id="patient_selector_out"),
+        html.Div(id="cluster_selector_out"),
     ]
 )
 
 @app.callback(
-    dash.dependencies.Output("patient_selector_in", component_property="options"),
+    dash.dependencies.Output("cluster_selector_in", component_property="options"),
     [
-        dash.dependencies.Input("type_selector_in", component_property="value"),
+        dash.dependencies.Input("nbclust_selector_in", component_property="value"),
     ],
 )
-def update_list_patients(key):
+def update_list_clusters(key):
     return [{"label": i, "value": i} for i in dico_plotly[key] if i not in ['boxplot', 'tsne']]
 
-
 @app.callback(
-    dash.dependencies.Output("type_selector_out", component_property="children"),
+    dash.dependencies.Output("nbclust_selector_out", component_property="children"),
     [
-        dash.dependencies.Input("type_selector_in", component_property="value"),
+        dash.dependencies.Input("nbclust_selector_in", component_property="value"),
     ],
 )
 
@@ -69,18 +68,6 @@ def update_output(key):
 
     fig_tsne = go.Figure(dico_plotly[key]['tsne'])
     fig_boxplot = go.Figure(dico_plotly[key]['boxplot'])
-
-
-    # if int(key) <= 15:
-    #     fig_tsne.update_layout(height = 500, width = None)
-    #     fig_boxplot.update_layout(height = 500, width = None)
-
-    #     return utils.two_graphs(
-    #         utils.graph(fig_tsne, loading=True),
-    #         utils.graph(fig_boxplot, loading=True)
-    #     )
-
-    # else:
 
     fig_tsne.update_layout(height = 750, width = None)
     fig_boxplot.update_layout(height = 750, width = None)
@@ -92,19 +79,19 @@ def update_output(key):
 
 
 @app.callback(
-    dash.dependencies.Output("patient_selector_in", component_property="value"),
+    dash.dependencies.Output("cluster_selector_in", component_property="value"),
     [
-        dash.dependencies.Input("patient_selector_in", component_property="options")
+        dash.dependencies.Input("cluster_selector_in", component_property="options")
     ],
 )
 def get_options(available_options):
     return available_options[0]["value"]
 
 @app.callback(
-    dash.dependencies.Output("patient_selector_out", component_property="children"),
+    dash.dependencies.Output("cluster_selector_out", component_property="children"),
     [
-        dash.dependencies.Input("type_selector_in", component_property="value"),
-        dash.dependencies.Input("patient_selector_in", component_property="value"),
+        dash.dependencies.Input("nbclust_selector_in", component_property="value"),
+        dash.dependencies.Input("cluster_selector_in", component_property="value"),
     ],
 )
 def update_output(key, i):

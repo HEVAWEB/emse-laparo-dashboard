@@ -6,7 +6,7 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, clustering, eula
+from apps import context, case_study, doe, eula
 from utils import __version__, translations
 
 # Client - study configuration
@@ -25,7 +25,8 @@ title = [html.H2(CLIENT), html.H1(STUDY)]
 menu = html.Ul(
     children=[
         html.Li(dcc.Link("Context", href="/context"), className="nav-item"),
-        html.Li(dcc.Link("Clustering", href="/clustering"), className="nav-item"),
+        html.Li(dcc.Link("Experiments", href="/doe"), className="nav-item"),
+        html.Li(dcc.Link("Case Study", href="/case_study"), className="nav-item"),
     ],
     className="nav",
 )
@@ -33,7 +34,8 @@ pages = {
     # Default page
     "/": title + [context.layout],
     "/context": title + [context.layout],
-    "/clustering": clustering.layout,
+    "/doe": doe.layout,
+    "/case_study": case_study.layout,
     "/eula": eula.layout,
 }
 

@@ -121,6 +121,7 @@ def display_page(pathname):
     :param pathname: Path of the page
     :return: Tuple containing content of the page and updated navbar """
 
+    pathname = pathname if pathname != "/" else "/context"
     # Children of the navbar menu, with selected navlink highlighted
     children_menu = [
         html.Li(dcc.Link(title, href=href), className="nav-item")

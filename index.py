@@ -21,34 +21,7 @@ app.title = f"{CLIENT} {STUDY}"
 # Global title: Client - Study
 title = [html.H2(CLIENT), html.H1(STUDY)]
 
-# Sidebar links: add/remove entries if needed
-menu = html.Ul(
-    children=[
-        html.Li(dcc.Link("Contexte", href="/context"), className="nav-item"),
-        html.Li(dcc.Link("Méthodologie", href="/methods"), className="nav-item"),
-        html.Li(
-            dcc.Link(
-                "Description des patients avec MTEV par cancer d'intérêt",
-                href="/desc_cancer",
-            ),
-            className="nav-item",
-        ),
-        html.Li(
-            dcc.Link(
-                "Taux d'évènements de MTEV par cancer d'intérêt", href="/evt_cancer"
-            ),
-            className="nav-item",
-        ),
-        html.Li(
-            dcc.Link(
-                "Prise en charge des patients avec MTEV par cancer d'intérêt",
-                href="/pec_cancer",
-            ),
-            className="nav-item",
-        ),
-    ],
-    className="nav",
-)
+# Pages links: add/remove entries if needed
 pages = {
     # Default page
     "/": title + [context.layout],
@@ -59,6 +32,16 @@ pages = {
     "/pec_cancer": pec_cancer.layout,
     "/eula": eula.layout,
 }
+
+# Navbar titles: which links & title to display on the navbar, add/remove entries if needed
+navbar_titles = {
+    "/context": "Contexte",
+    "/methods": " Méthodologie",
+    "/desc_cancer": "Description des patients avec MTEV par cancer d'intérêt",
+    "/evt_cancer": "Taux d'évènements de MTEV par cancer d'intérêt",
+    "/pec_cancer": "Prise en charge des patients avec MTEV par cancer d'intérêt",
+}
+
 
 # You should not feel the need to modify the code bellow
 
@@ -83,7 +66,8 @@ app.layout = html.Div(
                                             className="navbar-section",
                                         ),
                                         html.Section(
-                                            menu, className="navbar-section nav-links"
+                                            id="navbar-menu",
+                                            className="navbar-section nav-links",
                                         ),
                                         html.Section(
                                             [
@@ -127,10 +111,29 @@ app.layout = html.Div(
 )
 
 
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+@app.callback(
+    [Output("page-content", "children"), Output("navbar-menu", "children")],
+    [Input("url", "pathname")],
+)
 def display_page(pathname):
-    """ Update page content with sidebar links"""
-    return pages.get(pathname, html.H1(["Page not found"]))
+    """ Update page content with navbar menu and page content corresponding to the tab.
+
+    :param pathname: Path of the page
+    :return: Tuple containing content of the page and updated navbar """
+
+    pathname = pathname if pathname != "/" else "/context"
+    # Children of the navbar menu, with selected navlink highlighted
+    children_menu = [
+        html.Li(dcc.Link(title, href=href), className="nav-item")
+        if href != pathname
+        else html.Li(dcc.Link(title, href=href), className="nav-item nav-item-focus")
+        for href, title in navbar_titles.items()
+    ]
+
+    # Creating menu
+    menu = html.Ul(children_menu, className="nav",)
+
+    return (pages.get(pathname, html.H1(["Page not found"])), menu)
 
 
 if __name__ == "__main__":

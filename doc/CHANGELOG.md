@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.0
+
+- Major depencies updates including pattern matching callbacks & better performance building graphs
+- Navbar highlight bug corrected
+
 ## 1.4.5
 
 - New sidebar menu, both the menu and the content are now a bit more responsive
@@ -15,6 +20,7 @@
 - Quality checklist :white_check_mark:
 
 ## 1.4.3
+
 - Visual improvements
 
 ## 1.4.2

@@ -127,13 +127,13 @@ def update_proc_figure(cancers):
         data=[
             go.Bar(
                 x=df["Cancer"],
-                y=df["Thromvectomie"] / df["norm"],
-                text=df["Thromvectomie"],
+                y=df["Thrombectomie"] / df["norm"],
+                text=df["Thrombectomie"],
                 texttemplate="%{y:.1%}",
                 hovertemplate=counting_pat_template,
                 textposition="outside",
                 textfont_size=10,
-                name="Thromvectomie",
+                name="Thrombectomie",
             ),
             go.Bar(
                 x=df["Cancer"],

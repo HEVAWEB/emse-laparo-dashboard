@@ -4,7 +4,7 @@
 
 | URL | Login | passwd |
 | --- | --- |---|
-| https://dashboard-template.hevaweb.com/ | hevaweb | toto |
+| https://artemis-emse-laparo.hevaweb.com/ | emse | P38D8P35f6 |
 
 ## Checklist
 

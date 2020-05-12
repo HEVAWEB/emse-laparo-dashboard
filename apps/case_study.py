@@ -66,11 +66,8 @@ def update_list_clusters(key):
 
 def update_output(key):
 
-    fig_tsne = go.Figure(dico_plotly[key]['tsne'])
-    fig_boxplot = go.Figure(dico_plotly[key]['boxplot'])
-
-    fig_tsne.update_layout(height = 750, width = None)
-    fig_boxplot.update_layout(height = 750, width = None)
+    fig_tsne = dico_plotly[key]['tsne']
+    fig_boxplot = dico_plotly[key]['boxplot']
 
     return [
         utils.graph(fig_tsne, loading=True),
@@ -98,10 +95,8 @@ def update_output(key, i):
 
     fig_list = dico_plotly[key][i]
 
-    fig_enc_dec = go.Figure(fig_list[0])
-    fig_enc_dec.update_layout(height = 500, width = None)
-    fig_features = go.Figure(fig_list[1])
-    fig_features.update_layout(height = 500, width = None)
+    fig_enc_dec = fig_list[0]
+    fig_features = fig_list[1]
     df_features = pd.DataFrame(fig_list[2])
 
     output = [

@@ -15,36 +15,26 @@ with open("assets/contents/md_doe.md", "r", encoding="utf-8") as f:
 filename = f"builds/accuracy.json"
 with open(filename, "r", encoding="utf-8") as f:
     fig_accuracy = json.load(f)
-fig_accuracy = go.Figure(fig_accuracy)
-fig_accuracy.update_layout(height = 500, width = None)
 
 # Gap
 filename = f"builds/gap.json"
 with open(filename, "r", encoding="utf-8") as f:
     fig_gap = json.load(f)
-fig_gap = go.Figure(fig_gap)
-fig_gap.update_layout(height = 500, width = None)
 
 # R
 filename = f"builds/R.json"
 with open(filename, "r", encoding="utf-8") as f:
     fig_R = json.load(f)
-fig_R = go.Figure(fig_R)
-fig_R.update_layout(height = 500, width = None)
 
 # P
 filename = f"builds/P.json"
 with open(filename, "r", encoding="utf-8") as f:
     fig_P = json.load(f)
-fig_P = go.Figure(fig_P)
-fig_P.update_layout(height = 500, width = None)
 
 # F
 filename = f"builds/F.json"
 with open(filename, "r", encoding="utf-8") as f:
     fig_F = json.load(f)
-fig_F = go.Figure(fig_F)
-fig_F.update_layout(height = 500, width = None)
 
 # Results clust
 filename = f"builds/results_clust.csv"

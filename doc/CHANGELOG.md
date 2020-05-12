@@ -2,7 +2,7 @@
 
 ## 1.5.0
 
-- Major depencies updates including pattern matching callbacks
+- Major depencies updates including pattern matching callbacks & better performance building graphs
 - Navbar highlight bug corrected
 
 ## 1.4.5

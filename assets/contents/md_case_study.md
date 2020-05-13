@@ -1,14 +1,14 @@
-# Clustering analysis
+### Clustering analysis
 
 [//]: # (section)
 
-## Number of clusters
+#### Number of clusters
 
 Select a number of clusters:
 
 [//]: # (section)
 
-## Detail of each cluster
+#### Detail of each cluster
 
 Select a cluster:
 

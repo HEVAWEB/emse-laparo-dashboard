@@ -1,21 +1,21 @@
-# Design of experiment
+### Design of experiment
 
 [//]: # (section)
 
-## Clustering performances
+#### Clustering performances
 
 [//]: # (section)
 
-## Explaination performances
+#### Explaination performances
 
 [//]: # (section)
 
-# Details
+### Details
 
 [//]: # (section)
 
-## Clustering performances
+#### Clustering performances
 
 [//]: # (section)
 
-## Explaination performances
+#### Explaination performances

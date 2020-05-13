@@ -6,7 +6,7 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, eula, method, desc_cancer, evt_cancer, pec_cancer
+from apps import context, eula, method, desc_cancer, evt_cancer, pec_cancer, gallery, design
 from utils import __version__, translations
 
 # Client - study configuration
@@ -27,6 +27,8 @@ pages = {
     "/": title + [context.layout],
     "/context": title + [context.layout],
     "/methods": method.layout,
+    "/gallery": gallery.layout,
+    "/design": design.layout,
     "/desc_cancer": desc_cancer.layout,
     "/evt_cancer": evt_cancer.layout,
     "/pec_cancer": pec_cancer.layout,
@@ -37,6 +39,8 @@ pages = {
 navbar_titles = {
     "/context": "Contexte",
     "/methods": " Méthodologie",
+    "/gallery" : "Gallerie des graphes",
+    "/design": "Zone 51",
     "/desc_cancer": "Description des patients avec MTEV par cancer d'intérêt",
     "/evt_cancer": "Taux d'évènements de MTEV par cancer d'intérêt",
     "/pec_cancer": "Prise en charge des patients avec MTEV par cancer d'intérêt",

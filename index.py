@@ -16,7 +16,7 @@ LOGO_HEVA = "assets/logoHEVA_RVB.svg"
 LOGO_CLIENT = "assets/pfizer.png"
 
 # Change the webpage tab title here if needed
-app.title = f"{CLIENT} {STUDY}"
+app.title = f"Artémis Design"
 
 # Global title: Client - Study
 title = [html.H2(CLIENT), html.H1(STUDY)]

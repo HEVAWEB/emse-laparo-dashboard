@@ -12,13 +12,13 @@ body
 
 h1, h2, h3, h4, h5, h6
   font-weight 700
-  line-height 1.3
+  line-height 1.2
   font-family $secondaryFont
   color $inkTextColor
+  margin-bottom 0
 
 h3, h4, h5, h6
-  margin-top 4rem
-  margin-bottom 1.2rem
+  margin-top 3.2rem
 
 h1
   font-size 3.2rem
@@ -28,23 +28,20 @@ h2
   font-size 1.8rem
 
 h3
-  width 66%
-  font-size 2.8rem
+  font-size 3.2rem
 
 h4
-  font-size 2.0rem
-  margin-bottom 2.0rem
+  font-size 2.4rem
 
 h5
-  font-size 1.8rem
+  font-size 2rem
 
 h6
   font-size 1.6rem
-  color $primaryColor
 
 a
   color $linkTextColor
-  font-weight 700
+  font-weight 400
   text-decoration underline
   cursor pointer
 
@@ -60,7 +57,7 @@ a
 p
   font-size 1.6rem
   line-height 1.6
-  margin-top 1.6rem
+  margin-top 0.8rem
   margin-bottom 0
   color $inkTextColor
   text-align justify
@@ -75,36 +72,32 @@ strong
   font-style inherit
 
 #page-content
-  ul li
-    list-style none
 
-  ol, ul, li
-    padding-left 0
-    margin-top -0rem
-    margin-bottom 0rem
-    font-size 1.6rem
-    line-height 1.3
-    color $secondaryColor
+  ul, ol
+    margin-left 1rem
+    list-style-position inside
 
-  ul li::before
-    content "\2022"
-    color $primaryColor
-    display inline-block
-    width 1em
-    margin-left -1em
+    ol
+      list-style-type decimal
 
-  ul ul, ul ol, ol ol, ol ul
-    margin 0 0 1.5rem 3rem
-    font-size 80%
+    ul
+      list-style none
+
+      li:
+
+      :before
+        content "-"
+        display inline-block
+        width 1em
 
 
 .intro, .conclusion, blockquote
-  margin 0 0 3rem 0
-  width 66%
+  margin 3.2rem 0 3rem 0
+  width 75%
   border-left-width 4px
   border-left-style solid
   text-align justify
-  padding-left 16px
+  padding-left 2.8rem
   color $blockquotePagragraphBackgroundColor
 
   p
@@ -112,26 +105,23 @@ strong
     margin 0
 
 .intro
+  margin-top 5rem
   border-left-color $introBorderLeftColor
   font-style italic
-  font-size 2.0rem
+  font-size 2rem
   line-height 1.4
   color $secondaryTextColor
 
 .conclusion
   border-left-color $conclusionBorderLeftColor
-
-  p
-    font-size 1.8rem
-    font-weight 700
-    line-height 1.6
+  font-size 1.8rem
+  font-weight 700
+  line-height 1.6
 
 blockquote
   border-left-color $blockquoteBorderLeftColor
   background-color $blockquoteBackgroundColor
-  padding-top 16px
-  padding-bottom 16px
+  font-size 1.6rem
+  font-style italic
+  line-height 1.6
 
-  p
-    font-size 1.6rem
-    font-style italic

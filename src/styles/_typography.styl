@@ -81,19 +81,19 @@ strong
       margin-top 0
       margin-bottom 0
 
+    li
+      margin-top 0
+
     ol
       list-style-type decimal
 
     ul
       list-style none
 
-      li
-        margin-top 0
-
-        &::before
-          content "-"
-          display inline-block
-          width 1em
+      li::before
+        content "-"
+        display inline-block
+        width 1em
 
 
 .intro, .conclusion, blockquote

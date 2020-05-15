@@ -77,18 +77,23 @@ strong
     margin-left 1rem
     list-style-position inside
 
+    ol, ul
+      margin-top 0
+      margin-bottom 0
+
     ol
       list-style-type decimal
 
     ul
       list-style none
 
-      li:
+      li
+        margin-top 0
 
-      :before
-        content "-"
-        display inline-block
-        width 1em
+        &::before
+          content "-"
+          display inline-block
+          width 1em
 
 
 .intro, .conclusion, blockquote
@@ -110,7 +115,7 @@ strong
   font-style italic
   font-size 2rem
   line-height 1.4
-  color $secondaryTextColor
+  color $introTextColor
 
 .conclusion
   border-left-color $conclusionBorderLeftColor
@@ -120,7 +125,6 @@ strong
 
 blockquote
   border-left-color $blockquoteBorderLeftColor
-  background-color $blockquoteBackgroundColor
   font-size 1.6rem
   font-style italic
   line-height 1.6

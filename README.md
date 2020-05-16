@@ -4,7 +4,7 @@
 
 | URL | Login | passwd |
 | --- | --- |---|
-| https://artemis-emse-laparo.hevaweb.com/ | emse | P38D8P35f6 |
+| https://artemis-emse-laparo.hevaweb.com/ | laparotomy | P38D8P35f6 |
 
 ## Checklist
 

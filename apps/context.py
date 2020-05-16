@@ -1,8 +1,4 @@
-import dash_core_components as dcc
 import dash_html_components as html
-import dash_table
-import pandas as pd
-import plotly.graph_objects as go
 
 import utils
 
@@ -11,9 +7,4 @@ with open("assets/contents/md_context.md", "r", encoding="utf-8") as f:
     content = utils.MarkdownReader(f.read())
 
 # Define the page's content
-layout = html.Div(
-    [
-        content[0],
-        content[1]
-    ]
-)
+layout = html.Div([content[0], content[1]])

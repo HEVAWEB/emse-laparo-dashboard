@@ -6,12 +6,12 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, case_study, doe, eula
+from apps import case_study, context, doe, eula
 from utils import __version__, translations
 
 # Client - study configuration
-CLIENT = "EMSE"
-STUDY = "Laparotomy"
+CLIENT = "Mines Saint Etienne"
+STUDY = "Automatic and Explainable Labeling of Medical Event Logs with Autoencoding"
 LOGO_HEVA = "assets/logoHEVA_RVB.svg"
 LOGO_CLIENT = "assets/logoEMSE_RVB.png"
 
@@ -22,14 +22,7 @@ app.title = f"{CLIENT} {STUDY}"
 title = [html.H2(CLIENT), html.H1(STUDY)]
 
 # Sidebar links: add/remove entries if needed
-menu = html.Ul(
-    children=[
-        html.Li(dcc.Link("Context", href="/context"), className="nav-item"),
-        html.Li(dcc.Link("Experiments", href="/doe"), className="nav-item"),
-        html.Li(dcc.Link("Case Study", href="/case_study"), className="nav-item"),
-    ],
-    className="nav",
-)
+
 pages = {
     # Default page
     "/": title + [context.layout],
@@ -37,6 +30,13 @@ pages = {
     "/doe": doe.layout,
     "/case_study": case_study.layout,
     "/eula": eula.layout,
+}
+
+# Navbar titles: which links & title to display on the navbar, add/remove entries if needed
+navbar_titles = {
+    "/context": "Context",
+    "/doe": "Experiments",
+    "/case_study": " Case Study",
 }
 
 
@@ -63,7 +63,8 @@ app.layout = html.Div(
                                             className="navbar-section",
                                         ),
                                         html.Section(
-                                            menu, className="navbar-section nav-links"
+                                            id="navbar-menu",
+                                            className="navbar-section nav-links",
                                         ),
                                         html.Section(
                                             [
@@ -107,10 +108,29 @@ app.layout = html.Div(
 )
 
 
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+@app.callback(
+    [Output("page-content", "children"), Output("navbar-menu", "children")],
+    [Input("url", "pathname")],
+)
 def display_page(pathname):
-    """ Update page content with sidebar links"""
-    return pages.get(pathname, html.H1(["Page not found"]))
+    """ Update page content with navbar menu and page content corresponding to the tab.
+
+    :param pathname: Path of the page
+    :return: Tuple containing content of the page and updated navbar """
+
+    pathname = pathname if pathname != "/" else "/context"
+    # Children of the navbar menu, with selected navlink highlighted
+    children_menu = [
+        html.Li(dcc.Link(title, href=href), className="nav-item")
+        if href != pathname
+        else html.Li(dcc.Link(title, href=href), className="nav-item nav-item-focus")
+        for href, title in navbar_titles.items()
+    ]
+
+    # Creating menu
+    menu = html.Ul(children_menu, className="nav",)
+
+    return (pages.get(pathname, html.H1(["Page not found"])), menu)
 
 
 if __name__ == "__main__":

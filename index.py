@@ -10,8 +10,8 @@ from apps import case_study, context, doe, eula
 from utils import __version__, translations
 
 # Client - study configuration
-CLIENT = "EMSE"
-STUDY = "Laparotomy"
+CLIENT = "Mines Saint Etienne"
+STUDY = "Automatic and Explainable Labeling of Medical Event Logs with Autoencoding"
 LOGO_HEVA = "assets/logoHEVA_RVB.svg"
 LOGO_CLIENT = "assets/logoEMSE_RVB.png"
 

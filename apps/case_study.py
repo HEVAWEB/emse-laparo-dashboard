@@ -12,6 +12,7 @@ from app import app, plotly_theme
 with open("assets/contents/md_case_study.md", "r", encoding="utf-8") as f:
     content = utils.MarkdownReader(f.read())
 
+# data plotly
 filename = f"builds/dico_plotly.json"
 
 with open(filename, "r", encoding="utf-8") as f:
@@ -26,7 +27,7 @@ layout = html.Div(
                 dcc.Dropdown(
                     id="nbclust_selector_in",
                     options=[{"label": k, "value": k} for k in dico_plotly],
-                    value=list(dico_plotly.keys())[0],
+                    value=list(dico_plotly.keys())[1],
                     clearable=False,
                     placeholder="Select the number of clusters",
                 ),
@@ -35,7 +36,7 @@ layout = html.Div(
         html.Div(id="nbclust_selector_out"),
         html.Div(
             [
-                content[2],
+                content[3],
                 dcc.Dropdown(
                     id="cluster_selector_in",
                     clearable=False,
@@ -69,7 +70,19 @@ def update_output(key):
     fig_boxplot = dico_plotly[key]["boxplot"]
     fig_boxplot["layout"]["template"] = plotly_theme
 
-    return [utils.graph(fig_tsne, loading=True), utils.graph(fig_boxplot, loading=True)]
+    img_apollo = html.Div([
+            content[2],
+            html.Img(
+            src= f'assets/apollo/apollo_{key}.png',
+            width='50%',
+            style={
+                "align": "middle"
+                }
+            )
+    ]
+    )
+
+    return [img_apollo, utils.graph(fig_tsne, loading=True), utils.graph(fig_boxplot, loading=True)]
 
 
 @app.callback(

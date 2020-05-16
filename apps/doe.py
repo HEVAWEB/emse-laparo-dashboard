@@ -63,6 +63,14 @@ layout = html.Div(
             data=df_results_explain.to_dict("rows"),
             merge_duplicate_headers=True,
             style_cell={"textAlign": "center"},
+            style_data_conditional=[
+                {
+                    'if': {
+                        'column_id': c,
+                    },
+                    'fontWeight': 'bold'
+                } for c in ['__kappa', '__alpha', '__beta', '__gamma']
+            ]
         ),
     ]
 )

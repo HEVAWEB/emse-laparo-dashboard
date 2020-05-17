@@ -1,7 +1,6 @@
 ### Overview
 
-The present dashboard serves as an interactive supplementary material related to the paper **Automatic and Explainable Labeling of Medical Event Logs with Autoencoding** *(Hugo De Oliveira, Vincent Augusto, Baptiste Jouaneton, Ludovic Lamarsalle, Martin Prodel and Xiaolan Xie)*
-
+The present dashboard serves as an interactive supplementary material related to the paper **Automatic and Explainable Labeling of Medical Event Logs with Autoencoding** *(Hugo De Oliveira, Vincent Augusto, Baptiste Jouaneton, Ludovic Lamarsalle, Martin Prodel and Xiaolan Xie)* submitted to the *IEEE Journal of Biomedical and Health Informatics*.
 
 [//]: # (section)
 

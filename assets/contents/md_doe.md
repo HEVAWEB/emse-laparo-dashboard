@@ -1,4 +1,4 @@
-### Details on the design of experiments
+### Detailed results on the design of experiments
 
 This section details the results obtained on synthetic data. Mean *clustering* and *explaination* performances are presented for each method and each experiment (kappa, alpha, beta and gamma).
 
@@ -10,14 +10,13 @@ The *accuracy* and the *gap* measure are used to evaluate the performances of th
 
 [//]: # (section)
 
-#### Explaination performances
+#### Explanation performances
 
 The performances regarding the explaination *recall*, *precision* and *F-score* are presented bellow.
 
-
 [//]: # (section)
 
-### Details
+### Numerical results
 Detailed values are presented bellow (regarding average and standard deviation on the replications).
 
 [//]: # (section)
@@ -26,4 +25,4 @@ Detailed values are presented bellow (regarding average and standard deviation o
 
 [//]: # (section)
 
-#### Explaination performances
+#### Explanation performances

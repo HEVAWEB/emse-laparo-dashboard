@@ -54,7 +54,7 @@ layout = html.Div(
 )
 def update_list_clusters(key):
     return [
-        {"label": i, "value": i}
+        {"label": f'Cluster {i}', "value": i}
         for i in dico_plotly[key]
         if i not in ["boxplot", "tsne"]
     ]
@@ -74,7 +74,14 @@ def update_output(key):
             content[2],
             html.Img(
             src= f'assets/apollo/apollo_{key}.png',
-            width='50%',
+            width='60%',
+            style={
+                "align": "middle"
+                }
+            ),
+            html.Img(
+            src= f'assets/apollo/arrow.png',
+            width='60%',
             style={
                 "align": "middle"
                 }

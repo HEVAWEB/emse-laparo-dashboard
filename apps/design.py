@@ -64,6 +64,24 @@ layout = html.Div(
             "David Bowie est bien mieux que Michael Jackson, sans aucun doute."
         ),
         html.Hr(),
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Button("×", className="notifier-close"),
+                        html.P(
+                            html.Span(
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                            )
+                        ),
+                    ],
+                    className="notifier-note",
+                    style=dict(opacity=1),
+                )
+            ],
+            className="plotly-notifier",
+        ),
         html.H4("Tabs"),
         dcc.Tabs(
             id="tabs",

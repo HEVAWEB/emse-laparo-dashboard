@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.0-dev
+- Correctly implement iterator protocol for MarkdownReader. This will enable users to use `next(iterator_content)` rather than rely on indexes.
+
 ## 1.5.0
 
 - Major depencies updates including pattern matching callbacks & better performance building graphs

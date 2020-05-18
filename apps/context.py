@@ -33,10 +33,11 @@ table = dash_table.DataTable(
     sort_action="native",
 )
 
+i_content = iter(content)
 # Define the page's content
 layout = html.Div(
     [
-        content[0],
+        next(i_content),
         utils.table_from_df(
             df, title="Orientez les tables en largeur...", orient_vertically=False
         ),
@@ -46,11 +47,12 @@ layout = html.Div(
             ),
             utils.table_from_csv("builds/iris.csv", "Table CSV directe"),
         ),
-        content[1],
+        next(i_content),
         utils.takeaways("Le Markdown c'est cool."),
-        content[2],
+        next(i_content),
         utils.two_graphs(content[3], utils.graph(simple_fig)),
         utils.two_graphs(utils.graph(simple_fig), utils.graph(simple_fig)),
-        content[4],
+        next(i_content),
+        next(i_content),
     ]
 )

@@ -125,6 +125,13 @@ content[0]      # Première section du fichier
 content[1]      # Seconde section du fichier
 content.full()  # Fichier en entier
 content[:]      # Fichier en entier
+
+# Autre solution pour éviter les chiffres à décaler :
+# créer un itérateur
+i_content = iter(content)
+next(content)      # Première section du fichier
+next(content)      # Seconde section du fichier
+next(content)      # etc.
 ```
 
 Le résultat est la page sur laquelle vous vous trouvez actuellement. 😀

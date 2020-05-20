@@ -17,8 +17,8 @@ with open("assets/contents/md_apollo.md", "r", encoding="utf-8") as f:
     dico_content_apollo = {
         '10' : 1,
         '15': 2,
-        '20': 3,
-        '25': 4
+        '25': 3,
+        '50': 4
     }
 
 # data plotly

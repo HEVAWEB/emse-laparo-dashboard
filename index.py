@@ -6,7 +6,7 @@ import rgpd_dash
 from dash.dependencies import Input, Output
 
 from app import app, config
-from apps import context, eula, method, desc_cancer, evt_cancer, pec_cancer, gallery, design, typography
+from apps import context, eula, method, desc_cancer, evt_cancer, pec_cancer, gallery, design, typography, buttons
 from utils import __version__, translations
 
 # Client - study configuration
@@ -34,11 +34,13 @@ pages = {
     "/pec_cancer": pec_cancer.layout,
     "/eula": eula.layout,
     "/typo": typography.layout,
+    "/button": buttons.layout,
 }
 
 # Navbar titles: which links & title to display on the navbar, add/remove entries if needed
 navbar_titles = {
     "/typo": "Typographie",
+    "/button": "Boutons",
     "/context": "Contexte",
     "/methods": " Méthodologie",
     "/gallery" : "Gallerie des graphes",

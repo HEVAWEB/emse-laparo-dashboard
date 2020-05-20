@@ -8,29 +8,46 @@ button
   margin 0.8rem
   outline none
   white-space nowrap
-  display inline-block
   padding-left 1.2rem
   padding-right 1.2rem
   height 4rem
 
   span
     margin 0 0.8rem
+    vertical-align bottom
+
+  i.icon
+    font-size 1.6rem
+    margin 0
 
   &.default-button
     color $buttonTextColor
     background-color: $white
 
+    i.icon
+      color $purpleGrey
+
     &:disabled, &[disabled=disabled]
       border-color $buttonDisabledColor
       color $disabledTextColor
+
+      i.icon
+        color $disabledTextColor
+
 
     &:hover:enabled, &:focus:enabled
       color $primaryColor
       background-color rgba($buttonBackgroundColor, 0.05)
 
+      i.icon
+        color $primaryColor
+
     &:active:enabled
       color $primaryColor
       background-color rgba($buttonBackgroundColor, 0.15)
+
+      i.icon
+        color $primaryColor
 
   &.secondary-button
     color $white
@@ -52,6 +69,7 @@ button
     padding-left 1.6rem
     padding-right 1.6rem
     height 4.6rem
+    padding-top 0.2rem
 
 
   &.button-medium

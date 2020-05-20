@@ -14,6 +14,7 @@ plotly_theme = _base_template.layout.template
 
 external_stylesheets = [
     "https://unpkg.com/spectre.css@0.5.8/dist/spectre.min.css",
+    "https://unpkg.com/spectre.css@0.5.8/dist/spectre-icons.min.css",
     # Not needed for now
     # "https://unpkg.com/spectre.css@0.5.8/dist/spectre-exp.min.css",
     "https://fonts.googleapis.com/css?family=Montserrat:700",

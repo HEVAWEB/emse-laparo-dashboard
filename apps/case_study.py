@@ -12,6 +12,15 @@ from app import app, plotly_theme
 with open("assets/contents/md_case_study.md", "r", encoding="utf-8") as f:
     content = utils.MarkdownReader(f.read())
 
+with open("assets/contents/md_apollo.md", "r", encoding="utf-8") as f:
+    content_apollo = utils.MarkdownReader(f.read())
+    dico_content_apollo = {
+        '10' : 1,
+        '15': 2,
+        '20': 3,
+        '25': 4
+    }
+
 # data plotly
 filename = f"builds/dico_plotly.json"
 
@@ -70,26 +79,10 @@ def update_output(key):
     fig_boxplot = dico_plotly[key]["boxplot"]
     fig_boxplot["layout"]["template"] = plotly_theme
 
-    img_apollo = html.Div([
-            content[2],
-            html.Img(
-            src= f'assets/apollo/apollo_{key}.png',
-            width='60%',
-            style={
-                "align": "middle"
-                }
-            ),
-            html.Img(
-            src= f'assets/apollo/arrow.png',
-            width='60%',
-            style={
-                "align": "middle"
-                }
-            )
-    ]
-    )
+    img_apollo = content_apollo[dico_content_apollo[key]]
+    img_arrow = content_apollo[0]
 
-    return [img_apollo, utils.graph(fig_tsne, loading=True), utils.graph(fig_boxplot, loading=True)]
+    return [img_apollo, img_arrow, utils.graph(fig_tsne, loading=True), utils.graph(fig_boxplot, loading=True)]
 
 
 @app.callback(

@@ -21,7 +21,3 @@ The process models read from left to right, the size of nodes and edges being, f
 For each cluster, explaination results are displayed bellow. A visualization of some decoded stays, as well as activation mean and related medical codes are presented. Details on codes (label, level in the corresponding hierarchy and type) are also listed.
 
 Select a cluster:
-
-[//]: # (section)
-
-

@@ -1,9 +1,13 @@
 ## H2 Titre
-# H1 Titre
+# H1 Typographie
 
 <div class="intro">
 Intro Le virus de l'immunodéficience humaine (VIH) est un virus infectant l'être humain et responsable du syndrome d'immunodéficience acquise (SIDA). Le VIH cible le système immunitaire et affaiblit les systèmes de surveillance et de défense de l’organisme contre les infections et certains types de cancer.
 </div>
+
+### H3 Titre lorem ipsum
+
+Body Le virus de l'immunodéficience humaine (VIH) est un virus infectant l'être humain et responsable du syndrome d'immunodéficience acquise (SIDA). Le VIH cible le système immunitaire et affaiblit les systèmes de surveillance et de défense de l’organisme contre les infections et certains types de cancer. L’organisme est alors particulièrement vulnérable à de multiples infections dites « opportunistes ».
 
 #### H4 Titre lorem ipsum
 
@@ -53,7 +57,7 @@ Body Le virus de l'immunodéficience humaine (VIH) est un virus infectant l'êtr
 
 Body Le virus de l'immunodéficience humaine (VIH) est un virus infectant l'être humain et responsable du syndrome d'immunodéficience acquise (SIDA). Le VIH cible le système immunitaire et affaiblit les systèmes de surveillance et de défense de l’organisme contre les infections et certains types de cancer. L’organisme est alors particulièrement vulnérable à de multiples infections dites « opportunistes ».
 
-#### H4 Laudem et voluptatem et voluptates repudiandae sint et ultimum bonorum, quod summum bonum esse vult, summumque malum dolorem, idque facere possimus, omnis dolor sit.
+### H3 Laudem et voluptatem et voluptates repudiandae sint et ultimum bonorum, quod summum bonum esse vult, summumque malum dolorem, idque facere possimus, omnis dolor sit.
 
 Body Le virus de l'immunodéficience humaine (VIH) est un virus infectant l'être humain et responsable du syndrome d'immunodéficience acquise (SIDA). Le VIH cible le système immunitaire et affaiblit les systèmes de surveillance et de défense de l’organisme contre les infections et certains types de cancer. L’organisme est alors particulièrement vulnérable à de multiples infections dites « opportunistes ».
 

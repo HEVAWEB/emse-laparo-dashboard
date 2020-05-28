@@ -64,3 +64,21 @@ Body Le virus de l'immunodéficience humaine (VIH) est un virus infectant l'êtr
 <div class="conclusion">
 Conclusion Le virus de l'immunodéficience humaine (VIH) est un virus infectant l'être humain et responsable du syndrome d'immunodéficience acquise (SIDA). Le VIH cible le système immunitaire et affaiblit les systèmes de surveillance et de défense de l’organisme contre les infections et certains types de cancer.
 </div>
+
+### Semantic text elements
+
+*Bold*
+
+**Emphase**
+
+<i>Italic</i>
+
+~~Deleted~~
+
+<u>Underlined</u>
+
+<cite>Cite</cite>
+
+Text<sub>Subscripted</sub>
+
+Text<sup>Superscripted</sup>

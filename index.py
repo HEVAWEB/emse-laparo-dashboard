@@ -10,8 +10,8 @@ from apps import context, eula, method, desc_cancer, evt_cancer, pec_cancer, gal
 from utils import __version__, translations
 
 # Client - study configuration
-CLIENT = "Pfizer"
-STUDY = "MTEV"
+CLIENT = "HEVA"
+STUDY = "Dashboard Design"
 LOGO_HEVA = "assets/logoHEVA_RVB.svg"
 LOGO_CLIENT = "assets/pfizer.png"
 
@@ -43,7 +43,7 @@ navbar_titles = {
     "/button": "Boutons",
     "/context": "Contexte",
     "/methods": " Méthodologie",
-    "/gallery" : "Gallerie des graphes",
+    "/gallery" : "Galerie des graphes",
     "/design": "Zone 51",
     "/desc_cancer": "Description des patients avec MTEV par cancer d'intérêt",
     "/evt_cancer": "Taux d'évènements de MTEV par cancer d'intérêt",

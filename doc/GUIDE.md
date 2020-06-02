@@ -31,8 +31,8 @@
 
 ## References
 
--   [Plotly Python](https://plot.ly/python/)
--   [Dash Documentation](https://dash.plot.ly/)
+-   [Plotly Python](https://plotly.com/python/)
+-   [Dash Documentation](https://plotly.com/dash/)
 -   [Gunicorn](https://gunicorn.org/)
 -   [Markdown Syntax](https://commonmark.org/help/)
 
@@ -41,20 +41,21 @@
 
 ### Create your project on Gitlab
 
-First of all, create a copy of this Git repository (in "Web") in your own GitLab group (ex.: in "Data Science").
-It is mandatory since forking is not an option because of GitLab's limitations (unfortunately).
-To do so:
+First of all, create a copy of this Git repository ("web/dashboard-template") in your own GitLab group (ex.: in "Data Science").
+You shall follow the steps below to do so.
 
 #### New repository
 
 Create a new **empty** GitLab repository in the correct group/subgroup (from the internet interface of GitLab).
 
-**Warning**: do not select the box **Initialize repository with a README** (so that your project is truly empty).
+**Warning**: do not select the box **Initialize repository with a README**.
+The template's README file contains a checklist you should keep.
 
 > You should choose a friendly name: how about
 > **client-study-dashboard**?
 
-Remark: once created, your new repository has an URL, most likely: `https://gitlab.hevaweb.com/data_science/client-study-dashboard`
+Note: once created, your new repository has an URL, most likely: `https://gitlab.hevaweb.com/data_science/client-study-dashboard`.
+This is another reason to follow the naming convention above.
 
 
 #### **Option 1**: Command line
@@ -70,7 +71,8 @@ Create a local copy of the template repository with the following command lines:
     URL we got from step **1** (most likely: https://gitlab.hevaweb.com/data_science/client-study-dashboard)
 5.  `git push -u origin master`
 
-🎉 Tada! You are good to go. We needed those steps to be able to update your dashboard and the template from one to another.
+🎉 Tada! You are good to go.
+We needed those steps to be able to update your dashboard and the template from one to another.
 
 > **Please note that the steps above are for creating a dashboard.**
 
@@ -78,7 +80,7 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
 
 1.  `git clone <your url>`
 2.  `cd <your dashboard>`
-3.  `git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template`
+3.  **Optional**: `git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template`
 
 #### **Option 2** : Sourcetree
 
@@ -111,7 +113,7 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
     - Use the template URL
     - Choose the correct path on your file system
 
-2. Create the **upstream** remote
+2. **Optional**: create the **upstream** remote
     - **Settings** (top right) > **Remote** tab > **Add**
     - Name: `upstream`, **do not check Default remote**, URL: the dashboard template URL on GitLab
     -Validate
@@ -122,7 +124,7 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
 
     Requires **Python 3.7**. For the following steps, you must go in the local directory in which you synchronised your project (ex: with SourceTree).
 
-    1.  **Optional**: Create & activate a virtual environment (very important if you currently have several Python projects on your computer)
+    1.  **Optional but recommended**: Create & activate a virtual environment (very important if you currently have several Python projects on your computer)
 
         1)  Windows (with Windows -\> \'cmd\')
 
@@ -171,11 +173,14 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
         deactivate
         ```
 
-### Add stylus for pretty dashboards
+### Compile stylesheet to correctly render the dashboard
 
-1. Install latest LTS Node.js version https://nodejs.org/ and make sure `npm` is added to the PATH
-2. Open a Windows cmd or another terminal and install globally stylus `npm install -g stylus`
-3. For each dashboard you may then open a terminal at its root folder and launch the following command `npm run build`. This will build the `.css` file needed to style your dashboard.
+1. Install latest LTS Node.js version https://nodejs.org/ and make sure `npm` is added to the system PATH
+2. **Optional**: you may install the yarn package manager for quicker install with `npm install -g yarn`
+3. For each dashboard you should do the following steps at least once:
+    1. Open a terminal in root folder install stylus with `npm install` or `yarn`
+    2. Compile the final .css file with `npm run build` or `yarn build`. Please be aware that this command should be runned every time you change a `.styl` file.
+    3. **Optional**: for long coding sprints on style, it could be handier to use the watcher with `yarn watch:stylus` or `npm run watch:stylus`.
 
 ## Instructions
 
@@ -191,11 +196,11 @@ Here are the ones you should know about:
 
 ### How to include text documents in the dashboard?
 
-The easy way is to include a **Markdown** file in `assets/contents/`.
-An example is given in `assets/contents/demo.md`.
-Then, the content is added to the dashboard with the Python file `apps/context.py`.
+The easy way is to include a **markdown** file in `assets/contents/`.
+This template gives an example in `assets/contents/demo.md`.
+Then, the Python file `apps/context.py` loads and adds this file.
 
-See also <https://dash.plot.ly/dash-core-components/markdown>.
+See also <https://dash.plotly.com/dash-core-components/markdown>.
 
 Note: instead of using Markdown, you could write all the text you need in Python using Dash's HTML components for structure (**not recommended**).
 
@@ -205,9 +210,9 @@ This is a two-step answer: (1) use Plotly graphing library and (2) add some Dash
 
 #### 1. Plotly Graphing Libraries
 
-The reference to discover Plotly examples in Python is [here](https://plot.ly/python/).
+The reference to discover Plotly examples in Python is [here](https://plotly.com/python/).
 A graph created with thoses libraries can be used in a Dash dashboard.
-The tricky part to get a nice Plotly graph in your online dashboard is to create it **in the bubble**, export it on your computer with Filezila, and then put it on the server (you should never export the data from the bubble and then create a graph).
+The tricky part to get a nice Plotly graph in your online dashboard is to create it **in the bubble**, export it on your computer with Filezilla, and then put it on the server (you should never export the raw data from the bubble and then create a graph).
 This is important because Dash is designed to serve the data online and then to generate the graph on-the fly.
 **The consequence is the need to precompute all graphs before leaving the bubble**.
 
@@ -221,17 +226,21 @@ This is exactly what Dash was designed for.
 
 Each interaction must be implemented as a Python function in its dedicated app (folder `apps/`).
 Here is the idea: each specific component has an unique *id* and some internal properties.
-A Dash callback is simply a function defined around **inputs** and an **output** that will update the **output** component designated property.
+A Dash callback is simply a function defined around **inputs** and an **output**, that will update the **output** component designated property.
 This property can be:
 
 -   the entire graph
 -   the layout
 -   a stylistic element
 
-An exemple is in `index.py`.
-A global layout is defined with a lateral menu and a content placeholder with:
+Here is a simple example of a layout with a lateral menu and a content placeholder with:
 
 ```python
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+from app import app
+
 app.layout = html.Div(
     [
         dcc.Location(id="url", refresh=False),
@@ -241,23 +250,22 @@ app.layout = html.Div(
             ],
             className="columns col-gapless",
         ),
-        html.Footer([f"{__version__}"]),
     ]
 )
 ```
 
-Do you see how the layout is composed of a very basic HTML structure?
-An important element to notice here is the `dcc.Location`, a particular Dash component which keeps track of the webpage URL with an unique id.
+Do you see that the layout is a very basic HTML structure?
+An important element to notice here is the `dcc.Location`, a particular Dash component which keeps track of the webpage URL with its unique id `"url"`.
 
-Next we have these lines:
+Next we have these lines in the same file:
 
 ```python
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
     if pathname == "/context" or pathname == "/":
-        return context.layout
+        return html.H1("first page")
     elif pathname == "/outcome":
-        return outcome.layout
+        return html.H1("second page")
     ...
 ```
 
@@ -267,7 +275,7 @@ When the user navigate through the link in the menu, this will trigger this call
 
 Using the very same principles, this is how we can allow our user to interact with graphs using buttons, slider, dropdown menus, etc.
 
-See also <https://dash.plot.ly/getting-started-part-2>.
+See also <https://dash.plotly.com/getting-started-part-2>.
 
 #### 3. Export graphs
 
@@ -278,20 +286,17 @@ The prefered export format for graphs is **json**, although Python users may use
 At some point, you shoud have a Plotly figure with something like this:
 
 ```python
+import plotly.graph_objects as go
+
+# we create data & layout here
+
 fig = go.Figure(data, layout)
 ```
 
 You may export this figure to a **json** file using the following snippet:
 
 ```python
-import json
-from homemade.utils import NumpyEncoder
-
-
 with open("<output-path>", "w", encoding="utf-8") as f:
-    # old way
-    json.dump(fig.to_dict(), f, cls=NumpyEncoder)
-
     # prefered way
     fig.write_json(f)
 ```

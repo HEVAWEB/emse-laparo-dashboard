@@ -1,16 +1,15 @@
 # Artemis reference
 
 ## Contents
-
 1. [Contents](#contents)
 2. [References](#references)
-3. [Getting Started : how to create a dashboard ?](#getting-started--how-to-create-a-dashboard)
+3. [Getting Started : how to create a dashboard?](#getting-started--how-to-create-a-dashboard)
    1. [Create your project on Gitlab](#create-your-project-on-gitlab)
       1. [New repository](#new-repository)
-      2. [Option 1: Command line](#option-1-command-line)
-      3. [Option 2 : Sourcetree](#option-2--sourcetree)
-   2. [Tame your Python 🐍](#tame-your-python-%f0%9f%90%8d)
-   3. [Add stylus for pretty dashboards](#add-stylus-for-pretty-dashboards)
+      2. [**Option 1**: Command line](#option-1-command-line)
+      3. [**Option 2** : Sourcetree](#option-2--sourcetree)
+   2. [Tame your Python 🐍](#tame-your-python-)
+   3. [Compile stylesheet to correctly render the dashboard](#compile-stylesheet-to-correctly-render-the-dashboard)
 4. [Instructions](#instructions)
    1. [Where to start with ARTEMIS?](#where-to-start-with-artemis)
    2. [How to include text documents in the dashboard?](#how-to-include-text-documents-in-the-dashboard)
@@ -18,14 +17,14 @@
       1. [1. Plotly Graphing Libraries](#1-plotly-graphing-libraries)
       2. [2. Dash Callbacks](#2-dash-callbacks)
       3. [3. Export graphs](#3-export-graphs)
-   4. [What file(s) do I need to modify to...](#what-files-do-i-need-to-modify-to)
+   4. [What file(s) do I need to modify to\...](#what-files-do-i-need-to-modify-to)
       1. [Add/Remove a page?](#addremove-a-page)
       2. [Include an asset?](#include-an-asset)
       3. [Include graphs?](#include-graphs)
       4. [Define a callback in an app?](#define-a-callback-in-an-app)
       5. [Share something across apps?](#share-something-across-apps)
    5. [How to deploy a dashboard](#how-to-deploy-a-dashboard)
-   6. [How to update your dashboard with the template's latest developments](#how-to-update-your-dashboard-with-the-templates-latest-developments)
+   6. [How to update your dashboard with the template\'s latest developments](#how-to-update-your-dashboard-with-the-templates-latest-developments)
    7. [How to update the template with something from your dashboard](#how-to-update-the-template-with-something-from-your-dashboard)
    8. [What if my question is not listed here?](#what-if-my-question-is-not-listed-here)
 
@@ -36,8 +35,7 @@
 -   [Gunicorn](https://gunicorn.org/)
 -   [Markdown Syntax](https://commonmark.org/help/)
 
-## Getting Started : how to create a dashboard ?
-
+## Getting Started : how to create a dashboard?
 
 ### Create your project on Gitlab
 
@@ -241,7 +239,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 from app import app
 
-app.layout = html.Div(
+layout = html.Div(
     [
         dcc.Location(id="url", refresh=False),
         html.Div(
@@ -252,26 +250,22 @@ app.layout = html.Div(
         ),
     ]
 )
-```
 
-Do you see that the layout is a very basic HTML structure?
-An important element to notice here is the `dcc.Location`, a particular Dash component which keeps track of the webpage URL with its unique id `"url"`.
-
-Next we have these lines in the same file:
-
-```python
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
     if pathname == "/context" or pathname == "/":
         return html.H1("first page")
     elif pathname == "/outcome":
         return html.H1("second page")
-    ...
 ```
 
-Here is how a callback is defined.
+Do you see how the `layout` is a very basic HTML structure?
+An important element to notice here is the `dcc.Location`, a particular Dash component which keeps track of the webpage URL with its unique id `"url"`.
+
+Next we have the lines in the same file beggining with `@app.callback`: here is how to define a callback.
 This one will update the `children` property of the `page-content` element based on the `pathname` property state for the `url` component which is as seen above the browser URL.
 When the user navigate through the link in the menu, this will trigger this callback which will update the content of the website with the content of the corresponding app in `apps/`.
+The actual application object `app` is instanciated in the `app.py` file, but you do not need to give it any tought beside importing it.
 
 Using the very same principles, this is how we can allow our user to interact with graphs using buttons, slider, dropdown menus, etc.
 
@@ -316,8 +310,7 @@ Try to specify only titles and readability elements, not colors & fonts for exam
 -   Add/Remove the assets used (images, `.md` files, etc.)
 -   In `index.py`
     -   Add/Remove the app import
-    -   Add/Remove the menu link
-    -   Add/Remove the callback mapping
+    -   Add/Remove the menu link in the two relevant dictionaries
 
 #### Include an asset?
 
@@ -330,15 +323,15 @@ Assets are (but not limited to):
 
 All assets except for graphs should be stored in the `assets/` folder.
 You may access an asset in an app with the `assets/<filename>` path.
-Please note that `.css`, `.ico` & `.js` files are automatically served by the Dash server.
+Please note that the Dash server automatically serves `.css`, `.ico` & `.js` files.
 
 #### Include graphs?
 
-Graphs should be stored in the `builds/` folder.
+Graphs & data to generate them on-the-fly should be stored in the `builds/` folder.
 We separate them from standard assets because they can be quite heavy.
 You may access a graph in an app with the `builds/<filename>` path.
 
-Graphs are typically stored using **json** or **pickle** formats.
+We usually store graphs using **json** or **pickle** formats.
 
 1.  Json
 
@@ -367,7 +360,7 @@ A few words on the codes above, we build a new Plotly figure with
 For example here we override the layout with HEVA's theme.
 This is why graphs in the dashboard may look different from the ones you exported earlier.
 However, the internal validations done by the `Figure` class can be really slow with heavy plots.
-If speed is an issue, you should keep your graph as Python dicts.
+If speed is an issue, you should keep your graph as Python dicts (but apply the HEVA theme nonetheless).
 
 #### Define a callback in an app?
 
@@ -376,7 +369,7 @@ Just remember that you need to import the Dash global application with `from app
 
 #### Share something across apps?
 
-Since all apps can access the `app.py` module namespace, if you need an asset in multiple apps (let us say a logo for instance), you can define it in `app.py` and import it in every app where it is needed.
+Since all apps can access the `app.py` module namespace, if you need an asset in multiple apps (let us say a logo for instance), you can define it in `app.py` or **even better, in a third file in the `apps/` folder** and import it in every layout where it is needed.
 
 ### How to deploy a dashboard
 

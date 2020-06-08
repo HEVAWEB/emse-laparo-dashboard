@@ -89,25 +89,17 @@ layout = html.Div(
             children=[
                 dcc.Tab(
                     label="Tab1",
-                    value="tab-1",
-                    className="custom-tab",
-                    selected_className="custom-tab--selected",
+                    value="tab-1"
                 ),
                 dcc.Tab(
                     label="Tab2",
-                    value="tab-2",
-                    className="custom-tab",
-                    selected_className="custom-tab--selected",
+                    value="tab-2"
                 ),
                 dcc.Tab(
                     label="Tab3",
-                    value="tab-3",
-                    className="custom-tab",
-                    selected_className="custom-tab--selected",
+                    value="tab-3"
                 ),
-            ],
-            parent_className="custom-tabs",
-            className="custom-tabs-container",
+            ]
         ),
         html.H4("Table simple"),
         utils.table_from_df(df_iris),

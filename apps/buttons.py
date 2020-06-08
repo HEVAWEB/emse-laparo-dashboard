@@ -1,3 +1,4 @@
+import dash_core_components as dcc
 import dash_html_components as html
 from utils.html import button
 
@@ -141,5 +142,33 @@ layout = html.Div(
             ],
             className="btn-group btn-group-block",
         ),
+        html.Hr(),
+        html.H4("Tabs"),
+        dcc.Tabs(
+            id="tabs",
+            value="tab-1",
+            children=[
+                dcc.Tab(
+                    label="Default",
+                    value="tab-1",
+                ),
+                dcc.Tab(
+                    label="Second option",
+                    value="tab-2",
+                ),
+                dcc.Tab(
+                    label="Third option",
+                    value="tab-3",
+                ),
+                dcc.Tab(
+                    label="Disabled tab",
+                    value="tab-4",
+                    disabled=True,
+                ),
+            ],
+            parent_className="custom-tabs",
+            className="custom-tabs-container",
+        ),
+        html.Hr(),
     ]
 )

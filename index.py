@@ -52,8 +52,8 @@ pages = {
 
 # Navbar titles: which links & title to display on the navbar, add/remove entries if needed
 navbar_titles = {
-    "/typo": "Typographie",
-    "/button": "Boutons",
+    "/typo": "S1 - Typographie",
+    "/button": "S2 - Boutons",
     "/composants": "Composants",
     "/context": "Contexte",
     "/methods": " Méthodologie",

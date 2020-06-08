@@ -1,5 +1,5 @@
-lang = "fr"
+lang = "en"
 
 [tracking]
-debug = true
+debug = false
 code = "UA-75404337-15"

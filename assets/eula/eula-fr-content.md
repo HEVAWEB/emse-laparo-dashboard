@@ -1,7 +1,5 @@
 Les utilisateurs disposent ainsi des espaces suivants :
 
-**À changer**
-
 - Context: Overview of the dashboard
 - Experiments : Details regarding results on synthetic data
 - Case study : Results of the laparotomy case study

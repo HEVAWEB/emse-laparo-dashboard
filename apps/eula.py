@@ -4,7 +4,7 @@ import rgpd_dash
 import utils
 from app import config
 
-SITE = "https://dashboard-template.hevaweb.com"
+SITE = "https://https://artemis-emse-laparo.hevaweb.com/"
 
 with open("assets/eula/eula-fr.md", "r", encoding="utf-8") as f:
     content = utils.MarkdownReader(f.read().format(site=SITE))

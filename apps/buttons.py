@@ -174,5 +174,6 @@ layout = html.Div(
             ],
             className="accordion",
         ),
+        html.Hr()
     ]
 )

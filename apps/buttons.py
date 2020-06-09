@@ -117,11 +117,7 @@ layout = html.Div(
         ),
         html.H4("Medium"),
         html.Div(
-            [
-                button("Default"),
-                button("Default"),
-                button("Default"),
-            ],
+            [button("Default"), button("Default"), button("Default")],
             className="btn-group btn-group-block",
         ),
         html.H4("Small"),
@@ -148,27 +144,35 @@ layout = html.Div(
             id="tabs",
             value="tab-1",
             children=[
-                dcc.Tab(
-                    label="Default",
-                    value="tab-1",
-                ),
-                dcc.Tab(
-                    label="Second option",
-                    value="tab-2",
-                ),
-                dcc.Tab(
-                    label="Third option",
-                    value="tab-3",
-                ),
-                dcc.Tab(
-                    label="Disabled tab",
-                    value="tab-4",
-                    disabled=True,
-                ),
+                dcc.Tab(label="Default", value="tab-1",),
+                dcc.Tab(label="Second option", value="tab-2",),
+                dcc.Tab(label="Third option", value="tab-3",),
+                dcc.Tab(label="Disabled tab", value="tab-4", disabled=True,),
             ],
             parent_className="custom-tabs",
             className="custom-tabs-container",
         ),
         html.Hr(),
+        html.H4("Accordion"),
+        html.Details(
+            [
+                html.Summary(
+                    [html.I(className="icon icon-arrow-right"), html.Span("Value"),],
+                    className="accordion-header",
+                ),
+                html.Div(
+                    [html.I(className="icon icon-arrow-right"), html.Span("Element")],
+                    className="accordion-body",
+                ),
+            ],
+            className="accordion",
+        ),
+        html.Details(
+            [
+                html.Summary([html.Span("Value")], className="accordion-header",),
+                html.Div([html.Span("Element")], className="accordion-body",),
+            ],
+            className="accordion",
+        ),
     ]
 )

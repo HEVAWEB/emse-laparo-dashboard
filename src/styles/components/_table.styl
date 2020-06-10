@@ -1,0 +1,60 @@
+#page-content
+
+  .dash-spreadsheet-menu div
+    margin-left auto
+
+    button
+      //box-sizing border-box
+      height 3.2rem
+      border 1px solid $borderColor
+      border-radius: 8px
+      background-color $whitePurple
+      color $inkTextColor
+      font-size 1.2rem
+      font-weight bold
+      letter-spacing 0
+      line-height 1.4rem
+
+
+  table
+    font-family $primaryFont
+    font-size 1.6rem
+    letter-spacing 0
+    line-height 2.4rem
+
+    tr
+      background-color $tableBackgroundColor
+
+      &:hover td
+        background-color $rowBackgroundHoverColor !important
+
+    th
+      font-weight 700
+      border none !important
+      padding 0.4rem
+      background-color $white
+      height 4rem
+
+      div
+        line-height 4rem
+        background-color $headerBackgroundColor
+        border-radius 4px
+        padding 0 1.2rem
+
+        span.column-header--sort
+          float right
+          margin-left 0.5rem
+
+         svg.svg-inline--fa
+           path
+            fill $sortIconColor !important
+
+           &[data-icon^="sort-"], &:hover
+             path
+              fill $sortIconActiveColor !important
+
+    td
+      border-top none !important
+      border-left none !important
+      border-right none !important
+      padding 0 0.4rem

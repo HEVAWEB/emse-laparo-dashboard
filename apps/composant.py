@@ -1,5 +1,31 @@
 import dash_html_components as html
 import utils
+from dash_table import DataTable
+
+
+datatable = DataTable(
+    columns=[
+        {"name": ["", "Year"], "id": "year"},
+        {"name": ["City", "Montreal"], "id": "montreal"},
+        {"name": ["City", "Vancouver"], "id": "vancouver"},
+        {"name": ["Climate", "Temperature"], "id": "temp"},
+        {"name": ["Climate", "Humidity"], "id": "humidity"},
+    ],
+    data=[
+        {
+            "year": i,
+            "montreal": i * 10,
+            "vancouver": i * 5,
+            "temp": "text",
+            "humidity": i * -100,
+        }
+        for i in range(10)
+    ],
+    merge_duplicate_headers=True,
+    export_format="csv",
+    sort_action="native",
+    style_cell_conditional=[{"if": {"column_id": "temp"}, "text-align": "left"}],
+)
 
 layout = html.Div(
     [
@@ -41,5 +67,7 @@ layout = html.Div(
     foo.bar()
     ```"""
         ),
+        html.H3("Table simple & data table"),
+        datatable,
     ]
 )

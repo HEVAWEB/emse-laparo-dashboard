@@ -80,11 +80,12 @@ button
   &.secondary-button
     color $white
     background-color: $buttonBackgroundColor
-    border-color rgba(0, 0, 0, 0)
+    border-color $buttonSecondaryBackgroundColor
 
     &:disabled
       background-color $buttonDisabledSecondaryColor
       color $disabledTextColor
+      border-color $buttonDisabledSecondaryColor
 
     &:hover:enabled, &:focus:enabled
       background-color $buttonBackgroundHoverColor

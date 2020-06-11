@@ -2,8 +2,7 @@
   button, button.button-large, button.button-medium, button.button-small
     border-radius 0
     margin-left 0
-    margin-right 0
-    border-right none
+    margin-right -1px
 
   button:first-of-type
     border-top-left-radius 4px
@@ -47,7 +46,7 @@ button
 
   &.default-button
     color $buttonTextColor
-    background-color: $white
+    background-color: $buttonBackgroundColor
 
     i.icon
       color $purpleGrey
@@ -61,26 +60,29 @@ button
 
     &:hover:enabled
       color $primaryColor
-      background-color rgba($buttonBackgroundColor, 0.05)
+      background-color $buttonBackgroundHoverColor
+      border-color rgba($buttonBorderEnabledColor, 0.5)
 
     &:focus:enabled
-      color $primaryColor
-      background-color rgba($buttonBackgroundColor, 0.5)
+      background-color $buttonBackgroundFocusColor
+      border-color $buttonBorderEnabledColor
+      color $white
 
       i.icon
-        color $primaryColor
+        color $white
 
     &:active:enabled
       color $primaryColor
-      background-color rgba($buttonBackgroundColor, 0.1)
+      background-color $buttonBackgroundActiveColor
+      border-color $buttonBorderEnabledColor
 
       i.icon
         color $primaryColor
 
   &.secondary-button
     color $white
-    background-color: $buttonBackgroundColor
-    border-color $buttonSecondaryBackgroundColor
+    background-color: $buttonSecondaryBackgroundColor
+    border-color $buttonSecondaryBorderColor
 
     &:disabled
       background-color $buttonDisabledSecondaryColor
@@ -88,13 +90,13 @@ button
       border-color $buttonDisabledSecondaryColor
 
     &:hover:enabled, &:focus:enabled
-      background-color $buttonBackgroundHoverColor
+      background-color $buttonSecondaryBackgroundHoverColor
 
     &:focus:enabled
-      background-color $buttonBackgroundFocusColor
+      background-color $buttonSecondaryBackgroundFocusColor
 
     &:active:enabled
-      background-color $buttonBackgroundActiveColor
+      background-color $buttonSecondaryBackgroundActiveColor
 
   &.button-large
     border-radius 1000px

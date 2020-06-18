@@ -19,12 +19,15 @@ datatable = DataTable(
             "temp": "text",
             "humidity": i * -100,
         }
-        for i in range(10)
+        for i in range(30)
     ],
     merge_duplicate_headers=True,
     export_format="csv",
     sort_action="native",
     style_cell_conditional=[{"if": {"column_id": "temp"}, "text-align": "left"}],
+    cell_selectable=False,
+    page_action="native",
+    page_size=10
 )
 
 layout = html.Div(

@@ -57,3 +57,15 @@
       border-left none !important
       border-right none !important
       padding 0 0.4rem
+
+  .previous-next-container
+
+    .first-page, .previous-page, .next-page, .last-page
+      &:enabled
+        svg path
+          fill $sortIconColor !important
+      &:enabled:hover svg path
+        fill $sortIconActiveColor !important
+
+      &:disabled svg path
+        fill $disabledTextColor !important

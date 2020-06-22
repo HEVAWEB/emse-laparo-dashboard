@@ -4,6 +4,9 @@
     margin-left 0
     margin-right -1px
 
+  button:hover, button:active, button:focus
+    z-index 10
+
   button:first-of-type
     border-top-left-radius 4px
     border-bottom-left-radius 4px
@@ -61,7 +64,7 @@ button
     &:hover:enabled
       color $primaryColor
       background-color $buttonBackgroundHoverColor
-      border-color rgba($buttonBorderEnabledColor, 0.5)
+      border-color blend(rgba($buttonBorderEnabledColor, 0.5))
 
     &:focus:enabled
       background-color $buttonBackgroundFocusColor

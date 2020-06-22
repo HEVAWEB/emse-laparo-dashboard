@@ -28,7 +28,7 @@ datatable = DataTable(
     style_cell_conditional=[{"if": {"column_id": "temp"}, "text-align": "left"}],
     cell_selectable=False,
     page_action="native",
-    page_size=10
+    page_size=10,
 )
 
 layout = html.Div(
@@ -133,6 +133,24 @@ layout = html.Div(
         ),
         html.Hr(),
         html.H3("Links"),
+        button("Default", kind="link", size="medium"),
+        button("Disabled", kind="link", size="medium", disabled=True),
+        html.Br(),
+        button(
+            "Default",
+            kind="link",
+            size="medium",
+            right_icon="icon-arrow-down",
+            left_icon="icon-time",
+        ),
+        button(
+            "Disabled",
+            kind="link",
+            size="medium",
+            disabled=True,
+            right_icon="icon-arrow-down",
+            left_icon="icon-time",
+        ),
         html.Hr(),
         html.H3("Button group"),
         html.H4("Large"),
@@ -205,6 +223,6 @@ layout = html.Div(
             ],
             className="accordion",
         ),
-        html.Hr()
+        html.Hr(),
     ]
 )

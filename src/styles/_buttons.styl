@@ -98,6 +98,29 @@ button
     &:active:enabled
       background-color $buttonSecondaryBackgroundActiveColor
 
+  &.link-button
+    border none
+    color $buttonTextColor
+    background-color transparent
+
+    i.icon
+      color $purpleGrey
+
+    &:disabled, &[disabled=disabled]
+      //border-color $buttonDisabledColor
+      color $disabledTextColor
+
+      i.icon
+        color $disabledTextColor
+
+    &:hover:enabled, &:focus:enabled, &:focus:enabled
+      color $primaryColor
+      //background-color $buttonBackgroundHoverColor
+      //border-color rgba($buttonBorderEnabledColor, 0.5)
+
+      i.icon
+        color $primaryColor
+
   &.button-large
     border-radius 1000px
     padding-left 1.2rem

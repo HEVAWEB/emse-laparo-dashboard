@@ -9,6 +9,7 @@ from app import app, config
 from apps import (
     context,
     eula,
+    forms,
     method,
     desc_cancer,
     evt_cancer,
@@ -48,12 +49,14 @@ pages = {
     "/typo": typography.layout,
     "/button": buttons.layout,
     "/composants": composant.layout,
+    "/form": forms.layout
 }
 
 # Navbar titles: which links & title to display on the navbar, add/remove entries if needed
 navbar_titles = {
     "/typo": "S1 - Typographie",
     "/button": "S2 - Boutons",
+    "/form": "S3 - Formulaires",
     "/composants": "Composants",
     "/context": "Contexte",
     "/methods": " Méthodologie",

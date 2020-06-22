@@ -351,6 +351,6 @@ def toolbar(form_entries: Iterable):
                 className="form-horizontal",
             )
         ],
-        className="tools",
+        className="toolbar",
 
     )

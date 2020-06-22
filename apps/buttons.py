@@ -1,6 +1,35 @@
 import dash_core_components as dcc
 import dash_html_components as html
+from dash_table import DataTable
+
 from utils.html import button
+
+datatable = DataTable(
+    columns=[
+        {"name": ["", "Year"], "id": "year"},
+        {"name": ["City", "Montreal"], "id": "montreal"},
+        {"name": ["City", "Vancouver"], "id": "vancouver"},
+        {"name": ["Climate", "Temperature"], "id": "temp"},
+        {"name": ["Climate", "Humidity"], "id": "humidity"},
+    ],
+    data=[
+        {
+            "year": i,
+            "montreal": i * 10,
+            "vancouver": i * 5,
+            "temp": "text",
+            "humidity": i * -100,
+        }
+        for i in range(30)
+    ],
+    merge_duplicate_headers=True,
+    export_format="csv",
+    sort_action="native",
+    style_cell_conditional=[{"if": {"column_id": "temp"}, "text-align": "left"}],
+    cell_selectable=False,
+    page_action="native",
+    page_size=10
+)
 
 layout = html.Div(
     [
@@ -153,6 +182,8 @@ layout = html.Div(
             className="custom-tabs-container",
         ),
         html.Hr(),
+        html.H4("Pagination"),
+        datatable,
         html.H4("Accordion"),
         html.Details(
             [

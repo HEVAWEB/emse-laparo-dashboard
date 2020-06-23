@@ -26,7 +26,6 @@ datatable = DataTable(
     export_format="csv",
     sort_action="native",
     style_cell_conditional=[{"if": {"column_id": "temp"}, "text-align": "left"}],
-    cell_selectable=False,
     page_action="native",
     page_size=10,
 )

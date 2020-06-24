@@ -52,7 +52,7 @@ button
     background-color: $buttonBackgroundColor
 
     i.icon
-      color $purpleGrey
+      color $buttonTextColor
 
     &:disabled, &[disabled=disabled]
       border-color $buttonDisabledColor
@@ -65,6 +65,9 @@ button
       color $primaryColor
       background-color $buttonBackgroundHoverColor
       border-color blend(rgba($buttonBorderEnabledColor, 0.5))
+
+      i.icon
+        color $primaryColor
 
     &:focus:enabled
       background-color $buttonBackgroundFocusColor

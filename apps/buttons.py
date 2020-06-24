@@ -39,24 +39,24 @@ layout = html.Div(
         button("Disabled", size="large", disabled=True),
         html.Br(),
         button(
-            "Default", size="large", right_icon="icon-arrow-down", left_icon="icon-time"
+            "Default", size="large", right_icon="icon-caret", left_icon="icon-time"
         ),
         button(
             "Disabled",
             size="large",
             disabled=True,
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         html.H4("Medium"),
         button("Default"),
         button("Disabled", disabled=True),
         html.Br(),
-        button("Default", right_icon="icon-arrow-down", left_icon="icon-time"),
+        button("Default", right_icon="icon-caret", left_icon="icon-time"),
         button(
             "Disabled",
             disabled=True,
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         html.H4("Small"),
@@ -64,13 +64,13 @@ layout = html.Div(
         button("Disabled", size="small", disabled=True),
         html.Br(),
         button(
-            "Default", size="small", right_icon="icon-arrow-down", left_icon="icon-time"
+            "Default", size="small", right_icon="icon-caret", left_icon="icon-time"
         ),
         button(
             "Disabled",
             size="small",
             disabled=True,
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         html.Hr(),
@@ -83,7 +83,7 @@ layout = html.Div(
             "Default",
             kind="secondary",
             size="large",
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         button(
@@ -91,7 +91,7 @@ layout = html.Div(
             kind="secondary",
             size="large",
             disabled=True,
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         html.H4("Medium"),
@@ -101,14 +101,14 @@ layout = html.Div(
         button(
             "Default",
             kind="secondary",
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         button(
             "Disabled",
             kind="secondary",
             disabled=True,
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         html.H4("Small"),
@@ -119,7 +119,7 @@ layout = html.Div(
             "Default",
             kind="secondary",
             size="small",
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         button(
@@ -127,7 +127,7 @@ layout = html.Div(
             kind="secondary",
             size="small",
             disabled=True,
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         html.Hr(),
@@ -139,7 +139,7 @@ layout = html.Div(
             "Default",
             kind="link",
             size="medium",
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         button(
@@ -147,7 +147,7 @@ layout = html.Div(
             kind="link",
             size="medium",
             disabled=True,
-            right_icon="icon-arrow-down",
+            right_icon="icon-caret",
             left_icon="icon-time",
         ),
         html.Hr(),

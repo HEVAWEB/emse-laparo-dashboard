@@ -138,8 +138,29 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
             source venv/bin/activate
             ```
 
-    2.  Install Python dependencies (all the required packages)
-
+    2.  Compile & install Python dependencies (all the required packages)
+        1. Install pip-tools (which installs pip-compile)
+        ```
+        pip install pip-tools
+        ```
+        2. Compile the `requirements.txt` which suits your needs
+        ```bash
+        pip-compile requirements.in -o requirements.txt
+        ```
+        You can add layers to the `requirements.in` file to add curated libraries.
+        It contains a single line by default:
+        ```
+        -r reqs/base.in
+        ```
+        The `reqs/base.in` file contains the minimum needed for a dashboard.
+        You may add functionnalities to your dashboard in your virtual environment by adding files from the `reqs` folder.
+        Let us say for example that you want to create a dashboard with maps.
+        Your `requirements.in` should look like this:
+        ```
+        -r reqs/base.in
+        -r reqs/maps.in
+        ```
+        3. Finally, install the dependencies in the virtual environment with pip:
         ```bash
         pip install -r requirements.txt
         ```
@@ -156,7 +177,7 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
 
         > You may also use the utility script provided `launch_artemis.bat` if you are not using a virtual environment.
 
-        * By default, you can now open your pretty dashboard at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
+        * By default, you can now open your ugly (for now!) dashboard at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
         * Warning: do not close your Windows invite, otherwise it closes the dashboard.
 
     4.  **Optional** On Unix platforms, run production server with

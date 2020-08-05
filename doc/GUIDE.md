@@ -122,7 +122,7 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
 
     Requires **Python 3.7**. For the following steps, you must go in the local directory in which you synchronised your project (ex: with SourceTree).
 
-    1.  **Optional but recommended**: Create & activate a virtual environment (very important if you currently have several Python projects on your computer)
+    1.  Create & activate a virtual environment (very important if you currently have several Python projects on your computer)
 
         1)  Windows (with Windows -\> \'cmd\')
 
@@ -139,13 +139,13 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
             ```
 
     2.  Compile & install Python dependencies (all the required packages)
-        1. Install pip-tools (which installs pip-compile)
+        1. Install pip-tools (which installs pip-compile command)
         ```
         pip install pip-tools
         ```
         2. Compile the `requirements.txt` which suits your needs
         ```bash
-        pip-compile requirements.in -o requirements.txt
+        pip-compile requirements.in -o requirements.txt --no-emit-index-url
         ```
         You can add layers to the `requirements.in` file to add curated libraries.
         It contains a single line by default:
@@ -160,9 +160,11 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
         -r reqs/base.in
         -r reqs/maps.in
         ```
+        > It is encouraged during development to add the `reqs/dev.in` layer and to remove it when ready to deploy
+
         3. Finally, install the dependencies in the virtual environment with pip:
         ```bash
-        pip install -r requirements.txt
+        pip-sync
         ```
 
     3.  Run a development server (Windows & Unix)

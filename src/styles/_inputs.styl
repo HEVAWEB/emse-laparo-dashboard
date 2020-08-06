@@ -70,29 +70,34 @@
     border-width 1px
     border-radius 2px
     padding-left 1rem
-    min-height 3.6rem
+    min-height 3.2rem
 
     &::placeholder
       font-style italic
       color $placeholderTextColor
 
 
-  .dash-dropdown .Select-control
-    min-height 3.2rem
-    border solid $borderColor 1px
+  .dash-dropdown
 
-    .Select-clear-zone, .Select-arrow-zone
-      color $inputTextColor
-      font-weight 700
+    .Select.is-focused .Select-arrow
+      border-bottom-color $chipHoverColor
 
-      .Select-arrow
-        border-top-color $inputTextColor
+    .Select .Select-control
+      min-height 3.2rem
+      border solid $borderColor 1px
 
-      &:hover
-        color $chipHoverColor
+      .Select-clear-zone, .Select-arrow-zone
+        color $inputTextColor
+        font-weight 700
 
         .Select-arrow
-          border-top-color $chipHoverColor
+          border-top-color $inputTextColor
+
+        &:hover
+          color $chipHoverColor
+
+          .Select-arrow
+            border-top-color $chipHoverColor
 
   .Select--multi .Select-value
     border solid $inputBorderColor 1px

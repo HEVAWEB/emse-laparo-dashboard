@@ -111,6 +111,10 @@ layout = html.Div(
         ),
         html.Br(),
         html.H3("Cards"),
+
+        html.Div(
+            [html.P("ceci est une carte en cours de création")], className="card-artemis"
+        ),
         html.Br(),
         html.H3("Table simple & data table"),
         datatable,

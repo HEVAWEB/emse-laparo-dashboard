@@ -81,5 +81,21 @@ layout = html.Div(
             className="group-radio-check",
         ),
         html.Br(),
+        html.H3("Slider"),
+        dcc.Slider(
+            min=-5,
+            max=10,
+            step=0.5,
+            value=-3,
+            tooltip=dict(always_visible=False, placement="top"),
+        ),
+        html.H3("Steps"),
+        dcc.Slider(
+            min=0,
+            max=9,
+            marks={i: f"Label {i}" for i in range(10)},
+            value=5,
+            tooltip=dict(always_visible=False, placement="top"),
+        ),
     ]
 )

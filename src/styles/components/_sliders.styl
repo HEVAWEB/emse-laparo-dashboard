@@ -3,34 +3,75 @@
 
   .rc-slider-track
     background-color $sliderBackgroundColor
+    height 0.1rem
+    // margin-top = half the dot size (0.4rem) minus half line size (0.05rem)
+    margin-top 0.35rem
 
-  .rc-slider-dot-active, .rc-slider-handle, .rc-slider-handle:hover
+  .rc-slider-step
+    padding-top 0.2rem
+
+    .rc-slider-dot
+      height 0.4rem
+      width 0.4rem
+
+  .rc-slider-step .rc-slider-dot.rc-slider-dot-active, .rc-slider-handle
+    background-color $sliderBorderColor
     border-color $sliderBorderColor
+
+  .rc-slider-dot, .rc-slider-handle
+    &:hover, &:focus, &:focus-within
+      box-shadow 0 0 0 2px $focusHaloColor
+
+  .rc-slider-handle
+    height 0.8rem
+    width 0.8rem
+    margin-top 0
 
   .rc-slider-mark-text
     color $sliderTextColor
+    font-weight bold
+    font-size 1.4rem
 
   .rc-slider-mark-text-active
     color $sliderTextColoractive
 
   .rc-slider-rail
     background-color $sliderRailBackground
+    height 0.1rem
+    margin-top 0.35rem
 
-.rc-slider-disabled
-  background-color transparent
-  margin 10px 0
+  .rc-slider-disabled
+    background-color transparent
+    margin 10px 0
 
-  .rc-slider-track
-    background-color $sliderBackgroundDisabledColor
+    .rc-slider-track
+      background-color $sliderBackgroundDisabledColor
 
-  .rc-slider-dot-active, .rc-slider-handle, .rc-slider-handle:hover
-    border-color $sliderBorderDisabledColor
+    .rc-slider-dot-active, .rc-slider-handle, .rc-slider-handle:hover
+      border-color $sliderBorderDisabledColor
 
-  .rc-slider-mark-text
-    color $sliderTextDisabledColor
+    .rc-slider-mark-text
+      color $sliderTextDisabledColor
 
-  .rc-slider-mark-text-active
-    color $sliderTextDisabledColor
+    .rc-slider-mark-text-active
+      color $sliderTextDisabledColor
 
-  .rc-slider-rail
-    background-color $sliderRailDisabledBackground
+    .rc-slider-rail
+      background-color $sliderRailDisabledBackground
+
+.rc-slider-tooltip
+  padding 0
+
+  .rc-slider-tooltip-content
+    .rc-slider-tooltip-inner
+      background-color $sliderTooltipBackgroundColor
+      border-radius 0.2rem
+      padding 0.3rem 0.8rem
+      height 2.2rem
+      line-height 1.6rem
+      font-size 1rem
+      vertical-align center
+      font-weight bold
+
+    .rc-slider-tooltip-arrow
+      display none

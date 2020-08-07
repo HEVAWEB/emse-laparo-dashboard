@@ -26,7 +26,7 @@ datatable = DataTable(
     sort_action="native",
     style_cell_conditional=[{"if": {"column_id": "temp"}, "text-align": "left"}],
     page_action="native",
-    page_size=10
+    page_size=10,
 )
 
 layout = html.Div(
@@ -64,11 +64,54 @@ layout = html.Div(
         html.H3("Code"),
         utils.markdown_content(
             """
-    ```
-    import foo
-    foo.bar()
-    ```"""
+            ```
+            import foo
+            foo.bar()
+            ```"""
         ),
+        html.Br(),
+        html.H3("Figures"),
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Figure(
+                            [
+                                html.Img(
+                                    src="https://source.unsplash.com/user/pawel_czerwinski",
+                                    className="img-responsive",
+                                ),
+                                html.Figcaption(
+                                    "Random image from Unsplash.com",
+                                    className="figure-caption text-center",
+                                ),
+                            ]
+                        )
+                    ],
+                    className="column col-6",
+                ),
+                html.Div(
+                    [
+                        html.Figure(
+                            [
+                                html.Img(
+                                    src="https://source.unsplash.com/user/pawel_czerwinski",
+                                    className="img-responsive",
+                                ),
+                                html.Figcaption(
+                                    "Random image from Unsplash.com", id="bli"
+                                ),
+                            ]
+                        )
+                    ],
+                    className="column col-6",
+                ),
+            ],
+            className="columns col-gapless",
+        ),
+        html.Br(),
+        html.H3("Cards"),
+        html.Br(),
         html.H3("Table simple & data table"),
         datatable,
     ]

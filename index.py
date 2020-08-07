@@ -18,7 +18,7 @@ from apps import (
     design,
     typography,
     buttons,
-    composant,
+    contents,
 )
 from utils import __version__, translations
 
@@ -48,7 +48,7 @@ pages = {
     "/eula": eula.layout,
     "/typo": typography.layout,
     "/button": buttons.layout,
-    "/composants": composant.layout,
+    "/composants": contents.layout,
     "/form": forms.layout
 }
 
@@ -57,7 +57,7 @@ navbar_titles = {
     "/typo": "S1 - Typographie",
     "/button": "S2 - Boutons",
     "/form": "S3 - Formulaires",
-    "/composants": "Composants",
+    "/composants": "S4 - Contenus",
     "/context": "Contexte",
     "/methods": " Méthodologie",
     "/gallery": "Galerie des graphes",

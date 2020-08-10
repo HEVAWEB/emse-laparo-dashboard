@@ -1,37 +1,3 @@
-//input[type="checkbox"],
-//input[type="radio"]
-//  display inline
-//
-//label
-//  margin-right 16px !important
-//
-//  & > .label-body
-//    display inline-block
-//    margin-left .5rem
-//    font-weight normal
-//
-//.form-label
-//  text-align right
-//  margin 20px
-//
-//.Select-control, input, textarea
-//  border-width 1px
-//  border-style solid
-//  border-color $borderColor
-//  line-height 16px
-//  padding-top 8px !important
-//  border-radius 4px
-//  margin-right 8px
-//  margin-bottom 8px
-//  color $inkTextColor
-//
-//.Select-control
-//  padding 0
-//
-//.VirtualizedSelectFocusedOption
-//  background-color rgba($linkTextColor, 0.08)
-
-
 #page-content
 
   label:has(+ input:focus)
@@ -78,8 +44,10 @@
 
 
   .dash-dropdown
+    .Select-control
+      overflow auto
 
-    .Select.is-focused .Select-arrow
+    .Select.is-open .Select-arrow
       border-bottom-color $chipHoverColor
 
     .Select .Select-control

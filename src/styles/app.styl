@@ -9,6 +9,9 @@
 #page-content
   background-color $contentBackgroundColor
   padding 0 4rem 0 4rem
+  // Take full page height minus body margin-top 3.2
+  // and footer height 3.2
+  min-height calc(100vh - 6.4rem)
 
   .text:last-child
     margin-bottom 2rem
@@ -16,6 +19,8 @@
 @media (max-width: 960px)
   #page-content
     padding 0 2rem 0 2rem
+    // same as above except only footer height
+    min-height calc(100vh - 3.2rem)
 
 .bg-paper
   background $paperBackgroundColor !important

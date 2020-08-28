@@ -78,6 +78,11 @@
     color $inputTextColor
     font-weight 700
 
+    &:hover
+      border-color $primaryColor
+      background-color $buttonBackgroundFocusColor
+      color $white
+
     .Select-value-icon, .Select-value-label
       border none
 
@@ -101,7 +106,8 @@
 
       &:hover
         background-color unset
-        color $primaryColor
+        color $white
+        text-shadow $white 1px 0 10px
 
   .Select--single .Select-value span
     color $inputTextColor

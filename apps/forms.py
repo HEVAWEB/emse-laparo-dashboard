@@ -20,7 +20,15 @@ layout = html.Div(
                         )
                     ],
                     className="col-12",
-                )
+                ),
+                html.Div(
+                    [
+                        html.Label("Text label", className="form-label"),
+                        dcc.Input(placeholder="Placeholder", className="form-input"),
+                    ],
+                    className="form-group",
+                ),
+
             ]
         ),
         html.H3("Input"),

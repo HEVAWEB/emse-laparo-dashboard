@@ -1,4 +1,4 @@
-.graph, .two-graphs, .toolbar, .custom-tabs-container
+.graph, .two-graphs, .custom-tabs-container
   background-color $containerBackgroundColor
   padding 2rem 4rem
   margin 0 -4rem
@@ -6,19 +6,29 @@
   & > *:first-child
     margin-top 0
 
-.toolbar, .custom-tabs-container
+.custom-tabs-container
   box-shadow inset 0px -8px 8px $toolsBoxShadowColor
   border-bottom solid 1px $toolsBorderBottomColor
 
-.toolbar [class^="col"]
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
+.toolbar
+  background-color $containerBackgroundColor
+  margin-top 3.2rem
+  margin-left -4rem
+  margin-right -4rem
+  padding 1.6rem 4rem
+
+  & form
+    margin-top -1.6rem
 
 @media (max-width: 960px)
-  .graph, .two-graphs, .toolbar, .custom-tabs-container
+  .graph, .two-graphs, .custom-tabs-container
     margin 0 -2rem 0 -2rem
+
+  .toolbar
+    margin-left -2rem
+    margin-right -2rem
+    padding-left 2rem
+    padding-right 2rem
 
 .graph
   h4

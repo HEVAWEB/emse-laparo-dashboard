@@ -46,7 +46,7 @@ layout = html.Div(
                     placeholder="Placeholder", className="form-input", disabled=True
                 ),
             ],
-            className="form-group",
+            className="form-group disabled",
         ),
         html.H3("Textarea"),
         html.Div(

@@ -1,7 +1,8 @@
 #page-content
 
-  label:has(+ input:focus)
-    color red !important
+  .form-group.disabled
+    .form-label
+        color $disabledTextColor
 
   .form-label
     margin-top 1.6rem
@@ -22,6 +23,9 @@
     &:focus, &:focus-within
       box-shadow 0 0 0 2px $focusHaloColor
       border solid rgba($chipHoverColor, 0.5) 1px
+
+    &:disabled
+      background-color $white
 
   .dash-dropdown input
     border none

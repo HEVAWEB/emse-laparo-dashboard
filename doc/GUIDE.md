@@ -139,32 +139,35 @@ If you want to clone an existing dashboard (already on GitLab), you should do th
             ```
 
     2.  Compile & install Python dependencies (all the required packages)
-        1. Install pip-tools (which installs pip-compile command)
+        1. Install pip-tools in your venv (which installs pip-compile command)
         ```
         pip install pip-tools
         ```
         2. Compile the `requirements.txt` which suits your needs
         ```bash
-        pip-compile requirements.in -o requirements.txt --no-emit-index-url
+        pip-compile reqs/base.in -o requirements.txt --no-emit-index-url --upgrade
         ```
-        You can add layers to the `requirements.in` file to add curated libraries.
-        It contains a single line by default:
-        ```
-        -r reqs/base.in
-        ```
+        You can add layers to the the final `requirements.txt` file to add curated libraries.
         The `reqs/base.in` file contains the minimum needed for a dashboard.
         You may add functionnalities to your dashboard in your virtual environment by adding files from the `reqs` folder.
         Let us say for example that you want to create a dashboard with maps.
-        Your `requirements.in` should look like this:
+        Your `requirements.txt` should be generated with:
         ```
-        -r reqs/base.in
-        -r reqs/maps.in
+        pip-compile reqs/base.in reqs/maps.in -o requirements.txt --no-emit-index-url --upgrade
         ```
-        > It is encouraged during development to add the `reqs/dev.in` layer and to remove it when ready to deploy
+        > It is encouraged during development to add the `reqs/dev.in` layer
+
+        ```
+        pip-compile reqs/base.in reqs/dev.in -o requirements-dev.txt --no-emit-index-url --upgrade
+        ```
 
         3. Finally, install the dependencies in the virtual environment with pip:
-        ```bash
+        ```
         pip-sync
+        ```
+        or
+        ```
+        pip-sync requirements-dev.txt
         ```
 
     3.  Run a development server (Windows & Unix)

@@ -1,6 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
-import utils
+import utils.html
 
 range_options = [{"label": f"Value {i}", "value": f"v{i}"} for i in range(20)]
 range_options[-1]["disabled"] = True
@@ -39,6 +39,7 @@ layout = html.Div(
             ],
             className="form-group",
         ),
+        utils.html.input("input-custom-icon", placeholder="Placeholder", icon="icon-arrow-right"),
         html.Div(
             [
                 html.Label("Disabled", className="form-label"),

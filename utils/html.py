@@ -1,4 +1,5 @@
 import dash_html_components as html
+import dash_core_components as dcc
 
 
 def button(
@@ -15,3 +16,15 @@ def button(
         content.append(html.I(className=f"icon {right_icon}"))
 
     return html.Button(content, disabled=disabled, className=class_name)
+
+
+def input(id, placeholder="", icon=None):
+
+    res = html.Div(
+        [
+            dcc.Input(id=id, placeholder=placeholder, className="form-input"),
+            html.I(className=f"form-icon icon {icon}"),
+        ],
+        className="has-icon-left",
+    )
+    return res

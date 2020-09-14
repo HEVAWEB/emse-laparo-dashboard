@@ -8,7 +8,7 @@ import utils
 
 # Load markdown text content
 with open("assets/contents/md_doe.md", "r", encoding="utf-8") as f:
-    content = utils.MarkdownReader(f.read())
+    content = iter(utils.MarkdownReader(f.read()))
 
 # Accuracy
 filename = f"builds/dico_plotly_doe.json"
@@ -24,53 +24,42 @@ filename = f"builds/results_explaination.csv"
 df_results_explain = pd.read_csv(filename, index_col=0)
 
 # Define the page's content
-i = iter(range(len(list(content))))
+
+def make_table(df):
+    return dash_table.DataTable(
+        columns=[
+            {"name": tuple(x.split("_")), "id": x}
+            for x in df.columns
+        ],
+        data=df.to_dict("records"),
+        style_table=dict(overflowX="auto"),
+        merge_duplicate_headers=True,
+        style_cell={"textAlign": "center"},
+        style_data_conditional=[
+            {
+                'if': {
+                    'column_id': ['__kappa', '__alpha', '__beta', '__gamma'],
+                },
+                'fontWeight': 'bold'
+            }
+        ]
+    )
+
 
 layout = html.Div(
     [
-        content[next(i)],
-        content[next(i)],
+        next(content),
+        next(content),
         utils.graph(dico_plotly_doe["accuracy"], loading=True),
         utils.graph(dico_plotly_doe["gap"], loading=True),
-        content[next(i)],
+        next(content),
         utils.graph(dico_plotly_doe["R"], loading=True),
         utils.graph(dico_plotly_doe["P"], loading=True),
         utils.graph(dico_plotly_doe["F"], loading=True),
-        content[next(i)],
-        content[next(i)],
-        dash_table.DataTable(
-            columns=[
-                {"name": tuple(x.split("_")), "id": x} for x in df_results_clust.columns
-            ],
-            data=df_results_clust.to_dict("records"),
-            merge_duplicate_headers=True,
-            style_cell={"textAlign": "center"},
-            style_data_conditional=[
-                {
-                    'if': {
-                        'column_id': c,
-                    },
-                    'fontWeight': 'bold'
-                } for c in ['__kappa', '__alpha', '__beta', '__gamma']
-            ]
-        ),
-        content[next(i)],
-        dash_table.DataTable(
-            columns=[
-                {"name": tuple(x.split("_")), "id": x}
-                for x in df_results_explain.columns
-            ],
-            data=df_results_explain.to_dict("records"),
-            merge_duplicate_headers=True,
-            style_cell={"textAlign": "center"},
-            style_data_conditional=[
-                {
-                    'if': {
-                        'column_id': c,
-                    },
-                    'fontWeight': 'bold'
-                } for c in ['__kappa', '__alpha', '__beta', '__gamma']
-            ]
-        ),
+        next(content),
+        next(content),
+        make_table(df_results_clust),
+        next(content),
+        make_table(df_results_explain),
     ]
 )

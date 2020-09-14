@@ -42,7 +42,7 @@ layout = html.Div(
             columns=[
                 {"name": tuple(x.split("_")), "id": x} for x in df_results_clust.columns
             ],
-            data=df_results_clust.to_dict("rows"),
+            data=df_results_clust.to_dict("records"),
             merge_duplicate_headers=True,
             style_cell={"textAlign": "center"},
             style_data_conditional=[
@@ -60,7 +60,7 @@ layout = html.Div(
                 {"name": tuple(x.split("_")), "id": x}
                 for x in df_results_explain.columns
             ],
-            data=df_results_explain.to_dict("rows"),
+            data=df_results_explain.to_dict("records"),
             merge_duplicate_headers=True,
             style_cell={"textAlign": "center"},
             style_data_conditional=[

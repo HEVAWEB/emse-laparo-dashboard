@@ -34,8 +34,8 @@ class MarkdownReader:
             content = self.sections[section]
         return markdown_content(content)
 
-    def __iter__(self):
-        return iter(self.sections)
+    def __len__(self):
+        return len(self.sections)
 
     def full(self):
         """Get the full rendered markdown content"""

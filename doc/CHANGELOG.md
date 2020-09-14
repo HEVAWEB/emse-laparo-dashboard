@@ -1,5 +1,11 @@
 # Changelog
 
+## ?
+- Manage dependencies with pip-tools
+
+## 1.5.1
+- Correctly implement iterator protocol for MarkdownReader. This will enable users to use `next(iterator_content)` rather than rely on indexes.
+
 ## 1.5.0
 
 - Major depencies updates including pattern matching callbacks & better performance building graphs

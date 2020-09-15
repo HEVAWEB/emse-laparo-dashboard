@@ -27,6 +27,9 @@ datatable = DataTable(
     style_cell_conditional=[{"if": {"column_id": "temp"}, "text-align": "left"}],
     page_action="native",
     page_size=10,
+    fixed_columns=dict(headers=True, data=1),
+    style_table=dict(minWidth="100%"),
+    style_cell=dict(minWidth="100px"),
 )
 
 layout = html.Div(

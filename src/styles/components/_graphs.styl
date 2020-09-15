@@ -6,9 +6,7 @@
   & > *:first-child
     margin-top 0
 
-.custom-tabs-container
-  box-shadow inset 0px -8px 8px $toolsBoxShadowColor
-  border-bottom solid 1px $toolsBorderBottomColor
+
 
 .toolbar
   background-color $containerBackgroundColor
@@ -23,6 +21,9 @@
 @media (max-width: 960px)
   .graph, .two-graphs, .custom-tabs-container
     margin 0 -2rem 0 -2rem
+
+  .custom-tabs-container
+  padding 0
 
   .toolbar
     margin-left -2rem
@@ -45,5 +46,3 @@
     margin 0
     padding 0
 
-.custom-tabs-container
-  padding 0 4rem

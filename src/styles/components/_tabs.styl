@@ -1,17 +1,26 @@
 #page-content
+
+  .custom-tabs-container
+    padding 0 4rem
+
   .tab-container
     margin-top 1.6rem
-    height 5.6rem
-    background-color #F4F4F7
-    background linear-gradient(180deg, rgba(201, 200, 214, 0) 0%, rgba(201, 200, 214, 0.15) 100%)
+    min-height 5.6rem
+    background-color $containerBackgroundColor
+    display flex
+    justify-content space-between
 
     .tab
       display flex
-      padding 0
+      flex-direction row
       margin 0
       background-color transparent
+      width 100%
       border none
       border-bottom solid $tableBorderColor 1px
+      min-height 3.2rem
+      box-sizing content-box
+
 
       span
         margin auto

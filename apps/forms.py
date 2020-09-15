@@ -98,6 +98,13 @@ layout = html.Div(
             value=-3,
             tooltip=dict(always_visible=True, placement="top"),
         ),
+        dcc.Slider(
+            min=-5,
+            max=10,
+            step=0.5,
+            value=-3,
+            disabled=True
+        ),
         html.H3("Steps"),
         dcc.Slider(
             min=0,

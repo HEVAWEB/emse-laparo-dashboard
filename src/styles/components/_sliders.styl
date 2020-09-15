@@ -13,8 +13,10 @@
     .rc-slider-dot
       height 0.4rem
       width 0.4rem
+      border-color $sliderRailBackground
+      box-shadow 0 0 0 1px white
 
-  .rc-slider-step .rc-slider-dot.rc-slider-dot-active, .rc-slider-handle
+  .rc-slider-step .rc-slider-dot.rc-slider-dot-active, .rc-slider-step .rc-slider-dot:hover, .rc-slider-handle
     background-color $sliderBorderColor
     border-color $sliderBorderColor
 
@@ -40,8 +42,8 @@
     height 0.1rem
     margin-top 0.35rem
 
-  .rc-slider-disabled
-    background-color transparent
+  &.rc-slider-disabled
+    background-color transparent !important
     margin 10px 0
 
     .rc-slider-track
@@ -49,6 +51,7 @@
 
     .rc-slider-dot-active, .rc-slider-handle, .rc-slider-handle:hover
       border-color $sliderBorderDisabledColor
+      background-color  $sliderBorderDisabledColor
 
     .rc-slider-mark-text
       color $sliderTextDisabledColor

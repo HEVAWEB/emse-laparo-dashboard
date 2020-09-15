@@ -8,13 +8,14 @@
       border 1px solid $borderColor
       border-radius: 8px
       background-color $whitePurple
-      color $inkTextColor
+      color $buttonTextColor
       font-size 1.2rem
       font-weight bold
       letter-spacing 0
       line-height 3rem
       margin-right 0
       cursor pointer
+
       &:hover
         color $primaryColor
         background-color $buttonBackgroundHoverColor
@@ -59,12 +60,12 @@
         span.column-header--sort
           margin-left 0.5rem
 
-         svg.svg-inline--fa
-           path
+        svg.svg-inline--fa
+          path
             fill $sortIconColor !important
 
-           &[data-icon^="sort-"], &:hover
-             path
+          &[data-icon^="sort-"], &:hover
+            path
               fill $sortIconActiveColor !important
 
     td
@@ -74,27 +75,52 @@
       padding 0 0.4rem
 
   .previous-next-container
-    font-family $primaryFont
-    font-weight bold
-    font-size 1.2rem
+    height 3.2rem
+    margin-top 1rem
+    display flex
+    justify-content flex-start
 
     button
       width 3.2rem
       height 3.2rem
-      margin 0.25rem
+      margin 0 0.25rem
+      border 1px $buttonBorderColor solid
+      border-radius 4px
+      font-size 1.4rem
+      font-weight 700
+      line-height 1.6rem
+      cursor pointer
+
+      svg path
+        fill $sortIconColor !important
+
+      &:disabled, &[disabled=disabled]
+        border-color $buttonDisabledColor
+        color $disabledTextColor
+
+        svg path
+          fill $disabledTextColor !important
+
+      &:hover:enabled
+        color $primaryColor
+        background-color $buttonBackgroundHoverColor
+        border-color blend(rgba($buttonBorderEnabledColor, 0.5))
+
+        svg path
+          fill $sortIconActiveColor !important
 
     .page-number
-      margin-left 1.35rem
-      margin-right 1.35rem
+      margin 0 1.35rem
+      color $tableButtonTextColor
+      font-size 1.2rem
+      font-family $primaryFont
+      font-weight bold
+
       *
         margin 0
 
-    .first-page, .previous-page, .next-page, .last-page
-      &:enabled
-        svg path
-          fill $sortIconColor !important
-      &:enabled:hover svg path
-        fill $sortIconActiveColor !important
+      .last-page
+        min-width 0
 
-      &:disabled svg path
-        fill $disabledTextColor !important
+      input
+        padding-left unset

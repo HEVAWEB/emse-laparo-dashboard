@@ -39,7 +39,7 @@ layout = html.Div(
             ],
             className="form-group",
         ),
-        utils.html.input("input-custom-icon", placeholder="Placeholder", icon="icon-arrow-right"),
+        utils.html.input("input-custom-icon", placeholder="Placeholder", icon="icon-mail"),
         html.Div(
             [
                 html.Label("Disabled", className="form-label"),

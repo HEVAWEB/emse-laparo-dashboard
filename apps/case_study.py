@@ -1,4 +1,4 @@
-import json
+import pickle
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -14,18 +14,7 @@ with open("assets/contents/md_case_study.md", "r", encoding="utf-8") as f:
 
 with open("assets/contents/md_apollo.md", "r", encoding="utf-8") as f:
     content_apollo = utils.MarkdownReader(f.read())
-    dico_content_apollo = {
-        '10' : 1,
-        '15': 2,
-        '25': 3,
-        '50': 4
-    }
-
-# data plotly
-filename = f"builds/dico_plotly.json"
-
-with open(filename, "r", encoding="utf-8") as f:
-    dico_plotly = json.load(f)
+    dico_content_apollo = {"10": 1, "15": 2, "25": 3, "50": 4}
 
 layout = html.Div(
     [
@@ -35,8 +24,10 @@ layout = html.Div(
                 content[1],
                 dcc.Dropdown(
                     id="nbclust_selector_in",
-                    options=[{"label": k, "value": k} for k in dico_plotly],
-                    value=list(dico_plotly.keys())[1],
+                    options=[
+                        {"label": k, "value": k} for k in ["10", "15", "25", "50"]
+                    ],
+                    value="15",
                     clearable=False,
                     placeholder="Select the number of clusters",
                 ),
@@ -59,30 +50,32 @@ layout = html.Div(
 
 
 @app.callback(
-    Output("cluster_selector_in", "options"), [Input("nbclust_selector_in", "value"),],
+    Output("cluster_selector_in", "options"), [Input("nbclust_selector_in", "value")],
 )
 def update_list_clusters(key):
-    return [
-        {"label": f'Cluster {i}', "value": i}
-        for i in dico_plotly[key]
-        if i not in ["boxplot", "tsne"]
-    ]
+    return [{"label": f"Cluster {i}", "value": str(i)} for i in range(int(key))]
 
 
 @app.callback(
-    Output("nbclust_selector_out", "children"),
-    [Input("nbclust_selector_in", "value"),],
+    Output("nbclust_selector_out", "children"), [Input("nbclust_selector_in", "value")],
 )
 def update_output(key):
-    fig_tsne = dico_plotly[key]["tsne"]
+    with open(f"builds/figs/{key}.pkl", "rb") as f:
+        dico_plotly = pickle.load(f)
+    fig_tsne = dico_plotly["tsne"]
     fig_tsne["layout"]["template"] = plotly_theme
-    fig_boxplot = dico_plotly[key]["boxplot"]
+    fig_boxplot = dico_plotly["boxplot"]
     fig_boxplot["layout"]["template"] = plotly_theme
 
     img_apollo = content_apollo[dico_content_apollo[key]]
     img_arrow = content_apollo[0]
 
-    return [img_apollo, img_arrow, utils.graph(fig_tsne, loading=True), utils.graph(fig_boxplot, loading=True)]
+    return [
+        img_apollo,
+        img_arrow,
+        utils.graph(fig_tsne, loading=True),
+        utils.graph(fig_boxplot, loading=True),
+    ]
 
 
 @app.callback(
@@ -94,10 +87,12 @@ def get_options(available_options):
 
 @app.callback(
     Output("cluster_selector_out", "children"),
-    [Input("nbclust_selector_in", "value"), Input("cluster_selector_in", "value"),],
+    [Input("nbclust_selector_in", "value"), Input("cluster_selector_in", "value")],
 )
 def update_output(key, i):
-    fig_list = dico_plotly[key][i]
+    with open(f"builds/figs/{key}.pkl", "rb") as f:
+        dico_plotly = pickle.load(f)
+    fig_list = dico_plotly[i]
 
     fig_enc_dec = fig_list[0]
     fig_enc_dec["layout"]["template"] = plotly_theme

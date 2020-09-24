@@ -9,6 +9,7 @@ with open("assets/contents/md_context.md", "r", encoding="utf-8") as f:
 # Define the page's content
 layout = html.Div(
     [
+        html.Img(src="assets/Image.png", className="img-responsive img-fit-contain p-centered"),
         content[0],
         html.Ul(
             [

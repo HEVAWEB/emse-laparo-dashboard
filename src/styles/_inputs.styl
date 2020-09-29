@@ -1,32 +1,142 @@
-input[type="checkbox"],
-input[type="radio"]
-  display inline
+#page-content
 
-label
-  margin-right 16px !important
+  .form-group.disabled
+    .form-label
+        color $disabledTextColor
 
-  & > .label-body
-    display inline-block
-    margin-left .5rem
-    font-weight normal
+  .form-label
+    margin-top 1.6rem
+    font-size 1.2rem
+    line-height 2.4rem
+    font-weight 700
+    color $inputTextColor
 
-.form-label
-  text-align right
-  margin 20px
+    & + input, & + textarea, & + .dash-dropdown
+      margin-top 0.3rem
 
-.Select-control, input, textarea
-  border-width 1px
-  border-style solid
-  border-color $borderColor
-  line-height 16px
-  padding 8px
-  border-radius 4px
-  margin-right 8px
-  margin-bottom 8px
-  color $inkTextColor
+  input, textarea, .dash-dropdown .Select-control
+    border-color $inputBorderColor
+    margin-top 1.6rem
+    outline none
+    font-size 1.4rem
 
-.Select-control
-  padding 0
+    &:focus, &:focus-within
+      box-shadow 0 0 0 2px $focusHaloColor
+      border solid rgba($chipHoverColor, 0.5) 1px
 
-.VirtualizedSelectFocusedOption
-  background-color rgba($linkTextColor, 0.08)
+    &:disabled
+      background-color $white
+
+  .dash-dropdown input
+    border none
+    margin 0
+    box-shadow none
+
+  textarea
+    padding-top 1.2rem
+
+  .has-icon-left
+    .form-icon
+      left 1rem
+
+    input[type="text"]
+      padding-left 3rem
+
+  input[type="text"], textarea
+    border-style solid
+    border-width 1px
+    border-radius 2px
+    padding-left 1rem
+    min-height 3.2rem
+
+    &::placeholder
+      font-style italic
+      color $placeholderTextColor
+
+
+  .dash-dropdown
+    .Select-control
+      overflow auto
+
+    .Select.is-open .Select-arrow
+      border-bottom-color $chipHoverColor
+
+    .Select .Select-control
+      min-height 3.2rem
+      border solid $borderColor 1px
+
+      .Select-clear-zone, .Select-arrow-zone
+        color $inputTextColor
+        font-weight 700
+
+        .Select-arrow
+          border-top-color $inputTextColor
+
+        &:hover
+          color $chipHoverColor
+
+          .Select-arrow
+            border-top-color $chipHoverColor
+
+  .Select--multi .Select-value
+    border solid $inputBorderColor 1px
+    border-radius 4px
+    background-color $chipBackgroundColor
+    color $inputTextColor
+    font-weight 700
+
+    &:hover
+      border-color $primaryColor
+      background-color $buttonBackgroundFocusColor
+      color $white
+
+    .Select-value-icon, .Select-value-label
+      border none
+
+      font-size 1.2rem
+
+      span
+        margin auto
+
+    .Select-value-label
+      padding-left 0.5rem
+      padding-right 0.7rem
+
+      .Select-value-aria
+        visibility hidden
+
+    .Select-value-icon
+      font-size 1.8rem
+      line-height 1.6rem
+      padding-right 0.5rem
+      padding-left 0.8rem
+
+      &:hover
+        background-color unset
+        color $white
+        text-shadow $white 1px 0 10px
+
+  .Select--single .Select-value span
+    color $inputTextColor
+    font-weight 700
+
+  .Select-menu-outer
+    background-color $white
+    color $inputTextColor
+
+    .VirtualizedSelectOption
+      border-bottom solid rgba($inputBorderColor, 0.5) 1px
+      font-weight 700
+      font-size 1.4rem
+
+    .VirtualizedSelectFocusedOption, .VirtualizedSelectSelectedOption
+      background-color $inputHoverBackgroundColor
+      color $primaryColor
+
+  .group-radio-check
+    display flex
+    justify-content space-between
+
+    input[type="radio"], input[type="checkbox"]
+      margin-right 0.8rem
+

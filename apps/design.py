@@ -64,6 +64,24 @@ layout = html.Div(
             "David Bowie est bien mieux que Michael Jackson, sans aucun doute."
         ),
         html.Hr(),
+        html.Div(
+            [
+                html.Div(
+                    [
+                        html.Button("×", className="notifier-close"),
+                        html.P(
+                            html.Span(
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+                                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                            )
+                        ),
+                    ],
+                    className="notifier-note",
+                    style=dict(opacity=1),
+                )
+            ],
+            className="plotly-notifier",
+        ),
         html.H4("Tabs"),
         dcc.Tabs(
             id="tabs",
@@ -71,25 +89,17 @@ layout = html.Div(
             children=[
                 dcc.Tab(
                     label="Tab1",
-                    value="tab-1",
-                    className="custom-tab",
-                    selected_className="custom-tab--selected",
+                    value="tab-1"
                 ),
                 dcc.Tab(
                     label="Tab2",
-                    value="tab-2",
-                    className="custom-tab",
-                    selected_className="custom-tab--selected",
+                    value="tab-2"
                 ),
                 dcc.Tab(
                     label="Tab3",
-                    value="tab-3",
-                    className="custom-tab",
-                    selected_className="custom-tab--selected",
+                    value="tab-3"
                 ),
-            ],
-            parent_className="custom-tabs",
-            className="custom-tabs-container",
+            ]
         ),
         html.H4("Table simple"),
         utils.table_from_df(df_iris),

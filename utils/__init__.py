@@ -11,7 +11,7 @@ from .components import (
     two_graphs,
 )
 
-__version__ = "1.5.1"
+__version__ = "1.6.0-dev"
 __all__ = (
     "__version__",
     "graph",

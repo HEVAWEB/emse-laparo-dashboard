@@ -1,33 +1,44 @@
 #page-content
-  .custom-tab
+
+  .custom-tabs-container
+    padding 0 4rem
+
+  .tab-container
+    margin-top 1.6rem
+    min-height 5.6rem
+    background-color $containerBackgroundColor
     display flex
-    flex-wrap wrap
-    font-family $secondaryFont
-    font-size 1.3rem
-    color $linkTextColor
-    padding 1.6rem
-    align-items center
-    justify-content center
-    border-bottom solid 4px transparent
-    border-top none
-    border-left none
-    border-right none
-    background-color transparent
+    justify-content space-between
 
-  .custom-tab--selected
-    border-color $tabsSelectedBorderColor
-    color $tabsSelectedColor
+    .tab
+      display flex
+      flex-direction row
+      margin 0
+      background-color transparent
+      width 100%
+      border none
+      border-bottom solid $tableBorderColor 1px
+      min-height 3.2rem
+      box-sizing content-box
 
-.tabs
-  box-shadow inset 0px -8px 8px $tabsBoxShadowColor
-  background-color $tabsBackgroundColor
-  border-bottom solid 1px $tabsBorderBottomColor
-  padding 0 4rem
-  margin 0 -4rem
 
-.tab
-  margin 0
+      span
+        margin auto
+        font-size 1.4rem
+        color $tabsTextColor
+        font-weight 700
+        line-height 1.6rem
+        letter-spacing 0
 
-#page-content .custom-tab:focus,
-#page-content .custom-tab:hover
-  color $tabsHoverTextColor
+      &.tab--selected
+        border-bottom-color $tabsSelectedBorderColor
+
+        span
+          color $tabsSelectedColor
+
+      &:hover span
+        color $tabsHoverTextColor
+
+      &.tab--disabled
+        span
+          color $disabledTextColor

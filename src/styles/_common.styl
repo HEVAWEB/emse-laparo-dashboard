@@ -1,6 +1,6 @@
 body
-  background-color $bodyBackgroundColor
-  margin 4rem 4rem 2rem 4rem
+  background $bodyBackgroundColor
+  margin 3.2rem 3.2rem 0 3.2rem
   color $inkTextColor
 
   ::-moz-selection, :selection
@@ -8,15 +8,17 @@ body
 
 @media (max-width: 960px)
   body
-    margin 0 0 2rem 0
+    margin 0
 
 footer
   height 0
 
 .footer
-  text-align center
+  text-align right
   color $footerTextColor
-  height 2rem
+  height 3.2rem
+  font-size 1rem
+  line-height 2.4rem
 
   *
     margin-right: 1em
@@ -36,46 +38,11 @@ hr
 code
   color $codeTextColor
   background $codeBackgroundColor
-  border-radius 3px
+  border-radius 4px
 
-table
-  border-right hidden
-
-table,
-table td,
-table th,
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td, td.focused,
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th, th.focused
-  background-color transparent !important
-  font-family $primaryFont
-  border-bottom .05rem solid $tableBorderColor !important
-  border-left hidden !important
-  padding .6rem .4rem
-  text-align left !important
-
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th,
-table thead th
-  border-top hidden !important
-  border-bottom 0.3rem solid $tableBorderColor !important
-  font-weight 700
-
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th
-  .column-header-name
-    margin 0 3px
-
-  .column-header--sort svg.svg-inline--fa path
-    fill $sortIconColor !important
-
-
-.table.table-hover
-  tr:hover, tbody tr:hover
-    background-color $lightGrey
-
-table tr tbody
-  th .column-header--sort
-    margin-right 2px !important
-    fill $primaryColor !important
-
-  td.bordered-cell
-    border-left .05rem solid $tableBorderColor !important
-
+#page-content
+  figcaption
+    margin-top 0.8rem
+    text-align center
+    font-size 1.6rem
+    line-height 2.4rem

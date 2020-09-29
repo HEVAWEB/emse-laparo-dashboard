@@ -1,4 +1,4 @@
-.graph, .two-graphs, .tools, .custom-tabs-container, .dash-table-container
+.graph, .two-graphs, .custom-tabs-container
   background-color $containerBackgroundColor
   padding 2rem 4rem
   margin 0 -4rem
@@ -6,16 +6,35 @@
   & > *:first-child
     margin-top 0
 
-.tools, .custom-tabs-container
-  box-shadow inset 0px -8px 8px $toolsBoxShadowColor
-  border-bottom solid 1px $toolsBorderBottomColor
 
-.tools [class^="col"]
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
 
+.toolbar
+  background-color $containerBackgroundColor
+  margin-top 3.2rem
+  margin-left -4rem
+  margin-right -4rem
+  padding 1.6rem 4rem
+
+  & form
+    margin-top -1.6rem
+
+@media (max-width: 800px)
+  .custom-tabs-container
+    flex-direction row !important
+    overflow-x auto
+
+@media (max-width: 960px)
+  .graph, .two-graphs, .custom-tabs-container
+    margin 0 -2rem 0 -2rem
+
+  .custom-tabs-container
+  padding 0
+
+  .toolbar
+    margin-left -2rem
+    margin-right -2rem
+    padding-left 2rem
+    padding-right 2rem
 
 .graph
   h4
@@ -32,5 +51,3 @@
     margin 0
     padding 0
 
-.custom-tabs-container
-  padding 0 4rem

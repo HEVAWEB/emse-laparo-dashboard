@@ -1,67 +1,40 @@
-.sidebar
-  background-color $bodyBackgroundColor
+#main-sidebar
   display flex
   flex-direction column
-
-  section
-    flex-direction column
-
-  ul
-    flex-direction column
-    margin-right 2rem
-    margin-left auto
-
-  .navbar
-    display flex
-    position sticky
-    top 4rem
-    flex-direction column
-
-    .nav-links
-      margin-top 2rem
-
-.sidebar-logo
-  max-width 100px
-  align-self flex-end
-  margin-right 2rem
-
-.logo-client
-  position fixed
-  bottom 4rem
-  align-self flex-end
-
-
-@media (max-width: 960px)
-  .sidebar
-    flex-direction row
-    align-items center
-
-    .navbar
-      top 0
-      position relative
-      flex-direction row
-      align-items start
-      width 100%
-      justify-content space-between
-      flex-wrap nowrap
-      margin 2rem 2rem 0 2rem
-
-      .navbar-section
-        flex-grow 0
-
-        .nav
-          text-align center
-
-      .nav-links
-        margin-top 0
-        flex-grow 5
-        ul
-          margin auto
-
-      .logo-client
-        position relative
-        bottom inherit
-        align-self inherit
+  justify-content flex-start
+  align-content flex-start
+  height 100vh
+  position sticky
+  top 0
+  margin -3.2rem 0
+  padding 3.2rem 0
 
   .sidebar-logo
+    max-width 10rem
+
+  .logo-client
+    justify-self flex-end
+    align-self flex-start
+
+  #navbar-menu
+    flex-grow 1
+    margin 3.2rem 0
+    padding-right 2rem
+    overflow-x hidden
+    overflow-y auto
+
+@media (max-width: 960px)
+  #main-sidebar
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-content flex-start
+    height 100%
+    padding 2rem
+    position relative
     margin 0
+
+    #navbar-menu
+      margin 0 4rem
+      flex-grow 1
+

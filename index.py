@@ -42,7 +42,6 @@ navbar_titles = {
     "/results": "Résultats",
 }
 
-
 # You should not feel the need to modify the code bellow
 
 app.layout = html.Div(
@@ -56,30 +55,26 @@ app.layout = html.Div(
                             children=[
                                 html.Div(
                                     [
-                                        html.Section(
+                                        html.Div(
                                             [
                                                 html.Img(
                                                     src=LOGO_HEVA,
                                                     className="img-responsive sidebar-logo hide-xs",
                                                 )
                                             ],
-                                            className="navbar-section",
                                         ),
-                                        html.Section(
-                                            id="navbar-menu",
-                                            className="navbar-section nav-links",
-                                        ),
-                                        html.Section(
+                                        html.Div(id="navbar-menu"),
+                                        html.Div(
                                             [
                                                 html.Img(
                                                     src=LOGO_CLIENT,
                                                     className="img-responsive sidebar-logo hide-xs",
                                                 )
                                             ],
-                                            className="navbar-section  logo-client",
+                                            className="logo-client",
                                         ),
                                     ],
-                                    className="navbar",
+                                    id="main-sidebar",
                                 ),
                             ],
                             className="column col-2 sidebar col-lg-12",
@@ -137,7 +132,6 @@ def display_page(pathname):
 
 
 if __name__ == "__main__":
-
     # Watch md & built files for full reload
     content_path = pathlib.Path(__file__).parent / "assets"
     builds_path = pathlib.Path(__file__).parent / "builds"

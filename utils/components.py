@@ -162,7 +162,7 @@ def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.
     if title:
         content.insert(0, html.H4(title))
 
-    return html.Div(content, className="graph")
+    return html.Div(content)
 
 
 def table_from_df(
@@ -197,7 +197,7 @@ def table_from_df(
     if title:
         content.append(html.H4(title))
     content.append(table)
-    return html.Div(content, className="graph")
+    return html.Div(content)
 
 
 def _make_v_table(df: pd.DataFrame) -> html.Table:

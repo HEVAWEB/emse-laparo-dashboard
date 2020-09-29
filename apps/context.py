@@ -40,12 +40,8 @@ layout = html.Div(
         utils.table_from_df(
             df, title="Orientez les tables en largeur...", orient_vertically=False
         ),
-        utils.two_graphs(
-            utils.table_from_df(
-                df, title="... ou en hauteur !", orient_vertically=True
-            ),
-            utils.table_from_csv("builds/iris.csv", "Table CSV directe"),
-        ),
+        utils.table_from_df(df, title="... ou en hauteur !", orient_vertically=True),
+        utils.table_from_csv("builds/iris.csv", "Table CSV directe"),
         next(i_content),
         utils.takeaways("Le Markdown c'est cool."),
         next(i_content),

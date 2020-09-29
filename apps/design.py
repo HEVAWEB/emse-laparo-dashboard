@@ -87,19 +87,10 @@ layout = html.Div(
             id="tabs",
             value="tab-1",
             children=[
-                dcc.Tab(
-                    label="Tab1",
-                    value="tab-1"
-                ),
-                dcc.Tab(
-                    label="Tab2",
-                    value="tab-2"
-                ),
-                dcc.Tab(
-                    label="Tab3",
-                    value="tab-3"
-                ),
-            ]
+                dcc.Tab(label="Tab1", value="tab-1"),
+                dcc.Tab(label="Tab2", value="tab-2"),
+                dcc.Tab(label="Tab3", value="tab-3"),
+            ],
         ),
         html.H4("Table simple"),
         utils.table_from_df(df_iris),
@@ -241,7 +232,7 @@ layout = html.Div(
         ),
         html.Hr(),
         html.H4(["Button"]),
-        html.Button("Default"),
-        html.Button("Disabled", disabled=True),
+        utils.html.button("Default"),
+        utils.html.button("Disabled", disabled=True),
     ]
 )

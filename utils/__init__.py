@@ -1,4 +1,7 @@
 """Utils functions"""
+
+
+from . import html
 from .components import (
     MarkdownReader,
     graph,
@@ -24,6 +27,7 @@ __all__ = (
     "toolbar",
     "translations",
     "two_graphs",
+    "html",
 )
 
 translations = {"eula": {"fr": "Mentions légales", "en": "Terms of Use"}}

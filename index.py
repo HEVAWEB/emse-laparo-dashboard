@@ -9,6 +9,8 @@ from app import app, config
 from apps import context, design, eula, gallery, method, results
 from utils import __version__, translations
 
+server = app.server
+
 # Client - study configuration
 CLIENT = "HEVA"
 STUDY = "Study"

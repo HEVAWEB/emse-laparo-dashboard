@@ -1,4 +1,5 @@
 import pathlib
+from collections import defaultdict
 from typing import List
 
 import dash_core_components as dcc
@@ -47,7 +48,8 @@ navbar_titles = {
 
 # Page access restriction is done there.
 # By default all pages have a "guest" access.
-pages_access = {"/context": [RoleEnum.guest]}
+pages_access = defaultdict(lambda: [RoleEnum.guest])
+pages_access["/context"] = [RoleEnum.admin]
 
 # You should not feel the need to modify the code bellow
 
@@ -131,7 +133,7 @@ def display_page(pathname):
 
     # We need to make sure that the user as access to the page
     # (direct url access)
-    ac_list = pages_access.get(pathname, [RoleEnum.admin])
+    ac_list = pages_access[pathname]
     if not any(user_role.has_access(ac) for ac in ac_list):
         return html.H1(["Page not found"]), menu
 
@@ -141,7 +143,11 @@ def display_page(pathname):
 def make_menu(pathname: str, user_role: RoleEnum) -> List[html.Li]:
     """Create the navbar menu, with selected navlink highlighted."""
     # You may filter the menu items there depending on user role
-    menu_items = navbar_titles
+    menu_items = dict()
+
+    for uri, link_text in navbar_titles.items():
+        if any(user_role.has_access(ac) for ac in pages_access[uri]):
+            menu_items[uri] = link_text
 
     return [
         html.Li(dcc.Link(title, href=href), className="nav-item")

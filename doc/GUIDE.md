@@ -399,19 +399,82 @@ Since all apps can access the `app.py` module namespace, if you need an asset in
 
 ### How to deploy a dashboard
 
-1.  Change the default authentication credentials in `identifiants.csv`
-2.  Push your changes to GitLab
-3.  Enable the `deployer_heva_dashboard` key (Git -> Settings -> Repository -> Deploys keys)
-4.  In **CI/CD** > **Pipelines**, wait for the job(s) to finish and then use the **Manual job** button on the right to deploy your dashboard.
+To be updated.
 
-Feel free to reach a dev for help.
+### Authentication
+
+#### Disable authentication
+
+Authentication is disabled by default.
+From `config.py`:
+```python
+class Settings(BaseSettings):
+    # [...]
+    authenticator: Type[CustomAuth] = NoAuth
+```
+
+#### Simple authentication
+
+In order to activate authentication for your dashboard, you need to use the `BasicRBACAuth` authenticator class.
+
+```python
+class Settings(BaseSettings):
+    # [...]
+    authenticator: Type[CustomAuth] = BasicRBACAuth
+```
+
+Previously we would define our users (login, pwd) in an flat file right in the project repository (`identifiants.csv`).
+This new authentication method improves a bith this workflow by making use of environment variables.
+
+> Please note that nonetheless we should a proper authentication system in the future.
+
+In local development, you may define the `users` var in a `.env` file:
+
+```bash
+users='[
+{"login": "hello", "pwd": "world"}
+]'
+```
+
+In deployment, we should use a secret environment variable.
+
+#### Role based access control
+
+We provide an easy way to implement a simple role based access control for pages.
+
+1. Use the `BasicRBACAuth` authenticator class in `config.py`.
+
+```python
+class Settings(BaseSettings):
+    # [...]
+    authenticator: Type[CustomAuth] = BasicRBACAuth
+```
+
+2. Define the roles hierarchy in `config.py`, in the `RoleEnum` class.
+
+3. Define the roles in the `users` environment variable:
+
+```bash
+users='[
+{"login": "hello", "pwd": "world", "role": "admin"}
+]'
+```
+
+> The default role is `guest`.
+
+4. Protect the pages that needs protection in `index.py`, in the `page_access` dict:
+
+```python
+pages_access["/private"] = [RoleEnum.admin]
+```
+
 
 ### How to update your dashboard with the template\'s latest developments
 
 We may need to update the template with bug fixes, design improvements or just dependencies upgrades.
 In order to benefit on your dashboard from these developments, you need to do the following procedure:
 
-1. If not done already, add upstream remote to your git repository `git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template`. You can check that the upstream was properly added with `git remote -v`
+1. If not done already, add upstream remote to your git repository `git remote add upstream https://gitlab.com/hevaweb/data_science/dashboard-template`. You can check that the upstream was properly added with `git remote -v`
 1.  Fetch upstream latest developments `git fetch upstream`
 2.  Merge upstream master on top of your current branch
     `git merge upstream/master`
@@ -425,7 +488,7 @@ When working on your own dashboard, you could code something the template may be
 
 You can create a Merge Request on GitLab from your dashboard to the template with the following steps:
 
-1. If not done already, add upstream remote to your git repository `git remote add upstream https://gitlab.hevaweb.com/web/dashboard-template`.
+1. If not done already, add upstream remote to your git repository `git remote add upstream https://gitlab.com/hevaweb/data_science/dashboard-template`.
 2. You can check that the upstream was properly added with `git remote -v`
 3.  Fetch upstream latest developments `git fetch upstream`
 4.  Create a new local branch from upstream with
@@ -435,7 +498,7 @@ You can create a Merge Request on GitLab from your dashboard to the template wit
 6.  Resolve potential git conflicts & **remove all code/graphs/whatever related to your study**. You do not want to merge your graphs into
     the template!
 7.  `git push --set-upstream origin <new-branch-name>`
-8.  Go to <https://gitlab.hevaweb.com/web/dashboard-template> and open a
+8.  Go to https://gitlab.com/hevaweb/data_science/dashboard-template and open a
     Merge Request. Thank you kindly for your contribution!
 
 ### What if my question is not listed here?

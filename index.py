@@ -49,7 +49,6 @@ navbar_titles = {
 # Page access restriction is done there.
 # By default all pages have a "guest" access.
 pages_access = defaultdict(lambda: [RoleEnum.guest])
-pages_access["/context"] = [RoleEnum.admin]
 
 # You should not feel the need to modify the code bellow
 

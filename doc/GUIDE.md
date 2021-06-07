@@ -424,9 +424,9 @@ class Settings(BaseSettings):
 ```
 
 Previously we would define our users (login, pwd) in an flat file right in the project repository (`identifiants.csv`).
-This new authentication method improves a bith this workflow by making use of environment variables.
+This new authentication method improves a bit this workflow by making use of environment variables.
 
-> Please note that nonetheless we should a proper authentication system in the future.
+> Please note that nonetheless we should use a proper authentication system in the future.
 
 In local development, you may define the `users` var in a `.env` file:
 

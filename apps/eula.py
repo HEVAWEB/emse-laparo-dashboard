@@ -19,9 +19,9 @@ layout = html.Div(
         content[1],
         rgpd_dash.RgpdDash(
             variant="options",
-            trackingCode=config["tracking"]["code"],
-            isDebug=config["tracking"]["debug"],
-            locale=config["lang"],
+            trackingCode=config.tracking_code,
+            isDebug=config.debug,
+            locale=config.language,
         ),
         content[2],
     ]

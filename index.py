@@ -1,11 +1,13 @@
 import pathlib
+from collections import defaultdict
+from typing import List
 
 import dash_core_components as dcc
 import dash_html_components as html
 import rgpd_dash
 from dash.dependencies import Input, Output
 
-from app import app, config
+from app import RoleEnum, app, auth, config
 from apps import context, design, eula, gallery, method, results
 from utils import __version__, translations
 
@@ -43,6 +45,10 @@ navbar_titles = {
     "/gallery": "Galerie",
     "/results": "Résultats",
 }
+
+# Page access restriction is done there.
+# By default all pages have a "guest" access.
+pages_access = defaultdict(lambda: [RoleEnum.guest])
 
 # You should not feel the need to modify the code bellow
 
@@ -94,15 +100,15 @@ app.layout = html.Div(
         html.Div(
             [
                 html.Span(f"v{__version__}"),
-                dcc.Link(translations["eula"][config["lang"]], href="/eula"),
+                dcc.Link(translations["eula"][config.language], href="/eula"),
                 html.Span("© 2019"),
             ],
             className="footer",
         ),
         rgpd_dash.RgpdDash(
-            trackingCode=config["tracking"]["code"],
-            isDebug=config["tracking"]["debug"],
-            locale=config["lang"],
+            trackingCode=config.tracking_code,
+            isDebug=config.debug,
+            locale=config.language,
         ),
     ]
 )
@@ -119,18 +125,35 @@ def display_page(pathname):
     :return: Tuple containing content of the page and updated navbar """
 
     pathname = pathname if pathname != "/" else "/context"
-    # Children of the navbar menu, with selected navlink highlighted
-    children_menu = [
+    user_role = auth.get_role()
+
+    children_menu = make_menu(pathname, user_role)
+    menu = html.Ul(children_menu, className="nav")
+
+    # We need to make sure that the user as access to the page
+    # (direct url access)
+    ac_list = pages_access[pathname]
+    if not any(user_role.has_access(ac) for ac in ac_list):
+        return html.H1(["Page not found"]), menu
+
+    return pages.get(pathname, html.H1(["Page not found"])), menu
+
+
+def make_menu(pathname: str, user_role: RoleEnum) -> List[html.Li]:
+    """Create the navbar menu, with selected navlink highlighted."""
+    # You may filter the menu items there depending on user role
+    menu_items = dict()
+
+    for uri, link_text in navbar_titles.items():
+        if any(user_role.has_access(ac) for ac in pages_access[uri]):
+            menu_items[uri] = link_text
+
+    return [
         html.Li(dcc.Link(title, href=href), className="nav-item")
         if href != pathname
         else html.Li(dcc.Link(title, href=href), className="nav-item nav-item-focus")
-        for href, title in navbar_titles.items()
+        for href, title in menu_items.items()
     ]
-
-    # Creating menu
-    menu = html.Ul(children_menu, className="nav",)
-
-    return (pages.get(pathname, html.H1(["Page not found"])), menu)
 
 
 if __name__ == "__main__":

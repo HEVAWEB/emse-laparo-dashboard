@@ -2,3 +2,20 @@ include:
   - project: 'hevaweb/web/devops/ci-templates'
     ref: master
     file: '/kube/artemis-jobs.yml'
+
+build:
+  extends: build
+  only:
+    - develop
+    - master
+    - feature/k3s
+
+deploy:staging:
+  extends: deploy:staging
+  only:
+    - develop
+    - master
+    - feature/k3s
+  variables:
+    BUILD_ENV: 'staging'
+

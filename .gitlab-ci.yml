@@ -4,14 +4,26 @@ include:
     file: '/kube/artemis-jobs.yml'
 
 build:
-  extends: build
+  image: $BUILD_IMAGE
+  stage: build
+  before_script:
+    - node --version
+    - echo "Building branch:$CI_COMMIT_REF_NAME commit:$CI_COMMIT_SHA"
+  script:
+    - yarn
+    - yarn build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - assets/style.css
   only:
     - develop
     - master
     - feature/k3s
 
+
 deploy:staging:
-  extends: deploy:staging
+  extends: .deploy
   only:
     - develop
     - master

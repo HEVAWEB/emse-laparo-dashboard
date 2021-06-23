@@ -1,41 +1,33 @@
-image: gitlab.hevaweb.com:4567/heva/docker-images/php-node-deployer:php7.2-node10LTS
-
 include:
-  - project: 'devops/ci-templates'
+  - project: 'hevaweb/web/devops/ci-templates'
     ref: master
-    file: '/api-templates.yml'
-
-cache:
-  paths:
-    - .env
-    - assets/style.css
-
-stages:
-  - build
-  - deploy
+    file: '/kube/artemis-jobs.yml'
 
 build:
-  except:
-    - tags
+  image: $BUILD_IMAGE
   stage: build
+  before_script:
+    - node --version
+    - echo "Building branch:$CI_COMMIT_REF_NAME commit:$CI_COMMIT_SHA"
   script:
     - yarn
     - yarn build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - assets/style.css
+  only:
+    - develop
+    - master
+    - feature/k3s
 
-deploy:
-  except:
-    - tags
+
+deploy:staging:
   extends: .deploy
-  before_script:
-    - echo "Deploy branch:$CI_COMMIT_REF_NAME commit:$CI_COMMIT_SHA"
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SSH_HEVA_DASHBOARD_KEY")
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - echo "SSH Key installed"
-  script:
-    - echo "Deploy to production"
-    - cp $ENVS .env || true
-    - dep deploy production
-  environment:
-    name: ${CI_PROJECT_NAME}
-    url: http://${CI_PROJECT_NAME}.hevaweb.com
+  only:
+    - develop
+    - master
+    - feature/k3s
+  variables:
+    BUILD_ENV: 'staging'
+

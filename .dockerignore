@@ -1,0 +1,16 @@
+
+# IDE
+.vscode
+.idea
+
+# App
+doc
+reqs
+src
+
+# Python
+.mypy_cache
+.pytest_cache
+venv
+.venv
+__pycache__

@@ -129,7 +129,7 @@ layout = html.Div(
                         dcc.RadioItems(
                             options=[
                                 {"label": "Régionale", "value": "reg"},
-                                {"label": "Départementale", "value": "dep",},
+                                {"label": "Départementale", "value": "dep"},
                             ],
                             value="reg",
                             id="gran-dropdown",
@@ -146,7 +146,7 @@ layout = html.Div(
                         dcc.Slider(
                             min=2017,
                             max=2019,
-                            marks={2017: "2017", 2018: "2018", 2019: "2019",},
+                            marks={2017: "2017", 2018: "2018", 2019: "2019"},
                             value=2019,
                             id="year-slider",
                         )

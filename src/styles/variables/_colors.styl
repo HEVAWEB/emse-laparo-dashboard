@@ -16,8 +16,8 @@ $secondaryColor = $purple
 
 
 // Body colors
-$bodyBackgroundColor = $secondaryColor
-$bodySelectionBackgroundColor = $greyPurplePurple
+$bodyBackgroundColor = linear-gradient(270deg, #A22257 0%, #2B1D46 100%)
+$bodySelectionBackgroundColor = $greyPurple
 $contentBackgroundColor = $white
 
 // Texts colors
@@ -25,12 +25,20 @@ $inkTextColor = $purple
 $secondaryTextColor = $greyPurple
 $placeholderTextColor = $purpleGrey
 $disabledTextColor = $blueGrey
+$introTextColor = $purpleGrey
 
 // Texts borders colors
 $introBorderLeftColor = $blueGrey
 $blockquoteBorderLeftColor = $blueGrey
 $conclusionBorderLeftColor = $primaryColor
 
+// Inputs
+$inputTextColor = $greyPurple
+$inputBorderColor = $blueGrey
+$focusHaloColor = blend(rgba($lightOrange, 0.2))
+$chipBackgroundColor = $whitePurple
+$chipHoverColor = $primaryColor
+$inputHoverBackgroundColor = rgba($primaryColor, 0.05)
 
 // Action colors
 $linkTextColor = $greyPurple
@@ -47,31 +55,45 @@ $toolsBorderBottomColor = $white
 $toolsBoxShadowColor = rgba($purple, 0.05)
 
 // Tabs colors
-$tabsTextColor = $lightPurple
-$tabsHoverTextColor = $secondaryColor
-$tabsBoxShadowColor = rgba($purple, 0.05)
+$tabsTextColor = $greyPurple
+$tabsHoverTextColor = $primaryColor
+$tabsBorderColor = $blueGrey
 $tabsSelectedBorderColor = $primaryColor
 $tabsSelectedColor = $primaryColor
 
 // Table colors
-$tableBorderColor = $borderColor
-$sortIconColor = $lightOrange
+$tableBorderColor = rgba($borderColor, 0.5)
+$tableBackgroundColor = $white
+$rowBackgroundHoverColor = rgba($whitePurple, 0.5)
+$headerBackgroundColor = blend(rgba($whitePurple, 0.5))
+$tableButtonTextColor = $greyPurple
+$sortIconColor = $greyPurple
+$sortIconActiveColor = $lightOrange
 
 
 // Footer colors
 $footerTextColor = $blueGrey
-
-// Blockquote colors
-$blockquoteBackgroundColor = rgba($whitePurple, .5)
-$blockquotePagragraphBackgroundColor = $greyPurplePurple
 
 // Code colors
 $codeTextColor = $greyPurple
 $codeBackgroundColor = $whitePurple
 
 // Button colors
-$buttonBorderColor = $lightOrange
-$buttonTextColor = $primaryColor
+$buttonTextColor = $secondaryTextColor
+$buttonBackgroundColor = $whitePurple
+$buttonBorderColor = $blueGrey
+$buttonDisabledColor = $blueGrey
+$buttonBackgroundHoverColor = rgba($primaryColor, 0.05)
+$buttonBackgroundActiveColor = rgba($primaryColor, 0.1)
+$buttonBackgroundFocusColor = $lightOrange
+$buttonBorderEnabledColor = $primaryColor
+
+$buttonSecondaryBackgroundColor = $lightOrange
+$buttonSecondaryBorderColor = $orange
+$buttonDisabledSecondaryColor = $whitePurple
+$buttonSecondaryBackgroundHoverColor = #f86246 // blend light orange with itself at 20% opacity
+$buttonSecondaryBackgroundActiveColor = #f1534c // blend light orange with itself at 40% opacity
+$buttonSecondaryBackgroundFocusColor = #DD255F
 
 // Modebar colors
 $modebarFillColor = $secondaryColor
@@ -87,17 +109,17 @@ $containerBackgroundColor = $whitePurple
 $navItemHoverColor = $white
 
 // Notifier colors
-$notifierBackgroundColor = $secondaryColor
-$notifierBorderColor = $primaryColor
+$notifierBackgroundColor = rgba(43,29,70,0.9)
 $notifierTextColor = $white
-$notifierCloseTextColor = $primaryColor
+$notifierCloseTextColor = $white
 
 // Sliders colors
-$sliderBackgroundColor = rgba($lightOrange, 0.4)
+$sliderBackgroundColor = blend(rgba($lightOrange, 0.4))
 $sliderBorderColor = $lightOrange
 $sliderTextColoractive = $primaryColor
-$sliderTextColor = $lightPurple
-$sliderRailBackground = $whitePurple
+$sliderTextColor = $greyPurple
+$sliderRailBackground = $lightPurple
+$sliderTooltipBackgroundColor = rgba($purple, .8)
 
 $sliderBackgroundDisabledColor = $blueGrey
 $sliderBorderDisabledColor = $blueGrey
@@ -107,3 +129,6 @@ $sliderRailDisabledBackground = $whitePurple
 // Specific colors
 $embeddedImgBordercolor = $purpleGrey
 $paperBackgroundColor = $whitePurple
+
+// Cards
+$cardBoxShadowColor = rgba($secondaryColor,0.18)

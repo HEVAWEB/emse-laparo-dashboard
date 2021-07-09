@@ -1,23 +1,166 @@
-.button,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"]
-  display inline-block
-  height 38px
-  padding 0 30px
-  margin 5px 0
-  color $buttonTextColor
-  text-align center
-  font-size 11px
-  font-weight 600
-  line-height 38px
-  letter-spacing .1rem
-  text-transform uppercase
-  text-decoration none
-  white-space nowrap
-  background-color transparent
+.btn-group
+  button, button.button-large, button.button-medium, button.button-small
+    border-radius 0
+    margin-left 0
+    margin-right -1px
+
+  button:hover, button:active, button:focus
+    z-index 10
+
+  button:first-of-type
+    border-top-left-radius 4px
+    border-bottom-left-radius 4px
+
+    &.button-large
+      border-top-left-radius 1000px
+      border-bottom-left-radius 1000px
+
+  button:last-of-type
+    border-top-right-radius 4px
+    border-bottom-right-radius 4px
+
+    &.button-large
+      border-top-right-radius 1000px
+      border-bottom-right-radius 1000px
+
+button
+  display flex
+  border 1px $buttonBorderColor solid
   border-radius 4px
-  border 1px solid $buttonBorderColor
-  cursor pointer
-  box-sizing border-box
+  font-size 1.4rem
+  font-weight 700
+  line-height 1.6rem
+  margin 0.8rem
+  outline none
+  white-space nowrap
+  padding-left 1.6rem
+  padding-right 1.6rem
+  height 4rem
+
+  span, i
+    margin auto 0.4rem
+
+    &:first-child
+      margin-left 0
+
+    &:last-child
+      margin-right 0
+
+  i.icon
+    font-size 1.6rem
+
+  &.default-button
+    color $buttonTextColor
+    background-color: $buttonBackgroundColor
+
+    i.icon
+      color $buttonTextColor
+
+    &:disabled, &[disabled=disabled]
+      border-color $buttonDisabledColor
+      color $disabledTextColor
+
+      i.icon
+        color $disabledTextColor
+
+    &:hover:enabled
+      color $primaryColor
+      background-color $buttonBackgroundHoverColor
+      border-color blend(rgba($buttonBorderEnabledColor, 0.5))
+
+      i.icon
+        color $primaryColor
+
+    &:focus:enabled
+      background-color $buttonBackgroundFocusColor
+      border-color $buttonBorderEnabledColor
+      color $white
+
+      i.icon
+        color $white
+
+    &:active:enabled
+      color $primaryColor
+      background-color $buttonBackgroundActiveColor
+      border-color $buttonBorderEnabledColor
+
+      i.icon
+        color $primaryColor
+
+  &.secondary-button
+    color $white
+    background-color: $buttonSecondaryBackgroundColor
+    border-color $buttonSecondaryBorderColor
+
+    &:disabled
+      background-color $buttonDisabledSecondaryColor
+      color $disabledTextColor
+      border-color $buttonDisabledSecondaryColor
+
+    &:hover:enabled, &:focus:enabled
+      background-color $buttonSecondaryBackgroundHoverColor
+
+    &:focus:enabled
+      background-color $buttonSecondaryBackgroundFocusColor
+
+    &:active:enabled
+      background-color $buttonSecondaryBackgroundActiveColor
+
+  &.link-button
+    border none
+    color $buttonTextColor
+    background-color transparent
+
+    i.icon
+      color $purpleGrey
+
+    &:disabled, &[disabled=disabled]
+      color $disabledTextColor
+
+      i.icon
+        color $disabledTextColor
+
+    &:hover:enabled, &:focus:enabled, &:focus:enabled
+      color $primaryColor
+
+      i.icon
+        color $primaryColor
+
+  &.button-large
+    border-radius 1000px
+    padding-left 1.6rem
+    padding-right 1.6rem
+    height 4.6rem
+
+  &.button-medium
+    padding-left 1.2rem
+    padding-right 1.2rem
+    height 4rem
+
+  &.button-small
+    padding-left .8rem
+    padding-right .8rem
+    height 3.2rem
+    font-size 1.2rem
+
+
+#rgpd-banner button
+  font-size 1.4rem
+  font-weight 700
+  line-height 3.4rem
+  padding-left 1.2rem
+  padding-right 1.2rem
+  height 4rem
+  color $buttonTextColor
+  background-color: $buttonBackgroundColor
+
+  &:hover
+    color $primaryColor
+    background-color $buttonBackgroundHoverColor
+    border-color blend(rgba($buttonBorderEnabledColor, 0.5))
+
+  &:focus
+    background-color $buttonBackgroundFocusColor
+    border-color $buttonBorderEnabledColor
+    color $white
+

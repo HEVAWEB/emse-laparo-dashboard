@@ -1,13 +1,48 @@
 .plotly-notifier
-  background-color $notifierBackgroundColor
+  position fixed
+  top 1.6rem !important
+  right 1.6rem !important
+  max-width none !important
 
 .notifier-note
+  max-width 30rem !important
+  padding 1.6rem 2.4rem 1.6rem 1.6rem !important
+  border none !important
+  border-radius 4px
   background-color $notifierBackgroundColor !important
-  border solid $notifierBorderColor 3px !important
 
   p
     color $notifierTextColor
     font-family $primaryFont
+    font-size 1.4rem
+    line-height 1.6rem
+    font-weight bold
+    text-align left
+    margin-top 0
 
   .notifier-close
+    position relative
+    float right
+
+    border-width initial
+    border-style none
+    border-color initial
+    border-image initial
+    padding 0 !important
+    margin-right -1rem !important
+    margin-top -1.2rem !important
+
+    background none
     color $notifierCloseTextColor
+    font-size 20px
+    font-weight 400
+    height 20px
+    line-height 20px
+    opacity 1 !important
+    cursor pointer
+
+    button
+      margin 0 !important
+
+    &:hover
+      color $primaryColor !important

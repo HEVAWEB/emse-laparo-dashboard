@@ -25,7 +25,7 @@ class MarkdownReader:
     """
 
     def __init__(self, content: str) -> None:
-        self.sections = list(re.compile("\n\[//\]: # \(section\)\n").split(content))
+        self.sections = list(re.compile(r"\n\[//\]: # \(section\)\n").split(content))
 
     def __getitem__(self, section):
         if isinstance(section, slice):
@@ -162,7 +162,7 @@ def table_from_csv(path: Union[str, Path], title: Optional[str] = None) -> html.
     if title:
         content.insert(0, html.H4(title))
 
-    return html.Div(content, className="graph")
+    return html.Div(content)
 
 
 def table_from_df(
@@ -197,7 +197,7 @@ def table_from_df(
     if title:
         content.append(html.H4(title))
     content.append(table)
-    return html.Div(content, className="graph")
+    return html.Div(content)
 
 
 def _make_v_table(df: pd.DataFrame) -> html.Table:
@@ -251,8 +251,8 @@ def _make_v_regrouped_table(df: pd.DataFrame) -> html.Table:
         # First row need to define the `rowspan` of the 1st cell
         first_row = next(row_iterator)
         group_table_rows = [
-            html.Tr([html.Td([first_row[0]], rowSpan=rowspan + 1),],),
-            html.Tr([*[html.Td(cell) for cell in first_row[1:]],]),
+            html.Tr([html.Td([first_row[0]], rowSpan=rowspan + 1)],),
+            html.Tr([*[html.Td(cell) for cell in first_row[1:]]]),
         ]
 
         # Then we add the following rows
@@ -351,5 +351,5 @@ def toolbar(form_entries: Iterable):
                 className="form-horizontal",
             )
         ],
-        className="tools",
+        className="toolbar",
     )

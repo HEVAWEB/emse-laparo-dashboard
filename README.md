@@ -2,9 +2,12 @@
 
 ✨🏹✨
 
-| URL | Login | passwd |
-| --- | --- |---|
-| https://artemis-emse-laparo.hevaweb.com/ | laparotomy | P38D8P35f6 |
+
+![home page](doc/home.png)
+
+![experiment page](doc/experiment.png)
+
+![case study](doc/study.png)
 
 ## Checklist
 
